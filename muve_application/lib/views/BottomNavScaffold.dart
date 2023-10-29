@@ -39,9 +39,9 @@ class _AppScaffoldState extends State<AppScaffold> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Muve'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Muve'),
+      // ),
       body: widget.body,
       backgroundColor: Colors.blueGrey,
       bottomNavigationBar: BottomNavigationBar(
