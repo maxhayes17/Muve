@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:muve_application/routes.dart' as routes;
 
-class CreatePage extends StatelessWidget {
-  const CreatePage({super.key});
+class Compose extends StatelessWidget {
+  const Compose({super.key});
 
   @override
   Widget build(BuildContext context) {
