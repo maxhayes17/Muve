@@ -2,10 +2,12 @@ import 'package:go_router/go_router.dart';
 import 'package:muve_application/views/AddExercisePage.dart';
 import 'package:muve_application/views/NavScaffold.dart';
 import 'package:muve_application/views/LoginPage.dart';
+import 'package:muve_application/views/RoutinePage.dart';
 
 const loginPath = '/login';
 const navBarPath = '/nav_scaffold';
 const addExercisePath = '/add_exercise';
+const routinePath = '/routine';
 
 GoRouter generateRouter() {
   return GoRouter(initialLocation: '/login', routes: [
@@ -19,7 +21,8 @@ GoRouter generateRouter() {
     ),
     GoRoute(
       path: '/add_exercise',
-      builder: (context, state) => const AddExercise(),
-    )
+      builder: (context, state) => const AddExercisePage(),
+    ),
+    GoRoute(path: '/routine', builder: (context, state) => const RoutinePage())
   ]);
 }

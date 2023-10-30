@@ -38,7 +38,7 @@ class _NavScaffoldState extends State<NavScaffold> {
       body: <Widget>[
         const HomePage(),
         const ExplorePage(),
-        const Compose(),
+        const ComposePage(),
         const SharePage(),
         const LibraryPage(),
       ][currentPageIndex],

@@ -1,16 +1,16 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
 
-class AddExercisePage extends StatelessWidget {
-  const AddExercisePage({super.key});
+class RoutinePage extends StatelessWidget {
+  const RoutinePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Exercise'),
+        title: const Text('Routine '),
       ),
-      body: const Text("Add Exercise Test"),
+      body: const Text("Routine"),
     );
   }
 }
