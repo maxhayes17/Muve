@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:muve_application/views/appbar/AddExercisePage.dart';
-import 'package:muve_application/views/NavScaffold.dart';
+import 'package:muve_application/views/navbar/NavScaffold.dart';
 import 'package:muve_application/views/LoginPage.dart';
 import 'package:muve_application/views/appbar/RoutinePage.dart';
 
