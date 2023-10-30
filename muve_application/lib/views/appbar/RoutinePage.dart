@@ -10,7 +10,7 @@ class RoutinePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Routine '),
       ),
-      body: const Text("Routine"),
+      body: const Text("Routine test"),
     );
   }
 }

@@ -10,7 +10,7 @@ class AddExercisePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Add Exercise'),
       ),
-      body: const Text("Add Exercise Test"),
+      body: const Text("Add Exercise test"),
     );
   }
 }

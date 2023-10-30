@@ -28,7 +28,7 @@ class LoginPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () => context.go(routes.navBarPath),
-              child: const Text('Home Page'),
+              child: const Text('Log in'),
             ),
             Expanded(
                 child: Align(
