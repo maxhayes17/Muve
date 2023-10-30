@@ -1,11 +1,11 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:muve_application/views/ComposePage.dart';
-import 'package:muve_application/views/ExplorePage.dart';
-import 'package:muve_application/views/HomePage.dart';
-import 'package:muve_application/views/LibraryPage.dart';
-import 'package:muve_application/views/SharePage.dart';
+import 'package:muve_application/views/navbar/ComposePage.dart';
+import 'package:muve_application/views/navbar/ExplorePage.dart';
+import 'package:muve_application/views/navbar/HomePage.dart';
+import 'package:muve_application/views/navbar/LibraryPage.dart';
+import 'package:muve_application/views/navbar/SharePage.dart';
 
 class NavScaffold extends StatefulWidget {
   const NavScaffold({super.key});
