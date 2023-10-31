@@ -1,8 +1,8 @@
 import 'package:go_router/go_router.dart';
-import 'package:muve_application/views/appbar/AddExercisePage.dart';
-import 'package:muve_application/views/navbar/NavScaffold.dart';
-import 'package:muve_application/views/LoginPage.dart';
-import 'package:muve_application/views/appbar/RoutinePage.dart';
+import 'package:muve_application/views/add_exercise_page.dart';
+import 'package:muve_application/widgets/navbar.dart';
+import 'package:muve_application/views/login_page.dart';
+import 'package:muve_application/views/routine_page.dart';
 
 const loginPath = '/login';
 const navBarPath = '/nav_scaffold';
