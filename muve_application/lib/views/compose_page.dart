@@ -1,4 +1,3 @@
-// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:muve_application/routes.dart' as routes;

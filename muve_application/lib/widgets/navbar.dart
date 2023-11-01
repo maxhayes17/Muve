@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:muve_application/views/compose_page.dart';
 import 'package:muve_application/views/explore_page.dart';
@@ -11,7 +9,7 @@ class NavScaffold extends StatefulWidget {
   const NavScaffold({super.key});
 
   @override
-  State<StatefulWidget> createState() => _NavScaffoldState();
+  State<NavScaffold> createState() => _NavScaffoldState();
 }
 
 class _NavScaffoldState extends State<NavScaffold> {
