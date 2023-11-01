@@ -1,4 +1,3 @@
-// ignore: file_names
 import 'package:flutter/widgets.dart';
 
 class ExplorePage extends StatelessWidget {
