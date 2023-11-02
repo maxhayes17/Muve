@@ -1,11 +1,11 @@
-
+import 'routine_model.dart';
 class User {
   
   final String id;
   final String email;
   final String username;
   final String pw_hash;
-  final List<String> routines;
+  final List<Routine> routines;
 
   User({
     required this.id, 
@@ -21,7 +21,7 @@ class User {
       email: json['email'],
       username: json['username'],
       pw_hash: json['pw_hash'],
-      routines: List<String>.from(json['routines'])
+      routines: List<Routine>.from(json['routines'])
     );
   }
 
