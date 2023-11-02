@@ -1,3 +1,4 @@
+import 'user_model.dart';
 import 'exercise_model.dart';
 import 'track_model.dart';
 
@@ -6,7 +7,7 @@ class Routine{
   final String id;
   final String name;
   final String duration;
-  final String author;
+  final User author;
   final List<String> tags;
   final List<Track> tracks;
   final List<Exercise> exercises;
