@@ -6,14 +6,22 @@ import 'package:muve_application/views/library_page.dart';
 import 'package:muve_application/views/share_page.dart';
 
 class NavScaffold extends StatefulWidget {
-  const NavScaffold({super.key});
+  final int index;
+
+  const NavScaffold({super.key, required this.index});
 
   @override
   State<NavScaffold> createState() => _NavScaffoldState();
 }
 
 class _NavScaffoldState extends State<NavScaffold> {
-  int currentPageIndex = 0;
+  late int currentPageIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    currentPageIndex = widget.index;
+  }
 
   @override
   Widget build(BuildContext context) {

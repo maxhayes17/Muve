@@ -5,8 +5,8 @@ class LibraryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Library Page Test"),
+    return const SafeArea(
+      child: Column(children: [Text("Library Page")]),
     );
   }
 }

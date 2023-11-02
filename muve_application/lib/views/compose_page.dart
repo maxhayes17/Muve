@@ -7,10 +7,18 @@ class ComposePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-          onPressed: () => context.push(routes.addExercisePath),
-          child: const Text("Add Exercise")),
+    return SafeArea(
+      child: Column(
+        children: [
+          const Text("Compose Page"),
+          ElevatedButton(
+              onPressed: () => context.push(routes.addExercisePath),
+              child: const Text("Add Exercise")),
+          ElevatedButton(
+              onPressed: () => context.push(routes.addMusicPath),
+              child: const Text("Add Music")),
+        ],
+      ),
     );
   }
 }

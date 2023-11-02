@@ -5,8 +5,8 @@ class SharePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Share Page Test"),
+    return const SafeArea(
+      child: Column(children: [Text("Share Page")]),
     );
   }
 }
