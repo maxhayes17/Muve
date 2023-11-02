@@ -5,8 +5,8 @@ class ExplorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Explore Page Test"),
+    return const SafeArea(
+      child: Column(children: [Text("Explore Page")]),
     );
   }
 }

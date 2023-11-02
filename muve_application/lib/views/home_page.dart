@@ -7,10 +7,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-          onPressed: () => context.push(routes.routinePath),
-          child: const Text("Routine")),
+    return SafeArea(
+      child: Column(
+        children: [
+          const Text("Home Page"),
+          ElevatedButton(
+              onPressed: () => context.push(routes.routinePath),
+              child: const Text("Routine")),
+        ],
+      ),
     );
   }
 }
