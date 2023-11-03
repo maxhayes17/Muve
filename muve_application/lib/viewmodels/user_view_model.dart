@@ -3,7 +3,7 @@ import "package:muve_application/models/routine_model.dart";
 
 class UserViewModel {
 
-  User user;
+  final User user;
 
   UserViewModel({required this.user});
 
