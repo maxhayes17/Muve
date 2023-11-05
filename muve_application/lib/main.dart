@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:muve_application/viewmodels/user_view_model.dart';
+import 'package:provider/provider.dart';
 import 'package:muve_application/routes.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<UserViewModel>(
+          create: (context) => UserViewModel())
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
