@@ -25,15 +25,30 @@ final List<Routine> jeremyRoutineList = [
   Routine(id: 1, name: "routine1", duration: "30 min", author: "jeremy"),
   Routine(id: 2, name: "routine2", duration: "1 hour", author: "jeremy"),
   Routine(id: 3, name: "routine3", duration: "45 min", author: "jeremy"),
-];
-
-final List<Routine> maxRoutineList = [
   Routine(id: 4, name: "routine4", duration: "1 hour", author: "max"),
   Routine(id: 5, name: "routine5", duration: "1.5 hour", author: "max"),
   Routine(id: 6, name: "routine6", duration: "20 min", author: "max"),
+  Routine(id: 7, name: "routine7", duration: "15 hour", author: "ethan"),
+  Routine(id: 8, name: "routine8", duration: "1 hour", author: "ethan"),
+  Routine(id: 9, name: "routine9", duration: "25 min", author: "ethan"),
+];
+
+final List<Routine> maxRoutineList = [
+  Routine(id: 1, name: "routine1", duration: "30 min", author: "jeremy"),
+  Routine(id: 2, name: "routine2", duration: "1 hour", author: "jeremy"),
+  Routine(id: 3, name: "routine3", duration: "45 min", author: "jeremy"),
+  Routine(id: 4, name: "routine4", duration: "1 hour", author: "max"),
+  Routine(id: 5, name: "routine5", duration: "1.5 hour", author: "max"),
+  Routine(id: 6, name: "routine6", duration: "20 min", author: "max"),
+  Routine(id: 7, name: "routine7", duration: "15 hour", author: "ethan"),
+  Routine(id: 8, name: "routine8", duration: "1 hour", author: "ethan"),
+  Routine(id: 9, name: "routine9", duration: "25 min", author: "ethan"),
 ];
 
 final List<Routine> ethanRoutineList = [
+  Routine(id: 4, name: "routine4", duration: "1 hour", author: "max"),
+  Routine(id: 5, name: "routine5", duration: "1.5 hour", author: "max"),
+  Routine(id: 6, name: "routine6", duration: "20 min", author: "max"),
   Routine(id: 7, name: "routine7", duration: "15 hour", author: "ethan"),
   Routine(id: 8, name: "routine8", duration: "1 hour", author: "ethan"),
   Routine(id: 9, name: "routine9", duration: "25 min", author: "ethan"),
