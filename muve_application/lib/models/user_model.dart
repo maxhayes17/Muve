@@ -1,7 +1,7 @@
 import 'routine_model.dart';
 
 class User {
-  final String id;
+  final int id;
   final String email;
   final String username;
   final String password;
