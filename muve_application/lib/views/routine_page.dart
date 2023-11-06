@@ -18,20 +18,68 @@ class RoutinePage extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Routine'),
         ),
-        body: Column(children: [
-          Text("Routine ${routine.id} Page"),
-          Row(children: [
-            IconButton(
-              onPressed: () => context.push(routes.sharePath),
-              icon: const Icon(Icons.send),
-              tooltip: "Share",
-            ),
-            const Text("Share")
-          ])
-        ]));
+        body: SafeArea(
+          child: Column(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 5,
+                // color: Colors.red,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  child: Row(
+                    children: [
+                      Container(width: 128, height: 128, color: Colors.blueGrey,),
+                      const SizedBox(width: 20),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment:
+                            CrossAxisAlignment.start, // Align text to the left
+                        children: [
+                          Text(routine.name,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20)),
+                          Text(routine.duration,
+                              style: const TextStyle(
+                                      fontSize: 16)),
+                          Text(routine.author,
+                              style: const TextStyle(
+                                      fontSize: 16)),
+                        ],
+                      ),
+                      SizedBox(width: 20,),
+                      IconButton(
+                        onPressed: () => context.push(routes.libraryPath),
+                        icon: const Icon(Icons.add_circle_outline_rounded),
+                        tooltip: "Add",
+                      ),
+                      IconButton(
+                        onPressed: () => context.push(routes.sharePath),
+                        icon: const Icon(Icons.send),
+                        tooltip: "Share",
+                      ),
+                    ],
+                  ),
+                )
+              )
+            ]
+          ),
+        )
+      );
   }
 }
 
+// Column(children: [
+//           Text("Routine ${routine.id} Page"),
+//           Row(children: [
+//             IconButton(
+//               onPressed: () => context.push(routes.sharePath),
+//               icon: const Icon(Icons.send),
+//               tooltip: "Share",
+//             ),
+//             const Text("Share")
+//           ])
+//         ]));
           // ElevatedButton(
           //     onPressed: () => context.push(routes.sharePath),
           //     child: const Text("Share"))
