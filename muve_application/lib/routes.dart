@@ -13,7 +13,7 @@ const sharePath = '/share';
 const libraryPath = '/library';
 const addExercisePath = '/add_exercise';
 const addMusicPath = '/add_music';
-const routinePath = '/routine';
+const routinePath = '/routine/';
 
 GoRouter generateRouter() {
   return GoRouter(initialLocation: '/login', routes: [
@@ -38,6 +38,9 @@ GoRouter generateRouter() {
         builder: (context, state) => const AddExercisePage()),
     GoRoute(
         path: '/add_music', builder: (context, state) => const AddMusicPage()),
-    GoRoute(path: '/routine', builder: (context, state) => const RoutinePage())
+    GoRoute(
+        path: '/routine/:id',
+        builder: (context, state) =>
+            RoutinePage(id: int.parse(state.pathParameters['id']!)))
   ]);
 }
