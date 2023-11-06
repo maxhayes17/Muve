@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:muve_application/routes.dart' as routes;
-import 'package:muve_application/models/routine_model.dart';
 
-class VerticalRoutineElement extends StatelessWidget {
-  final Routine? routine;
-
-  const VerticalRoutineElement({super.key, required this.routine});
+class VerticalRoutineAdd extends StatelessWidget {
+  const VerticalRoutineAdd({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,28 +18,18 @@ class VerticalRoutineElement extends StatelessWidget {
                 color: Colors.blueGrey,
               ),
               const SizedBox(width: 10),
-              Column(
+              const Column(
                 crossAxisAlignment:
                     CrossAxisAlignment.start, // Align text to the left
                 children: [
-                  Text(routine!.name,
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 16)),
-                  Text(routine!.duration),
-                  Text(routine!.author),
+                  Text('Add routine...',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                 ],
               )
             ],
           ),
         ),
-        onTap: () => context.push(routes.routinePath + routine!.id.toString()));
+        onTap: () => context.push(routes.composePath));
   }
 }
-
-    // return ListTile(
-    //   contentPadding: const EdgeInsets.all(10),
-    //   title: Text(routine!.name),
-    //   subtitle: Text(routine.duration),
-    //   trailing: Text(routine.author),
-    //   onTap: () => context.push(routes.routinePath),
-    // );

@@ -44,86 +44,98 @@ class _LoginFormState extends State<LoginForm> {
         child: Column(
           children: <Widget>[
             Container(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: 56,
-              padding: EdgeInsets.only(left: 10, top: 12, bottom: 10, right: 10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: Colors.white,
-              ),
-              child: Center(
-                child: Row(
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: 56,
+                padding: const EdgeInsets.only(
+                    left: 10, top: 12, bottom: 10, right: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: Colors.white,
+                ),
+                child: Center(
+                    child: Row(
                   children: [
                     const Icon(Icons.email, color: Colors.grey),
                     const SizedBox(width: 10),
                     Expanded(
-                      child: 
-                        TextFormField(
-                          decoration: const InputDecoration.collapsed(
+                      child: TextFormField(
+                        decoration: const InputDecoration.collapsed(
                           hintText: "Email",
                           hintStyle: TextStyle(color: Colors.grey),
-                          ),
-                          controller: _usernameController,
-                          validator: ValidationBuilder().email().build(),
                         ),
+                        controller: _usernameController,
+                        validator: ValidationBuilder().email().build(),
+                      ),
                     )
                   ],
-                )
-              )
+                ))),
+            const SizedBox(
+              height: 10,
             ),
-            SizedBox(height: 10,),
             Container(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: 56,
-              padding: EdgeInsets.only(left: 10, top: 12, bottom: 10, right: 10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: Colors.white,
-              ),
-              child: Center(
-                child: Row(
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: 56,
+                padding: const EdgeInsets.only(
+                    left: 10, top: 12, bottom: 10, right: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: Colors.white,
+                ),
+                child: Center(
+                    child: Row(
                   children: [
                     const Icon(Icons.lock, color: Colors.grey),
                     const SizedBox(width: 10),
                     Expanded(
-                      child: 
-                        TextFormField(
-                          decoration: const InputDecoration.collapsed(
-                            hintText: "Password",
-                            hintStyle: TextStyle(color: Colors.grey),
-                          ),
-                          obscureText: true,
-                          controller: _passwordController,
-                          validator: ValidationBuilder().required().build(),
+                      child: TextFormField(
+                        decoration: const InputDecoration.collapsed(
+                          hintText: "Password",
+                          hintStyle: TextStyle(color: Colors.grey),
                         ),
+                        obscureText: true,
+                        controller: _passwordController,
+                        validator: ValidationBuilder().required().build(),
+                      ),
                     )
                   ],
-                )
-              )
+                ))),
+            const SizedBox(
+              height: 24,
             ),
-            const SizedBox(height: 24,),
             //login button
             Container(
               width: MediaQuery.of(context).size.width * 0.8,
               height: 50,
               child: FilledButton(
-                onPressed: _login, 
-                child: const Text("Login", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                onPressed: _login,
+                child: const Text(
+                  "Login",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
               ),
             ),
-            const SizedBox(height: 50,),
-            const Text("New user?", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 50,
+            ),
+            const Text(
+              "New user?",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             Container(
               width: MediaQuery.of(context).size.width * 0.8,
               height: 50,
               child: FilledButton(
-                onPressed: _login, 
-                child: const Text("Sign up", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),),
+                onPressed: _login,
+                child: const Text(
+                  "Sign up",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
               ),
             ),
           ],
-        )
-      );
-    }
+        ));
   }
+}
