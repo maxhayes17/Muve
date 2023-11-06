@@ -13,12 +13,20 @@ class HomePage extends StatelessWidget {
     final userVM = context.read<UserViewModel>();
 
     return SafeArea(
-      child: Column(children: [
-        const Text("Recent Routines"),
-        Expanded(
-            child:
-                VerticalRoutine(routines: routineVM.routinesById(userVM.id))),
-      ]),
+      child: Padding(
+        padding: EdgeInsets.only(left: 32, right: 32),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
+          children: [
+            SizedBox(height: 24,),
+            const Text("Recent Routines", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+            SizedBox(height: 12,),
+            Expanded(
+              child: VerticalRoutine(routines: routineVM.routinesById(userVM.id)),
+              )
+          ]
+        ),
+      )
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:muve_application/routes.dart' as routes;
 import 'package:muve_application/models/routine_model.dart';
+import 'package:muve_application/widgets/vertical_routine_element.dart';
 
 class VerticalRoutine extends StatelessWidget {
   final List<Routine>? routines;
@@ -14,13 +15,7 @@ class VerticalRoutine extends StatelessWidget {
         itemCount: routines?.length,
         itemBuilder: (context, index) {
           final routine = routines?[index];
-          return ListTile(
-            contentPadding: const EdgeInsets.all(10),
-            title: Text(routine!.name),
-            subtitle: Text(routine.duration),
-            trailing: Text(routine.author),
-            onTap: () => context.push(routes.routinePath),
-          );
+          return VerticalRoutineElement(routine: routine);
         });
   }
 }
