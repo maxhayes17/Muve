@@ -6,44 +6,51 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        body: Column(children: <Widget>[
-      SizedBox(
-        height: 150,
-      ),
-      Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: FittedBox(
-            child: Text(
-              "Motivational Message",
-              style: TextStyle(
-                fontSize: 60,
-                fontWeight: FontWeight.w800,
-              ),
+    return Scaffold(
+        body: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 150,
             ),
-          )),
-      LoginForm(),
-      MaxArt()
-    ]));
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 50),
+              child: FittedBox(
+                child: Text(
+                  "Motivational Message",
+                  style: TextStyle(
+                    fontSize: 60,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              )
+            ),
+            Expanded(
+              // Align card to bottom-center
+              child: Align(
+                alignment: FractionalOffset.bottomCenter,
+                  // Create rounded corners
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(30), 
+                        topRight: Radius.circular(30)
+                    ),
+                    // Card itself
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * (0.6),
+                      width: MediaQuery.of(context).size.width,
+                      color: Colors.blueGrey,
+                      child: Padding(
+                        padding: EdgeInsets.all(50),
+                        child: LoginForm()
+                        ),
+                      )
+                    ),
+                  )
+            )
+        ]
+      )
+    );
   }
+
 }
 
-class MaxArt extends StatelessWidget {
-  const MaxArt({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-        child: Align(
-            alignment: FractionalOffset.bottomCenter,
-            child: ClipRRect(
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-              child: Container(
-                height: MediaQuery.of(context).size.height * (0.55),
-                width: MediaQuery.of(context).size.width,
-                color: Colors.blueGrey,
-              ),
-            )));
-  }
-}
