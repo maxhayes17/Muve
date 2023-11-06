@@ -12,7 +12,7 @@ const VerticalRoutineElement({super.key, required this.routine});
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        padding: EdgeInsets.only(bottom: 20),
+        padding: EdgeInsets.only(top: 10, bottom: 10),
         child: Row(
           children: [
             Container(width: MediaQuery.of(context).size.height / 12, 
@@ -23,7 +23,7 @@ const VerticalRoutineElement({super.key, required this.routine});
             Column(
               crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
               children: [
-                Text(routine!.name, style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(routine!.name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                 Text(routine!.duration),
                 Text(routine!.author),
               ],
