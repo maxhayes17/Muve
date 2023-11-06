@@ -11,11 +11,15 @@ class VerticalRoutine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return SingleChildScrollView(
+    child: ListView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(), // Disable ListView scrolling
         itemCount: routines?.length,
         itemBuilder: (context, index) {
           final routine = routines?[index];
           return VerticalRoutineElement(routine: routine);
-        });
+        })
+      );
   }
 }

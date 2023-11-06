@@ -20,6 +20,17 @@ class UserViewModel with ChangeNotifier {
       return false;
     }
   }
+   // Assuming last 3 added routines are most recent... return last 3 routines
+  List<Routine> getRecentRoutines(){
+    if(_user!.routines!.length >= 3){
+      return _user!.routines!.sublist(_user!.routines!.length - 3);
+    }
+    else{
+      return _user!.routines!;
+    }
+  }
+
+
 }
 
 final Map<String, User> _userDatabase = {
