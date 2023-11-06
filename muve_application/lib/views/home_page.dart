@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
             const Text("Recent Routines", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
             SizedBox(height: 12,),
             Expanded(
-              child: VerticalRoutine(routines: routineVM.routinesById(userVM.id)),
+              child: VerticalRoutine(routines: userVM.routines),
               )
           ]
         ),
