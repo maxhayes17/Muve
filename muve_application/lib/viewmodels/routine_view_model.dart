@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
+import "package:muve_application/models/exercise_model.dart";
 import "package:muve_application/models/routine_model.dart";
+import "package:muve_application/models/set_model.dart";
 
 class RoutineViewModel with ChangeNotifier {
   final Map<int, List<Routine>> _routineList = _routineDatabase;
@@ -14,6 +16,11 @@ class RoutineViewModel with ChangeNotifier {
     }
     return defaultRoutine;
   }
+
+  List<Exercise> exercises = [
+    Exercise(id: 0, name: 'bench', sets: [ExerciseSet(id: 1, weight: 50, repetitions: 3), ExerciseSet(id: 2, weight: 60, repetitions: 3), ExerciseSet(id: 3, weight: 70, repetitions: 3)]),
+    Exercise(id: 0, name: 'curl', sets: [ExerciseSet(id: 1, weight: 50, repetitions: 3), ExerciseSet(id: 2, weight: 60, repetitions: 3), ExerciseSet(id: 3, weight: 70, repetitions: 3)]),
+  ];
 
   // String get name => this.name;
   // String get duration => this.duration;
