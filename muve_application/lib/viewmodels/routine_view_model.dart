@@ -1,10 +1,12 @@
 import "package:flutter/material.dart";
+import "package:muve_application/models/exercise_model.dart";
 import "package:muve_application/models/routine_model.dart";
+import "package:muve_application/models/set_model.dart";
 
 class RoutineViewModel with ChangeNotifier {
   final Map<int, List<Routine>> _routineList = _routineDatabase;
 
-  Routine getRoutineById(int id) {
+  Routine? getRoutineById(int id) {
     for (var routines in _routineList.values) {
       for (var routine in routines) {
         if (routine.id == id) {
@@ -12,8 +14,9 @@ class RoutineViewModel with ChangeNotifier {
         }
       }
     }
-    return defaultRoutine;
+    return null;
   }
+
 
   // String get name => this.name;
   // String get duration => this.duration;
@@ -23,6 +26,11 @@ class RoutineViewModel with ChangeNotifier {
   // List<Exercise> get exercises => this.exercises;
   // String get picture_path => this.picture_path;
 }
+
+final List<Exercise> _exercises = [
+    Exercise(id: 0, name: 'bench', sets: [ExerciseSet(id: 1, weight: 50, repetitions: 3), ExerciseSet(id: 2, weight: 60, repetitions: 3), ExerciseSet(id: 3, weight: 70, repetitions: 3)]),
+    Exercise(id: 0, name: 'curl', sets: [ExerciseSet(id: 1, weight: 50, repetitions: 3), ExerciseSet(id: 2, weight: 60, repetitions: 3), ExerciseSet(id: 3, weight: 70, repetitions: 3)]),
+];
 
 final Routine defaultRoutine =
     Routine(id: 0, name: "default_routine", duration: "0.0 min", author: "God");
@@ -34,10 +42,10 @@ final Map<int, List<Routine>> _routineDatabase = {
 };
 
 final List<Routine> jeremyRoutineList = [
-  Routine(id: 1, name: "j_routine1", duration: "30 min", author: "jeremy"),
-  Routine(id: 2, name: "j_routine2", duration: "1 hour", author: "jeremy"),
-  Routine(id: 3, name: "j_routine3", duration: "45 min", author: "jeremy"),
-  Routine(id: 4, name: "j_routine4", duration: "1 hour", author: "jeremy"),
+  Routine(id: 1, name: "j_routine1", duration: "30 min", author: "jeremy", exercises: _exercises),
+  Routine(id: 2, name: "j_routine2", duration: "1 hour", author: "jeremy", exercises: _exercises),
+  Routine(id: 3, name: "j_routine3", duration: "45 min", author: "jeremy", exercises: _exercises),
+  Routine(id: 4, name: "j_routine4", duration: "1 hour", author: "jeremy", exercises: _exercises),
   Routine(id: 5, name: "j_routine5", duration: "1.5 hour", author: "jeremy"),
   Routine(id: 6, name: "j_routine6", duration: "20 min", author: "jeremy"),
   Routine(id: 7, name: "j_routine7", duration: "15 hour", author: "jeremy"),
@@ -46,10 +54,10 @@ final List<Routine> jeremyRoutineList = [
 ];
 
 final List<Routine> maxRoutineList = [
-  Routine(id: 10, name: "m_routine1", duration: "30 min", author: "max"),
-  Routine(id: 11, name: "m_routine2", duration: "1 hour", author: "max"),
-  Routine(id: 12, name: "m_routine3", duration: "45 min", author: "max"),
-  Routine(id: 13, name: "m_routine4", duration: "1 hour", author: "max"),
+  Routine(id: 10, name: "m_routine1", duration: "30 min", author: "max", exercises: _exercises),
+  Routine(id: 11, name: "m_routine2", duration: "1 hour", author: "max", exercises: _exercises),
+  Routine(id: 12, name: "m_routine3", duration: "45 min", author: "max", exercises: _exercises),
+  Routine(id: 13, name: "m_routine4", duration: "1 hour", author: "max", exercises: _exercises),
   Routine(id: 14, name: "m_routine5", duration: "1.5 hour", author: "max"),
   Routine(id: 15, name: "m_routine6", duration: "20 min", author: "max"),
   Routine(id: 16, name: "m_routine7", duration: "15 hour", author: "max"),
