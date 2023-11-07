@@ -31,7 +31,7 @@ class VerticalRoutineElement extends StatelessWidget {
                   Text(routine!.duration),
                   Text(routine!.author),
                 ],
-              )
+              ),
             ],
           ),
         ),

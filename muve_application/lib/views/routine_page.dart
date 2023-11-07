@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:muve_application/routes.dart' as routes;
 import 'package:muve_application/viewmodels/routine_view_model.dart';
+import 'package:muve_application/widgets/exercise.dart';
 import 'package:provider/provider.dart';
 
 class RoutinePage extends StatelessWidget {
@@ -36,7 +37,7 @@ class RoutinePage extends StatelessWidget {
                         crossAxisAlignment:
                             CrossAxisAlignment.start, // Align text to the left
                         children: [
-                          Text(routine.name,
+                          Text(routine!.name,
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20)),
                           Text(routine.duration,
@@ -61,7 +62,29 @@ class RoutinePage extends StatelessWidget {
                     ],
                   ),
                 )
-              )
+              ),
+
+              Row(
+                children: [
+                  Container(
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      height: 500,
+                      color: Colors.red,
+                      child: ListView.builder(
+                        itemCount: routine.exercises?.length,
+                        itemBuilder: (context, index) {
+                          final exercise = routine.exercises?[index];
+                          return ExerciseCard(exercise: exercise);
+                        }
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      color: Colors.blue,
+                      height: 200,
+                    ),
+                ]
+              ),
             ]
           ),
         )
