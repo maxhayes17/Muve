@@ -4,7 +4,7 @@ import "package:muve_application/models/routine_model.dart";
 import "package:muve_application/models/set_model.dart";
 
 class RoutineViewModel with ChangeNotifier {
-  final Map<int, List<Routine>> _routineList = _routineDatabase;
+  final _routineList = routineDatabase;
 
   Routine? getRoutineById(int id) {
     for (var routines in _routineList.values) {
@@ -32,7 +32,7 @@ final List<Exercise> _exercises = [
     Exercise(id: 0, name: 'Curl', sets: [ExerciseSet(id: 1, weight: 50, repetitions: 3), ExerciseSet(id: 2, weight: 60, repetitions: 3)]),
 ];
 
-final Map<int, List<Routine>> _routineDatabase = {
+final Map<int, List<Routine>> routineDatabase = {
   1: jeremyRoutineList,
   2: maxRoutineList,
   3: ethanRoutineList,

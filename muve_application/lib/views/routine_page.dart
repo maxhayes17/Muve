@@ -20,17 +20,20 @@ class RoutinePage extends StatelessWidget {
           title: const Text('Routine'),
         ),
         body: SafeArea(
-          child: Column(
-            children: [
-              Container(
+          child: Column(children: [
+            SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 5,
                 // color: Colors.red,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 20, right: 20),
+                  padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Row(
                     children: [
-                      Container(width: 128, height: 128, color: Colors.blueGrey,),
+                      Container(
+                        width: 128,
+                        height: 128,
+                        color: Colors.blueGrey,
+                      ),
                       const SizedBox(width: 20),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -41,14 +44,14 @@ class RoutinePage extends StatelessWidget {
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20)),
                           Text(routine.duration,
-                              style: const TextStyle(
-                                      fontSize: 16)),
+                              style: const TextStyle(fontSize: 16)),
                           Text(routine.author,
-                              style: const TextStyle(
-                                      fontSize: 16)),
+                              style: const TextStyle(fontSize: 16)),
                         ],
                       ),
-                      SizedBox(width: 20,),
+                      const SizedBox(
+                        width: 20,
+                      ),
                       IconButton(
                         onPressed: () => context.push(routes.libraryPath),
                         icon: const Icon(Icons.add_circle_outline_rounded),
@@ -61,34 +64,29 @@ class RoutinePage extends StatelessWidget {
                       ),
                     ],
                   ),
-                )
+                )),
+            Row(children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.7,
+                height: 500,
+                // color: Colors.red,
+                child: ListView.builder(
+                    itemCount: routine.exercises?.length,
+                    itemBuilder: (context, index) {
+                      final exercise = routine.exercises?[index];
+                      return Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: ExerciseCard(exercise: exercise));
+                    }),
               ),
-
-              Row(
-                children: [
-                  Container(
-                      width: MediaQuery.of(context).size.width * 0.7,
-                      height: 500,
-                      // color: Colors.red,
-                      child: ListView.builder(
-                        itemCount: routine.exercises?.length,
-                        itemBuilder: (context, index) {
-                          final exercise = routine.exercises?[index];
-                          return Padding(padding: EdgeInsets.all(10), child:ExerciseCard(exercise: exercise));
-                        }
-                      ),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.3,
-                      // color: Colors.blue,
-                      height: 500,
-                    ),
-                ]
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.3,
+                // color: Colors.blue,
+                height: 500,
               ),
-            ]
-          ),
-        )
-      );
+            ]),
+          ]),
+        ));
   }
 }
 

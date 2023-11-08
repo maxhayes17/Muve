@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muve_application/viewmodels/compose_view_model.dart';
 import 'package:muve_application/viewmodels/routine_view_model.dart';
 import 'package:muve_application/viewmodels/user_view_model.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +12,8 @@ void main() {
           create: (context) => UserViewModel()),
       ChangeNotifierProvider<RoutineViewModel>(
           create: (context) => RoutineViewModel()),
+      ChangeNotifierProvider<ComposeViewModel>(
+          create: (context) => ComposeViewModel()),
     ],
     child: const MyApp(),
   ));
