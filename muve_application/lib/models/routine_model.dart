@@ -3,9 +3,9 @@ import 'track_model.dart';
 
 class Routine {
   final int id;
-  final String name;
-  final String duration;
-  final String author;
+  String name;
+  String duration;
+  String author;
   final List<String>? tags;
   final List<Track>? tracks;
   final List<Exercise>? exercises;
@@ -18,7 +18,7 @@ class Routine {
       required this.author,
       this.tags,
       this.tracks,
-      required this.exercises,
+      this.exercises,
       this.picturePath});
 
   factory Routine.fromJson(Map<String, dynamic> json) {

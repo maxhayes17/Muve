@@ -103,7 +103,7 @@ class _LoginFormState extends State<LoginForm> {
               height: 24,
             ),
             //login button
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               height: 50,
               child: FilledButton(
@@ -124,7 +124,7 @@ class _LoginFormState extends State<LoginForm> {
             const SizedBox(
               height: 10,
             ),
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               height: 50,
               child: FilledButton(
