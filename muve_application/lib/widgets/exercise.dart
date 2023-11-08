@@ -16,12 +16,13 @@ class ExerciseCard extends StatelessWidget {
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
-        color: Colors.blueGrey
+        color: Colors.blueGrey[300]
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(exercise!.name, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+          Text(exercise!.name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+          SizedBox(height: 20,),
           ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(), // Disable ListView scrolling
@@ -30,7 +31,7 @@ class ExerciseCard extends StatelessWidget {
               final set = exercise!.sets[index];
               return Row(
                 children: [
-                  Text('${(index + 1)}', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                  Text('${(index + 1)}', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                   SizedBox(width: 25,),
                   set.weight != null ? Text('${set.weight} lbs', style: TextStyle(fontSize: 16),) 
                     : SizedBox(width: 0,),

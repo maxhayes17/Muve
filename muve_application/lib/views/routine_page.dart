@@ -69,19 +69,19 @@ class RoutinePage extends StatelessWidget {
                   Container(
                       width: MediaQuery.of(context).size.width * 0.7,
                       height: 500,
-                      color: Colors.red,
+                      // color: Colors.red,
                       child: ListView.builder(
                         itemCount: routine.exercises?.length,
                         itemBuilder: (context, index) {
                           final exercise = routine.exercises?[index];
-                          return ExerciseCard(exercise: exercise);
+                          return Padding(padding: EdgeInsets.all(10), child:ExerciseCard(exercise: exercise));
                         }
                       ),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width * 0.3,
-                      color: Colors.blue,
-                      height: 200,
+                      // color: Colors.blue,
+                      height: 500,
                     ),
                 ]
               ),
