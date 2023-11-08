@@ -18,7 +18,7 @@ class Routine {
       required this.author,
       this.tags,
       this.tracks,
-      this.exercises,
+      required this.exercises,
       this.picturePath});
 
   factory Routine.fromJson(Map<String, dynamic> json) {
