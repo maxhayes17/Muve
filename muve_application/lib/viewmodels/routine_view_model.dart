@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:muve_application/models/exercise_model.dart";
 import "package:muve_application/models/routine_model.dart";
 import "package:muve_application/models/set_model.dart";
+import "package:muve_application/models/track_model.dart";
 
 class RoutineViewModel with ChangeNotifier {
   final _routineList = routineDatabase;
@@ -32,6 +33,15 @@ final List<Exercise> _exercises = [
     Exercise(id: 0, name: 'Curl', sets: [ExerciseSet(id: 1, weight: 50, repetitions: 3), ExerciseSet(id: 2, weight: 60, repetitions: 3)]),
 ];
 
+final List<Track> _tracks = [
+  Track(id: 1, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
+  Track(id: 2, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
+  Track(id: 3, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
+  Track(id: 4, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
+  Track(id: 5, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
+  Track(id: 6, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath')
+];
+
 final Map<int, List<Routine>> routineDatabase = {
   1: jeremyRoutineList,
   2: maxRoutineList,
@@ -39,7 +49,7 @@ final Map<int, List<Routine>> routineDatabase = {
 };
 
 final List<Routine> jeremyRoutineList = [
-  Routine(id: 1, name: "j_routine1", duration: "30 min", author: "jeremy", exercises: _exercises),
+  Routine(id: 1, name: "j_routine1", duration: "30 min", author: "jeremy", exercises: _exercises, tracks: _tracks),
   Routine(id: 2, name: "j_routine2", duration: "1 hour", author: "jeremy", exercises: _exercises),
   Routine(id: 3, name: "j_routine3", duration: "45 min", author: "jeremy", exercises: _exercises),
   Routine(id: 4, name: "j_routine4", duration: "1 hour", author: "jeremy", exercises: _exercises),
@@ -51,7 +61,7 @@ final List<Routine> jeremyRoutineList = [
 ];
 
 final List<Routine> maxRoutineList = [
-  Routine(id: 10, name: "m_routine1", duration: "30 min", author: "max", exercises: _exercises),
+  Routine(id: 10, name: "m_routine1", duration: "30 min", author: "max", exercises: _exercises, tracks: _tracks),
   Routine(id: 11, name: "m_routine2", duration: "1 hour", author: "max", exercises: _exercises),
   Routine(id: 12, name: "m_routine3", duration: "45 min", author: "max", exercises: _exercises),
   Routine(id: 13, name: "m_routine4", duration: "1 hour", author: "max", exercises: _exercises),
