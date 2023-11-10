@@ -1,5 +1,5 @@
 class Track {
-  final String id;
+  final int id;
   final String name;
   final String artist;
   final String duration;
