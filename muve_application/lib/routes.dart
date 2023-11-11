@@ -35,9 +35,9 @@ GoRouter generateRouter() {
         builder: (context, state) => const NavScaffold(index: 4)),
     GoRoute(
         path: '/add_exercise',
-        builder: (context, state) => const AddExercisePage()),
+        builder: (context, state) => AddExercisePage()),
     GoRoute(
-        path: '/add_music', builder: (context, state) => const AddMusicPage()),
+        path: '/add_music', builder: (context, state) => AddMusicPage()),
     GoRoute(
         path: '/routine/:id',
         builder: (context, state) =>

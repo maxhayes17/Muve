@@ -7,8 +7,8 @@ class Routine {
   String duration;
   String author;
   final List<String>? tags;
-  final List<Track>? tracks;
-  final List<Exercise>? exercises;
+  List<Track>? tracks;
+  List<Exercise>? exercises;
   final String? picturePath;
 
   Routine(

@@ -1,9 +1,9 @@
 class ExerciseSet{
 
   final int id;
-  final int? weight;
-  final int? repetitions;
-  final String? duration;
+  int? weight;
+  int? repetitions;
+  String? duration;
 
 
   ExerciseSet({
