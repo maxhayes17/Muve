@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:muve_application/models/exercise_model.dart';
 import 'package:muve_application/models/routine_model.dart';
 import 'package:muve_application/models/set_model.dart';
+import 'package:muve_application/models/track_model.dart';
 import 'package:muve_application/viewmodels/routine_view_model.dart';
 
 class ComposeViewModel with ChangeNotifier {
@@ -9,20 +10,32 @@ class ComposeViewModel with ChangeNotifier {
   Routine? _newRoutine;
   List<Exercise>? _newExerciseList;
   List<ExerciseSet>? _newSetList;
+  List<Track>? _newTrackList;
 
   Routine? newRoutine() {
-    int nextRoutineId = numOfRoutines();
+    int nextRoutineId = numOfRoutines() + 1;
 
-    _newSetList = [ExerciseSet(id: 1, weight: 0, repetitions: 0, duration: "")];
-    _newExerciseList = [Exercise(id: 0, name: "exercise", sets: _newSetList)];
+    // _newSetList = [ExerciseSet(id: 1, weight: 0, repetitions: 0, duration: "")];
+    // _newExerciseList = [Exercise(id: 0, name: "exercise", sets: _newSetList)];
     _newRoutine = Routine(
         id: nextRoutineId,
-        name: "name",
-        duration: "duration",
+        name: "",
+        duration: "00:00",
         author: "author",
-        exercises: _newExerciseList);
+        exercises: [],
+        tracks: []
+      );
 
     return _newRoutine;
+  }
+
+  List<Exercise>? newExerciseList(Routine routine){
+
+  }
+
+  List<Track>? newTrackList(Routine routine){
+
+
   }
 
   void saveRoutine(int userID) {
