@@ -13,21 +13,27 @@ class ComposePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final userVM = context.read<UserViewModel>();
     final userId = userVM.id;
-    final composeVM = context.read<ComposeViewModel>();
-    final newRoutine = composeVM.newRoutine();
+    final composeVM = context.watch<ComposeViewModel>();
+    final newRoutine = composeVM.newRoutine;
 
     return SafeArea(
       child: Column(
         children: [
           const Text("Compose Page"),
-          ComposeForm(routine: newRoutine),
-          Text('${newRoutine?.id}'),
-          Text('${newRoutine?.name}'),
+          // ComposeForm(routine: newRoutine),
+          TextFormField(
+          decoration: const InputDecoration(hintText: "Name"),
+          onChanged: (value){
+            composeVM.updateRoutineName(value);
+          },
+          ),
+          Text('${composeVM.newRoutine.id}'),
+          Text('${composeVM.newRoutine.name}'),
           ElevatedButton(
-              onPressed: () => context.push(routes.addExercisePath + newRoutine!.id.toString()),
+              onPressed: () => context.push(routes.addExercisePath + newRoutine.id.toString()),
               child: const Text("Add Exercise")),
           ElevatedButton(
-              onPressed: () => context.push(routes.addMusicPath),
+              onPressed: () => context.push(routes.addMusicPath + newRoutine.id.toString()),
               child: const Text("Add Music")),
           ElevatedButton(
               onPressed: () {
