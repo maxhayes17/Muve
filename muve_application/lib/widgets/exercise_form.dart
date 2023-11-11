@@ -20,8 +20,8 @@ List<Exercise> newExerciseList = [Exercise(id: 0)];
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * 0.6,
-      color: Colors.red,
+      height: MediaQuery.of(context).size.height * 0.7,
+      // color: Colors.red,
       child: Column(
         children: [
           Expanded(

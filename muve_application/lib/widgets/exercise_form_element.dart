@@ -23,7 +23,7 @@ List<ExerciseSet> newSetList = [ExerciseSet(id: 1)];
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        height: 320,
+        height: MediaQuery.of(context).size.height * 0.25,
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(10)),
