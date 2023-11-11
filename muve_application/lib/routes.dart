@@ -11,8 +11,8 @@ const explorePath = '/explore';
 const composePath = '/compose';
 const sharePath = '/share';
 const libraryPath = '/library';
-const addExercisePath = '/add_exercise/';
-const addMusicPath = '/add_music/';
+const addExercisePath = '/add_exercise';
+const addMusicPath = '/add_music';
 const routinePath = '/routine/';
 
 GoRouter generateRouter() {
@@ -34,10 +34,10 @@ GoRouter generateRouter() {
         path: '/library',
         builder: (context, state) => const NavScaffold(index: 4)),
     GoRoute(
-        path: '/add_exercise/:id',
-        builder: (context, state) => AddExercisePage(id: int.parse(state.pathParameters['id']!))),
+        path: '/add_exercise',
+        builder: (context, state) => AddExercisePage()),
     GoRoute(
-        path: '/add_music/:id', builder: (context, state) => AddMusicPage(id: int.parse(state.pathParameters['id']!))),
+        path: '/add_music', builder: (context, state) => AddMusicPage()),
     GoRoute(
         path: '/routine/:id',
         builder: (context, state) =>

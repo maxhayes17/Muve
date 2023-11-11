@@ -41,16 +41,29 @@ class ComposeViewModel with ChangeNotifier {
 
   Routine get newRoutine => _newRoutine;
 
+
+  // Updating routine...
+  void updateRoutineName(String value){
+    _newRoutine.name = value;
+    notifyListeners();
+  }
   void addExercise(){
     _newRoutine.exercises?.add(Exercise(id: _newRoutine.exercises!.length + 1, sets: [ExerciseSet(id: 1)]));
     notifyListeners();
   }
 
+  // Updating exercise...
   void addExerciseSet(Exercise? exercise){
     exercise?.sets?.add(ExerciseSet(id: exercise.sets!.length + 1));
     notifyListeners();
   }
+  void updateExerciseName(Exercise? exercise, String value){
+    exercise?.name = value;
+    notifyListeners();
+  }
 
+
+  // Update exerciseSet...
   void updateSetWeight(ExerciseSet? set, String value){
     set?.weight = int.parse(value);
     notifyListeners();
@@ -61,16 +74,6 @@ class ComposeViewModel with ChangeNotifier {
   }
   void updateSetDuration(ExerciseSet? set, value){
     set?.duration = value;
-    notifyListeners();
-  }
-
-  void updateRoutineName(String value){
-    _newRoutine.name = value;
-    notifyListeners();
-  }
-
-  void updateExerciseName(Exercise? exercise, String value){
-    exercise?.name = value;
     notifyListeners();
   }
 

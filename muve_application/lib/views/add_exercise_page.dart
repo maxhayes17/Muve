@@ -5,39 +5,67 @@ import 'package:muve_application/models/routine_model.dart';
 import 'package:muve_application/models/set_model.dart';
 import 'package:muve_application/viewmodels/compose_view_model.dart';
 import 'package:muve_application/viewmodels/routine_view_model.dart';
+import 'package:muve_application/widgets/exercise_form1.dart';
 import 'package:muve_application/widgets/exercise_form.dart';
 import 'package:provider/provider.dart';
 import 'package:muve_application/routes.dart' as routes;
 
 class AddExercisePage extends StatelessWidget {
 
-  final int id;
-  const AddExercisePage({super.key, required this.id});
+  const AddExercisePage({super.key});
 
   @override
   Widget build(BuildContext context) {
 
-    final routineVM = context.read<RoutineViewModel>();
     final composeVM = context.watch<ComposeViewModel>();
-    final routine = routineVM.getRoutineById(id);
-
-    List<Exercise> newExerciseList = [Exercise(id: 0)];
 
     return Scaffold(
-
       appBar: AppBar(
-        title: const Text('Add exercise'),
+        title: const Text('Add exercises'),
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Text('${composeVM.newRoutine.name}'),
-            ExerciseForm(),
-            ElevatedButton(
-              onPressed: () => context.push(routes.addMusicPath + id.toString()),
-              child: const Text("Add Music")),
-            
-          ],)
+        child: Expanded(
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: composeVM.newRoutine.exercises?.length,
+                  itemBuilder: (context, index) {
+                  Exercise? exercise = composeVM.newRoutine.exercises?[index];
+                  return Padding(
+                    padding: EdgeInsets.all(20),
+                    child: ExerciseForm(index: index,)
+                  );
+                }),
+              ),
+            SizedBox(height: 24,),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: 50,
+              child: FilledButton(
+                onPressed: () => composeVM.addExercise(),
+                child: const Text(
+                  "Add Exercise",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+              ),
+            ),
+            SizedBox(height: 24,),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: 50,
+              child: FilledButton(
+                onPressed: () => context.push(routes.addMusicPath),
+                child: const Text(
+                  "Add Music",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+              ),
+            ),
+          ],
+          ),
+        )
       )
     );
   }

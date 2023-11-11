@@ -7,15 +7,14 @@ import 'package:muve_application/viewmodels/routine_view_model.dart';
 import 'package:provider/provider.dart';
 
 class AddMusicPage extends StatelessWidget {
-  final int id;
+  // final int id;
 
-  const AddMusicPage({super.key, required this.id});
+  const AddMusicPage({super.key});
 
   @override
   Widget build(BuildContext context) {
 
     final routineVM = context.read<RoutineViewModel>();
-    final routine = routineVM.getRoutineById(id);
 
     return Scaffold(
       appBar: AppBar(
