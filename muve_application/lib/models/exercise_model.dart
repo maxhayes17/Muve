@@ -2,9 +2,9 @@ import "package:muve_application/models/set_model.dart";
 
 class Exercise {
   final int id;
-  final String? name;
+  String? name;
   final String? notes;
-  final List<ExerciseSet>? sets;
+  List<ExerciseSet>? sets;
 
   Exercise({required this.id, this.name, this.notes, this.sets});
 
