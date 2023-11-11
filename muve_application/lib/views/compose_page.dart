@@ -21,8 +21,10 @@ class ComposePage extends StatelessWidget {
         children: [
           const Text("Compose Page"),
           ComposeForm(routine: newRoutine),
+          Text('${newRoutine?.id}'),
+          Text('${newRoutine?.name}'),
           ElevatedButton(
-              onPressed: () => context.push(routes.addExercisePath),
+              onPressed: () => context.push(routes.addExercisePath + newRoutine!.id.toString()),
               child: const Text("Add Exercise")),
           ElevatedButton(
               onPressed: () => context.push(routes.addMusicPath),

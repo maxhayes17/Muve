@@ -11,8 +11,7 @@ class ComposeForm extends StatefulWidget {
 
 class _ComposeFormState extends State<ComposeForm> {
   final TextEditingController _routineNameController = TextEditingController();
-  final TextEditingController _routineDurationController =
-      TextEditingController();
+  final TextEditingController _routineDurationController = TextEditingController();
   late Routine? routine;
 
   @override
@@ -42,10 +41,10 @@ class _ComposeFormState extends State<ComposeForm> {
           decoration: const InputDecoration(hintText: "Name"),
           controller: _routineNameController,
         ),
-        TextFormField(
-          decoration: const InputDecoration(hintText: "Duration"),
-          controller: _routineDurationController,
-        )
+        // TextFormField(
+        //   decoration: const InputDecoration(hintText: "Duration"),
+        //   controller: _routineDurationController,
+        // )
       ],
     );
   }

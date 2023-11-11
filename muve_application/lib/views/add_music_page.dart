@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:muve_application/models/exercise_model.dart';
+import 'package:muve_application/models/routine_model.dart';
+import 'package:muve_application/models/set_model.dart';
+import 'package:muve_application/models/track_model.dart';
+import 'package:muve_application/viewmodels/routine_view_model.dart';
+import 'package:provider/provider.dart';
 
 class AddMusicPage extends StatelessWidget {
-  const AddMusicPage({super.key});
+  final int id;
+
+  const AddMusicPage({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
+
+    final routineVM = context.read<RoutineViewModel>();
+    final routine = routineVM.getRoutineById(id);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Music'),
