@@ -7,25 +7,36 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(children: <Widget>[
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
       const SizedBox(
         height: 150,
       ),
       const Padding(
           padding: EdgeInsets.symmetric(horizontal: 50),
-          child: FittedBox(
-            child: Text(
-              "Motivational Message",
-              style: TextStyle(
-                fontSize: 60,
-                fontWeight: FontWeight.w800,
-              ),
-            ),
-          )),
+           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Let's get",
+                  style: TextStyle(
+                    fontSize: 50,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+                Text("Muvin'",
+                  style: TextStyle(
+                    fontSize: 80,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+            ],
+            )
+          ),
       Expanded(
-          // Align card to bottom-center
-          child: Align(
-        alignment: FractionalOffset.bottomCenter,
+        // Align card to bottom-center
+        child: Align(
+          alignment: FractionalOffset.bottomCenter,
         // Create rounded corners
         child: ClipRRect(
             borderRadius: const BorderRadius.only(
@@ -35,10 +46,19 @@ class LoginPage extends StatelessWidget {
               height: MediaQuery.of(context).size.height * (0.6),
               width: MediaQuery.of(context).size.width,
               color: Colors.blueGrey,
-              child: const Padding(
-                  padding: EdgeInsets.all(50), child: LoginForm()),
-            )),
-      ))
-    ]));
+              padding: EdgeInsets.all(50),
+              child: Column(
+                children: [
+                  // SizedBox(height: 80,),
+                  LoginForm(),
+                ],
+              )
+            )
+            )
+        ),
+      )
+    ]
+    )
+    );
   }
 }

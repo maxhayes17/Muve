@@ -5,7 +5,6 @@ import 'package:muve_application/models/routine_model.dart';
 import 'package:muve_application/models/set_model.dart';
 import 'package:muve_application/viewmodels/compose_view_model.dart';
 import 'package:muve_application/viewmodels/routine_view_model.dart';
-import 'package:muve_application/widgets/exercise_form1.dart';
 import 'package:muve_application/widgets/exercise_form.dart';
 import 'package:provider/provider.dart';
 import 'package:muve_application/routes.dart' as routes;
@@ -30,9 +29,9 @@ class AddExercisePage extends StatelessWidget {
               Expanded(
                 child: ListView.builder(
                   shrinkWrap: true,
-                  itemCount: composeVM.newRoutine.exercises?.length,
+                  itemCount: composeVM.newRoutine?.exercises?.length,
                   itemBuilder: (context, index) {
-                  Exercise? exercise = composeVM.newRoutine.exercises?[index];
+                  Exercise? exercise = composeVM.newRoutine?.exercises?[index];
                   return Padding(
                     padding: EdgeInsets.all(20),
                     child: ExerciseForm(index: index,)
