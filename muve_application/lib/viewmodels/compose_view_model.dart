@@ -39,6 +39,11 @@ class ComposeViewModel with ChangeNotifier {
     notifyListeners();
   }
 
+  void addTrack(){
+    _newRoutine?.tracks?.add(Track(id: 1, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'));
+    notifyListeners();
+  }
+
   // Updating exercise...
   void addExerciseSet(Exercise? exercise){
     exercise?.sets?.add(ExerciseSet(id: exercise.sets!.length + 1));
@@ -62,10 +67,6 @@ class ComposeViewModel with ChangeNotifier {
   void updateSetDuration(ExerciseSet? set, value){
     set?.duration = value;
     notifyListeners();
-  }
-
-  void addTrack(){
-
   }
 
   void saveRoutine(int userID) {
