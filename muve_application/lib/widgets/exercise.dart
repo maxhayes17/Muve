@@ -25,7 +25,7 @@ class ExerciseCard extends StatelessWidget {
             ),
           child: Text(
             '${exercise?.name}',
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           ),
           Container(
@@ -38,7 +38,7 @@ class ExerciseCard extends StatelessWidget {
               itemBuilder: (context, index) {
                 final set = exercise!.sets![index];
                 return Padding(
-                  padding: EdgeInsets.only(top:10, bottom: 10),
+                  padding: EdgeInsets.only(top:5, bottom: 5),
                   child: Row(
                     children: [
                       Text(
