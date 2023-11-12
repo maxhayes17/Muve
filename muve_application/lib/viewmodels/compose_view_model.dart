@@ -3,31 +3,40 @@ import 'package:muve_application/models/exercise_model.dart';
 import 'package:muve_application/models/routine_model.dart';
 import 'package:muve_application/models/set_model.dart';
 import 'package:muve_application/models/track_model.dart';
+import 'package:muve_application/models/user_model.dart';
 import 'package:muve_application/viewmodels/routine_view_model.dart';
+import 'package:muve_application/viewmodels/user_view_model.dart';
 
 class ComposeViewModel with ChangeNotifier {
   final _routineList = routineDatabase;
 
 
-  // final List<Track> _tracks = [
-  //   Track(id: 1, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
-  //   Track(id: 2, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
-  //   Track(id: 3, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
-  //   Track(id: 4, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
-  //   Track(id: 5, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
-  //   Track(id: 6, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath')
-  // ];
+  final List<Track> _tracks = [
+    Track(id: 1, name: 'name1', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
+    Track(id: 2, name: 'name2', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
+    Track(id: 3, name: 'name3', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
+    Track(id: 4, name: 'name4', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
+    Track(id: 5, name: 'name5', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
+    Track(id: 6, name: 'name6', artist: 'artist', duration: 'duration', picturePath: 'picturePath')
+  ];
 
-  Routine _newRoutine = Routine(        
-        id: 25,
-        name: "",
-        duration: "00:00",
-        author: "",
-        exercises: [Exercise(id: 1, sets: [ExerciseSet(id: 1)])],
-        tracks: [Track(id: 1, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),]
-    );
+  Routine? _newRoutine;
+  List<Track> _trackSearchResults = [];
 
+  List<Track>? get trackSearchResults => _trackSearchResults;
   Routine? get newRoutine => _newRoutine;
+
+  void createRoutine(User? user){
+    _newRoutine = Routine(        
+        id: numOfRoutines() + 1,
+        name: '',
+        duration: '00:00',
+        author: user!.username,
+        exercises: [Exercise(id: 1, sets: [ExerciseSet(id: 1)])],
+        tracks: [],
+    );
+    // notifyListeners();
+  }
 
   // Updating routine...
   void updateRoutineName(String value){
@@ -39,8 +48,8 @@ class ComposeViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void addTrack(){
-    _newRoutine?.tracks?.add(Track(id: 1, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'));
+  void addTrack(Track? track){
+    _newRoutine?.tracks?.add(track!);
     notifyListeners();
   }
 
@@ -69,18 +78,11 @@ class ComposeViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void saveRoutine(int userID) {
-    var userRoutineList = _routineList[userID];
+  void saveRoutine(User? user) {
+    var userRoutineList = _routineList[user!.id];
     userRoutineList?.add(_newRoutine!);
-    // Re-set _newRoutine
-    _newRoutine = Routine(
-        id: numOfRoutines() + 1,
-        name: "",
-        duration: "00:00",
-        author: "",
-        exercises: [Exercise(id: 1, sets: [ExerciseSet(id: 1)])],
-        tracks: [Track(id: 1, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),]
-    );
+    // Reset _newRoutine
+    createRoutine(user);
   }
 
   int numOfRoutines() {
@@ -90,4 +92,20 @@ class ComposeViewModel with ChangeNotifier {
     }
     return total;
   }
+
+  void searchTracks(String value){
+    List<Track> results = [];
+    for (var track in _tracks){
+      if (track.name.contains(value)){
+        results.add(track);
+      }
+    }
+    _trackSearchResults = results;
+    notifyListeners();
+  }
+
+
+
 }
+
+

@@ -22,10 +22,14 @@ class RoutinePage extends StatelessWidget {
         ),
         body: SafeArea(
           child: Column(children: [
-            SizedBox(
+            Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 5,
                 // color: Colors.red,
+                decoration: BoxDecoration(
+                  color:  Colors.grey[200],
+                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
+                ),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Row(
@@ -65,53 +69,40 @@ class RoutinePage extends StatelessWidget {
                       ),
                     ],
                   ),
-                )),
-            Row(children: [
-              Container(
-                width: MediaQuery.of(context).size.width * 0.7,
-                height: 500,
-                // color: Colors.red,
-                child: ListView.builder(
-                    itemCount: routine.exercises?.length,
-                    itemBuilder: (context, index) {
-                      final exercise = routine.exercises?[index];
-                      return Padding(
-                          padding: const EdgeInsets.only(left:20, bottom: 20),
-                          child: ExerciseCard(exercise: exercise)
-                        );
-                    }),
+                )
               ),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.3,
-                // color: Colors.blue,
-                height: 500,
-                child: ListView.builder(
-                    itemCount: routine.tracks?.length,
-                    itemBuilder: (context, index) {
-                      final track = routine.tracks?[index];
-                      return Padding(
-                          padding: const EdgeInsets.only(),
-                          child: TrackElement(track: track,)
-                        );
-                    }),
-              ),
+              SizedBox(height: 20,),
+              Row(children: [
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  height: 500,
+                  // color: Colors.red,
+                  child: ListView.builder(
+                      itemCount: routine.exercises?.length,
+                      itemBuilder: (context, index) {
+                        final exercise = routine.exercises?[index];
+                        return Padding(
+                            padding: const EdgeInsets.only(left:20, bottom: 20),
+                            child: ExerciseCard(exercise: exercise)
+                          );
+                      }),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.3,
+                  // color: Colors.blue,
+                  height: 500,
+                  child: ListView.builder(
+                      itemCount: routine.tracks?.length,
+                      itemBuilder: (context, index) {
+                        final track = routine.tracks?[index];
+                        return Padding(
+                            padding: const EdgeInsets.only(),
+                            child: TrackElement(track: track,)
+                          );
+                      }),
+                ),
+              ]),
             ]),
-          ]),
         ));
   }
 }
-
-// Column(children: [
-//           Text("Routine ${routine.id} Page"),
-//           Row(children: [
-//             IconButton(
-//               onPressed: () => context.push(routes.sharePath),
-//               icon: const Icon(Icons.send),
-//               tooltip: "Share",
-//             ),
-//             const Text("Share")
-//           ])
-//         ]));
-          // ElevatedButton(
-          //     onPressed: () => context.push(routes.sharePath),
-          //     child: const Text("Share"))

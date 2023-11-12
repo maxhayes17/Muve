@@ -5,7 +5,9 @@ import "package:muve_application/viewmodels/routine_view_model.dart";
 
 class UserViewModel with ChangeNotifier {
   final Map<String, User> _userList = _userDatabase;
-  late User? _user;
+  User? _user;
+
+  User? get user => _user;
 
   String? get username => _user?.username;
   int? get id => _user?.id;

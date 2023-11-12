@@ -23,7 +23,6 @@ class AddExercisePage extends StatelessWidget {
         title: const Text('Add exercises'),
       ),
       body: SafeArea(
-        child: Expanded(
           child: Column(
             children: [
               Expanded(
@@ -64,7 +63,6 @@ class AddExercisePage extends StatelessWidget {
             ),
           ],
           ),
-        )
       )
     );
   }

@@ -19,11 +19,11 @@ class TrackElement extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 12,
               color: Colors.blueGrey,
             ),
-            const SizedBox(width: 10),
-            Text(track!.name,
+            // const SizedBox(width: 10),
+            Text('${track?.name}',
                 style: const TextStyle(
                     fontWeight: FontWeight.bold, fontSize: 16)),
-            Text(track!.artist),
+            Text('${track?.artist}'),
           ],
         ),
       );
