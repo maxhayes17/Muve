@@ -9,46 +9,33 @@ class ComposeViewModel with ChangeNotifier {
   final _routineList = routineDatabase;
 
 
-  final List<Track> _tracks = [
-    Track(id: 1, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
-    Track(id: 2, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
-    Track(id: 3, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
-    Track(id: 4, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
-    Track(id: 5, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
-    Track(id: 6, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath')
-  ];
-  //   // _newSetList = [ExerciseSet(id: 1, weight: 0, repetitions: 0, duration: "")];
-  //   // _newExerciseList = [Exercise(id: 0, name: "exercise", sets: _newSetList)];
-  //   _newRoutine = Routine(
-  //       id: nextRoutineId,
-  //       name: "",
-  //       duration: "00:00",
-  //       author: "author",
-  //       exercises: [],
-  //       tracks: []
-  //     );
+  // final List<Track> _tracks = [
+  //   Track(id: 1, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
+  //   Track(id: 2, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
+  //   Track(id: 3, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
+  //   Track(id: 4, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
+  //   Track(id: 5, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
+  //   Track(id: 6, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath')
+  // ];
 
-  //   return _newRoutine;
-  // }
-  Routine _newRoutine = Routine(
+  Routine _newRoutine = Routine(        
         id: 25,
-        name: "foo",
+        name: "",
         duration: "00:00",
-        author: "author",
+        author: "",
         exercises: [Exercise(id: 1, sets: [ExerciseSet(id: 1)])],
         tracks: [Track(id: 1, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),]
     );
 
-  Routine get newRoutine => _newRoutine;
-
+  Routine? get newRoutine => _newRoutine;
 
   // Updating routine...
   void updateRoutineName(String value){
-    _newRoutine.name = value;
+    _newRoutine?.name = value;
     notifyListeners();
   }
   void addExercise(){
-    _newRoutine.exercises?.add(Exercise(id: _newRoutine.exercises!.length + 1, sets: [ExerciseSet(id: 1)]));
+    _newRoutine?.exercises?.add(Exercise(id: _newRoutine!.exercises!.length + 1, sets: [ExerciseSet(id: 1)]));
     notifyListeners();
   }
 
@@ -77,14 +64,22 @@ class ComposeViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  List<Track>? newTrackList(Routine routine){
-
+  void addTrack(){
 
   }
 
   void saveRoutine(int userID) {
     var userRoutineList = _routineList[userID];
     userRoutineList?.add(_newRoutine!);
+    // Re-set _newRoutine
+    _newRoutine = Routine(
+        id: numOfRoutines() + 1,
+        name: "",
+        duration: "00:00",
+        author: "",
+        exercises: [Exercise(id: 1, sets: [ExerciseSet(id: 1)])],
+        tracks: [Track(id: 1, name: 'name', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),]
+    );
   }
 
   int numOfRoutines() {

@@ -20,7 +20,12 @@ class AddMusicPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Add Music'),
       ),
-      body: const Text("Add Music Page"),
+      body: SafeArea(
+        child: Column(
+          children: [
+        ],
+        )
+      ),
     );
   }
 }

@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
         debugShowCheckedModeBanner: false,
         title: 'Muve',
-        theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blueGrey),
+        theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blueGrey[700]),
         routerConfig: generateRouter());
   }
 }

@@ -4,7 +4,6 @@ import 'package:muve_application/models/routine_model.dart';
 import 'package:muve_application/routes.dart' as routes;
 import 'package:muve_application/viewmodels/compose_view_model.dart';
 import 'package:muve_application/viewmodels/user_view_model.dart';
-import 'package:muve_application/widgets/compose_form.dart';
 import 'package:provider/provider.dart';
 
 class ComposePage extends StatelessWidget {
@@ -20,13 +19,12 @@ class ComposePage extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
-          SizedBox(width: MediaQuery.of(context).size.height / 10,),
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height / 5,
             // color: Colors.red,
             child: Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
+              padding: const EdgeInsets.only(left: 40, right: 40),
               child: Row(
                 children: [
                   Container(
@@ -50,10 +48,6 @@ class ComposePage extends StatelessWidget {
                           },
                         ),
                       ),
-                      // Text(newRoutine.duration,
-                      //     style: const TextStyle(fontSize: 16)),
-                      // Text(newRoutine.author,
-                      //     style: const TextStyle(fontSize: 16)),
                       ],
                     ),
                   ],
