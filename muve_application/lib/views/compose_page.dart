@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:muve_application/models/routine_model.dart';
 import 'package:muve_application/routes.dart' as routes;
 import 'package:muve_application/viewmodels/compose_view_model.dart';
+import 'package:muve_application/viewmodels/routine_view_model.dart';
 import 'package:muve_application/viewmodels/user_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -12,9 +13,13 @@ class ComposePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userVM = context.read<UserViewModel>();
-    final userId = userVM.id;
+    final currentUser = userVM.user;
+    // final userId = userVM.id;
     final composeVM = context.watch<ComposeViewModel>();
-    Routine? newRoutine = composeVM.newRoutine;
+    if (composeVM.newRoutine == null){
+      composeVM.createRoutine(currentUser);
+    }
+    // Routine? newRoutine = composeVM.newRoutine;
 
     return SafeArea(
       child: Column(
@@ -84,7 +89,7 @@ class ComposePage extends StatelessWidget {
             height: 50,
             child: FilledButton(
               onPressed: () {
-                composeVM.saveRoutine(userId!);
+                composeVM.saveRoutine(currentUser);
                 context.push(routes.homePath);
               },
               child: const Text(

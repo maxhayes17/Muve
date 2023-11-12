@@ -34,9 +34,9 @@ class ExerciseCard extends StatelessWidget {
               shrinkWrap: true,
               physics:
                   const NeverScrollableScrollPhysics(), // Disable ListView scrolling
-              itemCount: exercise!.sets?.length,
+              itemCount: exercise?.sets?.length,
               itemBuilder: (context, index) {
-                final set = exercise!.sets![index];
+                final set = exercise?.sets?[index];
                 return Padding(
                   padding: EdgeInsets.only(top:5, bottom: 5),
                   child: Row(
@@ -49,46 +49,40 @@ class ExerciseCard extends StatelessWidget {
                       const SizedBox(
                         width: 25,
                       ),
-                      set.weight != null
+                      set?.weight != null
                           ? RichText(
                             text: TextSpan(
-                              text: '${set.weight}', 
+                              text: '${set?.weight}', 
                               style: const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
                               children: [
                                 TextSpan(text: ' lbs', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal))
                               ]
                               )
                             )
-                          : const SizedBox(
-                              width: 0,
-                            ),
+                          : const SizedBox(),
                       const SizedBox(
                         width: 25,
                       ),
-                      set.repetitions != null
+                      set?.repetitions != null
                           ? RichText(
                             text: TextSpan(
-                              text: '${set.repetitions}', 
+                              text: '${set?.repetitions}', 
                               style: const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
                               children: [
                                 TextSpan(text: ' reps', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal,))
                               ]
                               )
                             )
-                          : const SizedBox(
-                              width: 0,
-                            ),
+                          : const SizedBox(),
                       const SizedBox(
                         width: 25,
                       ),
-                      set.duration != null
+                      set?.duration != null
                           ? Text(
-                              '${set.duration}',
+                              '${set?.duration}',
                               style: const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
                             )
-                          : const SizedBox(
-                              width: 0,
-                            ),
+                          : const SizedBox(),
                     ]
                   ),
                 );
