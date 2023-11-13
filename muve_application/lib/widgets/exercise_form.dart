@@ -35,6 +35,7 @@ class _ExerciseFormState extends State<ExerciseForm> {
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
               labelText: 'Name',
+              labelStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
             onChanged: (value) {
               composeVM.updateExerciseName(exercise, value);
@@ -70,9 +71,12 @@ class _ExerciseFormState extends State<ExerciseForm> {
                             hintText: '0',
                             hintStyle: const TextStyle(color: Colors.white70),
                             labelText: 'Weight',
+                            labelStyle: const TextStyle(color: Colors.white70),
                           ),
                           onChanged: (value) {
-                            composeVM.updateSetWeight(set, value);
+                            if (value.isNotEmpty){
+                              composeVM.updateSetWeight(set, value);
+                            }
                           },
                           keyboardType: TextInputType.number,
                           inputFormatters: [
@@ -91,9 +95,12 @@ class _ExerciseFormState extends State<ExerciseForm> {
                             hintText: '0',
                             hintStyle: const TextStyle(color: Colors.white70),
                             labelText: 'Reps',
+                            labelStyle: const TextStyle(color: Colors.white70),
                           ),
                           onChanged: (value) {
-                            composeVM.updateSetReps(set, value);
+                            if (value.isNotEmpty){
+                              composeVM.updateSetReps(set, value);
+                            }                          
                           },
                           keyboardType: TextInputType.number,
                           inputFormatters: [
@@ -112,9 +119,12 @@ class _ExerciseFormState extends State<ExerciseForm> {
                             hintText: '00:00',
                             hintStyle: const TextStyle(color: Colors.white70),
                             labelText: 'Duration',
+                            labelStyle: const TextStyle(color: Colors.white70),
                           ),
                           onChanged: (value) {
-                            composeVM.updateSetDuration(set, value);
+                            if (value.isNotEmpty){
+                              composeVM.updateSetDuration(set, value);
+                            }
                           },
                           style: const TextStyle(
                               fontSize: 18, color: Colors.white)),

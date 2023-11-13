@@ -24,12 +24,12 @@ class ExerciseCard extends StatelessWidget {
               color: Colors.blueGrey[800]
             ),
           child: Text(
-            '${exercise?.name}',
+            '${exercise?.name ?? '' }',
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           ),
           Container(
-            padding: EdgeInsets.only(left: 20, right: 20, top:10, bottom: 20),
+            padding: EdgeInsets.only(left: 20, right: 10, top:10, bottom: 20),
             child: ListView.builder(
               shrinkWrap: true,
               physics:
