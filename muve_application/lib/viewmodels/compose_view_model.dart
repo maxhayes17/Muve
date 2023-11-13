@@ -47,9 +47,17 @@ class ComposeViewModel with ChangeNotifier {
     _newRoutine?.exercises?.add(Exercise(id: _newRoutine!.exercises!.length + 1, sets: [ExerciseSet(id: 1)]));
     notifyListeners();
   }
+  void removeExercise(Exercise? exercise) {
+    _newRoutine?.exercises?.remove(exercise);
+    notifyListeners();
+  }
 
   void addTrack(Track? track){
     _newRoutine?.tracks?.add(track!);
+    notifyListeners();
+  }
+      void removeTrack(Track? track) {
+    _newRoutine?.tracks?.remove(track);
     notifyListeners();
   }
 
