@@ -100,40 +100,48 @@ class _LoginFormState extends State<LoginForm> {
                   ],
                 ))),
             const SizedBox(
-              height: 24,
+              height: 40,
             ),
             //login button
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: 50,
-              child: FilledButton(
-                onPressed: _login,
-                child: const Text(
+            Container(
+              width: MediaQuery.of(context).size.width * 0.6,
+              height: 60,
+              decoration: BoxDecoration(color: Colors.orange[700], borderRadius: BorderRadius.all(Radius.circular(10)),),
+              child: Center(child: Text(
                   "Login",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
-              ),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white)),),
+              // child: FilledButton(
+              //   onPressed: _login,
+              //   child: const Text(
+              //     "Login",
+              //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              //   ),
+              // ),
             ),
             const SizedBox(
               height: 50,
             ),
             const Text(
               "New user?",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white,),
             ),
             const SizedBox(
               height: 10,
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.8,
-              height: 50,
-              child: FilledButton(
-                onPressed: _login,
-                child: const Text(
+            Container(
+              width: MediaQuery.of(context).size.width * 0.6,
+              height: 60,
+              decoration: BoxDecoration(color: Colors.orange[700], borderRadius: BorderRadius.all(Radius.circular(10)),),
+              child: Center(child: Text(
                   "Sign up",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
-              ),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white)),),
+              // child: FilledButton(
+              //   onPressed: _login,
+              //   child: const Text(
+              //     "Sign up",
+              //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              //   ),
+              // ),
             ),
           ],
         ));

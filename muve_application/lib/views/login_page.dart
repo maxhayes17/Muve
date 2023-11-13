@@ -45,11 +45,11 @@ class LoginPage extends StatelessWidget {
             child: Container(
               height: MediaQuery.of(context).size.height * (0.6),
               width: MediaQuery.of(context).size.width,
-              color: Colors.blueGrey,
+              color: Colors.blueGrey[800],
               padding: EdgeInsets.all(50),
               child: Column(
                 children: [
-                  // SizedBox(height: 80,),
+                  SizedBox(height: 20,),
                   LoginForm(),
                 ],
               )
