@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
       const SizedBox(
         height: 150,
       ),
-      const Padding(
+      Padding(
           padding: EdgeInsets.symmetric(horizontal: 50),
            child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,12 +24,14 @@ class LoginPage extends StatelessWidget {
                     fontWeight: FontWeight.w800,
                   ),
                 ),
-                Text("Muvin'",
-                  style: TextStyle(
-                    fontSize: 80,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
+                // Text("Muvin'",
+                //   style: TextStyle(
+                //     fontSize: 80,
+                //     fontWeight: FontWeight.w800,
+                //   ),
+                // ),
+                // Container(child:Image.asset('assets/Muvin.png') ,),
+                Image.asset('assets/Muvin.png'),
             ],
             )
           ),
@@ -45,7 +47,7 @@ class LoginPage extends StatelessWidget {
             child: Container(
               height: MediaQuery.of(context).size.height * (0.6),
               width: MediaQuery.of(context).size.width,
-              color: Colors.blueGrey[800],
+              color: Colors.blueGrey[900],
               padding: EdgeInsets.all(50),
               child: Column(
                 children: [

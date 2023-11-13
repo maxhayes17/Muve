@@ -103,20 +103,23 @@ class _LoginFormState extends State<LoginForm> {
               height: 40,
             ),
             //login button
-            Container(
-              width: MediaQuery.of(context).size.width * 0.6,
-              height: 60,
-              decoration: BoxDecoration(color: Colors.orange[700], borderRadius: BorderRadius.all(Radius.circular(10)),),
-              child: Center(child: Text(
-                  "Login",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white)),),
-              // child: FilledButton(
-              //   onPressed: _login,
-              //   child: const Text(
-              //     "Login",
-              //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              //   ),
-              // ),
+            GestureDetector(
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.7,
+                height: 60,
+                decoration: BoxDecoration(color: Colors.amber[900], borderRadius: BorderRadius.all(Radius.circular(10)),),
+                child: Center(child: Text(
+                    "Login",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),),
+                // child: FilledButton(
+                //   onPressed: _login,
+                //   child: const Text(
+                //     "Login",
+                //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                //   ),
+                // ),
+              ),
+              onTap: _login,
             ),
             const SizedBox(
               height: 50,
@@ -128,21 +131,24 @@ class _LoginFormState extends State<LoginForm> {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.6,
-              height: 60,
-              decoration: BoxDecoration(color: Colors.orange[700], borderRadius: BorderRadius.all(Radius.circular(10)),),
-              child: Center(child: Text(
-                  "Sign up",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white)),),
-              // child: FilledButton(
-              //   onPressed: _login,
-              //   child: const Text(
-              //     "Sign up",
-              //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-              //   ),
-              // ),
-            ),
+            GestureDetector(
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.6,
+                height: 60,
+                decoration: BoxDecoration(color: Colors.blueGrey[700], borderRadius: BorderRadius.all(Radius.circular(10)),),
+                child: Center(child: Text(
+                    "Sign up",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white)),),
+                // child: FilledButton(
+                //   onPressed: _login,
+                //   child: const Text(
+                //     "Sign up",
+                //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                //   ),
+                // ),
+              ),
+              onTap: _login,
+            )
           ],
         ));
   }
