@@ -27,6 +27,8 @@ class _NavScaffoldState extends State<NavScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
+        // backgroundColor: Colors.grey[200],
+        // indicatorColor: Colors.amber[800],
         onDestinationSelected: (int index) {
           setState(() {
             currentPageIndex = index;
@@ -34,7 +36,7 @@ class _NavScaffoldState extends State<NavScaffold> {
         },
         selectedIndex: currentPageIndex,
         destinations: const <Widget>[
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+          NavigationDestination(icon: Icon(Icons.home,), label: 'Home',),
           NavigationDestination(icon: Icon(Icons.search), label: 'Explore'),
           NavigationDestination(icon: Icon(Icons.add_circle), label: 'Compose'),
           NavigationDestination(icon: Icon(Icons.send), label: 'Share'),
