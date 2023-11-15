@@ -40,9 +40,9 @@ final List<Routine> routines = [
 ];
 
 final List<User> users = [
-  User(id: 1, email: 'jeremy@muve.com', username: 'jeremy', password: 'pw', routines: routines.sublist(0,5)),
-  User(id: 2, email: 'max@muve.com', username: 'max', password: 'pw', routines: routines.sublist(0,5)),
-  User(id: 3, email: 'ethan@muve.com', username: 'ethan', password: 'pw', routines: routines.sublist(0,5)),
-  User(id: 4, email: 'user@test.com', username: 'user', password: 'test', routines: routines.sublist(0,5)),
+  User(id: 1, email: 'jeremy@muve.com', username: 'jeremy', password: 'pw', routines: routines.sublist(0)),
+  User(id: 2, email: 'max@muve.com', username: 'max', password: 'pw', routines: routines.sublist(0)),
+  User(id: 3, email: 'ethan@muve.com', username: 'ethan', password: 'pw', routines: routines.sublist(0)),
+  User(id: 4, email: 'user@test.com', username: 'user', password: 'test', routines: routines.sublist(0)),
 
 ];
