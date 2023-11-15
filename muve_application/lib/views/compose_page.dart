@@ -64,6 +64,7 @@ class ComposePage extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.8,
             height: 50,
             child: FilledButton(
+              style: FilledButton.styleFrom(backgroundColor: Colors.blueGrey[700]),
               onPressed: () => context.push(routes.addExercisePath),
               child: const Text(
                 "Add Exercises",
@@ -76,6 +77,7 @@ class ComposePage extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.8,
             height: 50,
             child: FilledButton(
+              style: FilledButton.styleFrom(backgroundColor: Colors.blueGrey[700]),
               onPressed: () => context.push(routes.addMusicPath),
               child: const Text(
                 "Add Music",
@@ -86,15 +88,16 @@ class ComposePage extends StatelessWidget {
           SizedBox(height: 128,),
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.8,
-            height: 50,
+            height: 70,
             child: FilledButton(
+              style: FilledButton.styleFrom(backgroundColor: Colors.amber[900]),
               onPressed: () {
                 composeVM.saveRoutine(currentUser);
                 context.push(routes.homePath);
               },
               child: const Text(
                 "Create routine",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
             ),
           ),
