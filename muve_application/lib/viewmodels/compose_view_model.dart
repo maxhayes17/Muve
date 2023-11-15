@@ -7,18 +7,10 @@ import 'package:muve_application/models/user_model.dart';
 import 'package:muve_application/viewmodels/routine_view_model.dart';
 import 'package:muve_application/viewmodels/user_view_model.dart';
 
+// FAKE DATA
+import 'package:muve_application/data.dart';
+
 class ComposeViewModel with ChangeNotifier {
-  final _routineList = routineDatabase;
-
-
-  final List<Track> _tracks = [
-    Track(id: 1, name: 'name1', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
-    Track(id: 2, name: 'name2', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
-    Track(id: 3, name: 'name3', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
-    Track(id: 4, name: 'name4', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
-    Track(id: 5, name: 'name5', artist: 'artist', duration: 'duration', picturePath: 'picturePath'),
-    Track(id: 6, name: 'name6', artist: 'artist', duration: 'duration', picturePath: 'picturePath')
-  ];
 
   Routine? _newRoutine;
   List<Track> _trackSearchResults = [];
@@ -87,23 +79,20 @@ class ComposeViewModel with ChangeNotifier {
   }
 
   void saveRoutine(User? user) {
-    var userRoutineList = _routineList[user!.id];
-    userRoutineList?.add(_newRoutine!);
+    // routines.add(_newRoutine!);
+    user?.routines?.add(_newRoutine!);
+
     // Reset _newRoutine
     createRoutine(user);
   }
 
   int numOfRoutines() {
-    int total = 0;
-    for (var routines in _routineList.values) {
-      total += routines.length;
-    }
-    return total;
+    return routines.length;
   }
 
   void searchTracks(String value){
     List<Track> results = [];
-    for (var track in _tracks){
+    for (var track in tracks){
       if (track.name.contains(value)){
         results.add(track);
       }
