@@ -29,7 +29,7 @@ class _ExerciseFormState extends State<ExerciseForm> {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
-          color: Colors.blueGrey[800]),
+          color: Colors.blueGrey[900]),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         TextFormField(
             decoration: const InputDecoration(
@@ -140,6 +140,7 @@ class _ExerciseFormState extends State<ExerciseForm> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             FilledButton(
+                style: FilledButton.styleFrom(backgroundColor: Colors.blueGrey[700]),
                 onPressed: () {
                   composeVM.addExerciseSet(exercise);
                 },

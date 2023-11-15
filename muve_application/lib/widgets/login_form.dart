@@ -111,13 +111,6 @@ class _LoginFormState extends State<LoginForm> {
                 child: Center(child: Text(
                     "Login",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),),
-                // child: FilledButton(
-                //   onPressed: _login,
-                //   child: const Text(
-                //     "Login",
-                //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                //   ),
-                // ),
               ),
               onTap: _login,
             ),
@@ -139,13 +132,6 @@ class _LoginFormState extends State<LoginForm> {
                 child: Center(child: Text(
                     "Sign up",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white)),),
-                // child: FilledButton(
-                //   onPressed: _login,
-                //   child: const Text(
-                //     "Sign up",
-                //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                //   ),
-                // ),
               ),
               onTap: _login,
             )

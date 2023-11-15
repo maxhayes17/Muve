@@ -124,15 +124,16 @@ class AddMusicPage extends StatelessWidget {
             SizedBox(height: 20,),
             Container(
               width: MediaQuery.of(context).size.width * 0.8,
-              height: 50,
+              height: 70,
               child: FilledButton(
+                style: FilledButton.styleFrom(backgroundColor: Colors.amber[900]),
                 onPressed: () {
                   composeVM.saveRoutine(currentUser);
                   context.push(routes.homePath);
                 },
                 child: const Text(
                   "Create routine",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
               ),
             ),

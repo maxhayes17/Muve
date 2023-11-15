@@ -53,6 +53,7 @@ class AddExercisePage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: 50,
                 child: FilledButton(
+                  style: FilledButton.styleFrom(backgroundColor: Colors.blueGrey[700]),
                   onPressed: () => composeVM.addExercise(),
                   child: const Text(
                     "Add Exercise",
@@ -67,6 +68,7 @@ class AddExercisePage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: 50,
                 child: FilledButton(
+                  style: FilledButton.styleFrom(backgroundColor: Colors.amber[900]),
                   onPressed: () => context.push(routes.addMusicPath),
                   child: const Text(
                     "Add Music",

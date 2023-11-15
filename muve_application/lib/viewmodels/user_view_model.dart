@@ -25,6 +25,7 @@ class UserViewModel with ChangeNotifier {
     }
     return false;
   }
+  
    // Assuming last 3 added routines are most recent... return last 3 routines
   List<Routine> getRecentRoutines(){
     if(_user!.routines!.length >= 3){
