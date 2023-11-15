@@ -44,11 +44,11 @@ Duration `1 min`
 
 <img width="285" alt="Screenshot 2023-11-15 at 08 44 31" src="https://github.com/maxhayes17/Muve/assets/99774165/64f427e7-dde9-4ec2-a4f9-d72175d97155">
 
-Each exercise card has a button to add a new set. And a right-to-left swipe will delete the card.
+Each exercise card has a button to add a new set, and a right-to-left swipe will delete the card.
 
 At the bottom of the list are buttons to add another exercise or add music. Pressing the Add Music button will navigate to the Add Music page.
 
-On the **Add Music** page, you will be able to see exercises currently in your routine, and search for a song by title ('Song 1' through 'Song 6' currently available) to go along with your exercises. Tapping on a song in from a search will add it to the routine.
+On the **Add Music** page, you will be able to see exercises currently in your routine, and search for songs by title ('Song 1' through 'Song 6' currently available) to go along with your exercises. Tapping on a song from a search will add it to the routine.
 
 Search: `Song 3`
 
@@ -56,4 +56,4 @@ Search: `Song 3`
 
 Long pressing on a song in a routine will bring up a popup to remove the song from the routine.
 
-Pressing the **Create routine** button at the bottom of the page will add the routine to the user’s library and automatically route back to the home screen. From there you can see that the routine has been added and is one of the most recently created. Clicking on the Library button, you'll also see the new routine.
+Pressing the **Create routine** button at the bottom of the page will add the routine to the user’s library and automatically route back to the home screen. From there you can see that the routine has been added, and is one of the most recently created. Clicking on the Library button, you can also see the new routine.
