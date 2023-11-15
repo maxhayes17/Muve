@@ -22,7 +22,6 @@ final List<Exercise> exercises = [
 
 ];
 
-
 final List<Track> tracks = [
   Track(id: 1, name: 'Song 1', artist: 'artist', duration: '3:00', picturePath: ''),
   Track(id: 2, name: 'Song 2', artist: 'artist', duration: '3:00', picturePath: ''),
@@ -40,9 +39,8 @@ final List<Routine> routines = [
 ];
 
 final List<User> users = [
-  User(id: 1, email: 'jeremy@muve.com', username: 'jeremy', password: 'pw', routines: routines.sublist(0,5)),
-  User(id: 2, email: 'max@muve.com', username: 'max', password: 'pw', routines: routines.sublist(0,5)),
-  User(id: 3, email: 'ethan@muve.com', username: 'ethan', password: 'pw', routines: routines.sublist(0,5)),
-  User(id: 4, email: 'user@test.com', username: 'user', password: 'test', routines: routines.sublist(0,5)),
-
+  User(id: 1, email: 'jeremy@muve.com', username: 'jeremy', password: 'pw', routines: routines.sublist(0,3)),
+  User(id: 2, email: 'max@muve.com', username: 'max', password: 'pw', routines: routines.sublist(0,3)),
+  User(id: 3, email: 'ethan@muve.com', username: 'ethan', password: 'pw', routines: routines.sublist(0,3)),
+  User(id: 4, email: 'user@test.com', username: 'user', password: 'test', routines: routines.sublist(0,3)),
 ];

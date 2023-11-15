@@ -79,7 +79,7 @@ class ComposeViewModel with ChangeNotifier {
   }
 
   void saveRoutine(User? user) {
-    // routines.add(_newRoutine!);
+    routines.add(_newRoutine!);
     user?.routines?.add(_newRoutine!);
     // Reset _newRoutine
     createRoutine(user);
