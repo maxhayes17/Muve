@@ -54,9 +54,10 @@ class RoutinePage extends StatelessWidget {
                               style: const TextStyle(fontSize: 16)),
                         ],
                       ),
-                      const SizedBox(
-                        width: 20,
-                      ),
+                      // const SizedBox(
+                      //   width: 20,
+                      // ),
+                      Spacer(),
                       IconButton(
                         onPressed: () => context.push(routes.libraryPath),
                         icon: const Icon(Icons.add_circle_outline_rounded),
