@@ -22,14 +22,20 @@ class ComposePage extends StatelessWidget {
     // Routine? newRoutine = composeVM.newRoutine;
 
     return SafeArea(
-      child: Column(
-        children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height / 5,
-            // color: Colors.red,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 32, right: 32),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 24,),
+            const Text("Create routine",
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)
+              ),
+            // SizedBox(height: 12,),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height / 5,
+              // color: Colors.red,
               child: Row(
                 children: [
                   Container(
@@ -57,52 +63,53 @@ class ComposePage extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
-          ),
-          SizedBox(height: 128,),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.8,
-            height: 50,
-            child: FilledButton(
-              style: FilledButton.styleFrom(backgroundColor: Colors.blueGrey[700]),
-              onPressed: () => context.push(routes.addExercisePath),
-              child: const Text(
-                "Add Exercises",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+            //),
+            SizedBox(height: 128,),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: 50,
+              child: FilledButton(
+                style: FilledButton.styleFrom(backgroundColor: Colors.blueGrey[700]),
+                onPressed: () => context.push(routes.addExercisePath),
+                child: const Text(
+                  "Add Exercises",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 32,),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.8,
-            height: 50,
-            child: FilledButton(
-              style: FilledButton.styleFrom(backgroundColor: Colors.blueGrey[700]),
-              onPressed: () => context.push(routes.addMusicPath),
-              child: const Text(
-                "Add Music",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            SizedBox(height: 32,),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: 50,
+              child: FilledButton(
+                style: FilledButton.styleFrom(backgroundColor: Colors.blueGrey[700]),
+                onPressed: () => context.push(routes.addMusicPath),
+                child: const Text(
+                  "Add Music",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 128,),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.8,
-            height: 70,
-            child: FilledButton(
-              style: FilledButton.styleFrom(backgroundColor: Colors.amber[900]),
-              onPressed: () {
-                composeVM.saveRoutine(currentUser);
-                context.push(routes.homePath);
-              },
-              child: const Text(
-                "Create routine",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            SizedBox(height: 128,),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: 70,
+              child: FilledButton(
+                style: FilledButton.styleFrom(backgroundColor: Colors.amber[900]),
+                onPressed: () {
+                  composeVM.saveRoutine(currentUser);
+                  context.push(routes.homePath);
+                },
+                child: const Text(
+                  "Create routine",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
               ),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
+      )
     );
   }
 }

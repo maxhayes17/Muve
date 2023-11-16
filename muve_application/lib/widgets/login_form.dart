@@ -26,14 +26,14 @@ class _LoginFormState extends State<LoginForm> {
       if (userVM.authenticateUser(email, password)) {
         context.go(routes.homePath);
         ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Getting Swoll ${userVM.username}")));
+            SnackBar(content: Text("Welcome back ${userVM.username}!")));
       } else {
         ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text("INVALID INPUTS:")));
+            .showSnackBar(const SnackBar(content: Text("INVALID INPUTS")));
       }
     } else {
       ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("INVALID INPUTS:")));
+          .showSnackBar(const SnackBar(content: Text("INVALID INPUTS")));
     }
   }
 
