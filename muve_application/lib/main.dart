@@ -4,8 +4,16 @@ import 'package:muve_application/viewmodels/routine_view_model.dart';
 import 'package:muve_application/viewmodels/user_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:muve_application/routes.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<UserViewModel>(
