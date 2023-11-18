@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:form_validator/form_validator.dart';
-import 'package:go_router/go_router.dart';
 import 'package:muve_application/models/exercise_model.dart';
 import 'package:muve_application/models/set_model.dart';
-import 'package:muve_application/routes.dart' as routes;
 import 'package:muve_application/viewmodels/compose_view_model.dart';
-import 'package:muve_application/widgets/exercise_form.dart';
 import 'package:provider/provider.dart';
 
 class ExerciseForm extends StatefulWidget {
@@ -35,7 +31,7 @@ class _ExerciseFormState extends State<ExerciseForm> {
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
               labelText: 'Name',
-              labelStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              labelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
             onChanged: (value) {
               composeVM.updateExerciseName(exercise, value);
@@ -64,14 +60,14 @@ class _ExerciseFormState extends State<ExerciseForm> {
                     const SizedBox(
                       width: 25,
                     ),
-                    Container(
+                    SizedBox(
                       width: 70,
                       child: TextFormField(
                           decoration: const InputDecoration(
                             hintText: '0',
-                            hintStyle: const TextStyle(color: Colors.white70),
+                            hintStyle: TextStyle(color: Colors.white70),
                             labelText: 'Weight',
-                            labelStyle: const TextStyle(color: Colors.white70),
+                            labelStyle: TextStyle(color: Colors.white70),
                           ),
                           onChanged: (value) {
                             if (value.isNotEmpty){
@@ -88,14 +84,14 @@ class _ExerciseFormState extends State<ExerciseForm> {
                     const SizedBox(
                       width: 25,
                     ),
-                    Container(
+                    SizedBox(
                       width: 70,
                       child: TextFormField(
                           decoration: const InputDecoration(
                             hintText: '0',
-                            hintStyle: const TextStyle(color: Colors.white70),
+                            hintStyle: TextStyle(color: Colors.white70),
                             labelText: 'Reps',
-                            labelStyle: const TextStyle(color: Colors.white70),
+                            labelStyle: TextStyle(color: Colors.white70),
                           ),
                           onChanged: (value) {
                             if (value.isNotEmpty){
@@ -112,14 +108,14 @@ class _ExerciseFormState extends State<ExerciseForm> {
                     const SizedBox(
                       width: 25,
                     ),
-                    Container(
+                    SizedBox(
                       width: 70,
                       child: TextFormField(
                           decoration: const InputDecoration(
                             hintText: '00:00',
-                            hintStyle: const TextStyle(color: Colors.white70),
+                            hintStyle: TextStyle(color: Colors.white70),
                             labelText: 'Duration',
-                            labelStyle: const TextStyle(color: Colors.white70),
+                            labelStyle: TextStyle(color: Colors.white70),
                           ),
                           onChanged: (value) {
                             if (value.isNotEmpty){

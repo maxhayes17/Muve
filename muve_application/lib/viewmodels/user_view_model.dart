@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:muve_application/models/routine_model.dart";
 import "package:muve_application/models/user_model.dart";
-import "package:muve_application/viewmodels/routine_view_model.dart";
 
 // FAKE DATA
 import "package:muve_application/data.dart";

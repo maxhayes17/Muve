@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:muve_application/routes.dart' as routes;
 import 'package:muve_application/models/track_model.dart';
 import 'package:muve_application/viewmodels/compose_view_model.dart';
 import 'package:provider/provider.dart';

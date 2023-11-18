@@ -28,7 +28,7 @@ class RoutinePage extends StatelessWidget {
                 // color: Colors.red,
                 decoration: BoxDecoration(
                   color:  Colors.grey[200],
-                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
+                  borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
@@ -57,7 +57,7 @@ class RoutinePage extends StatelessWidget {
                       // const SizedBox(
                       //   width: 20,
                       // ),
-                      Spacer(),
+                      const Spacer(),
                       IconButton(
                         onPressed: () => context.push(routes.libraryPath),
                         icon: const Icon(Icons.add_circle_outline_rounded),
@@ -72,9 +72,9 @@ class RoutinePage extends StatelessWidget {
                   ),
                 )
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
               Row(children: [
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width * 0.7,
                   height: 500,
                   // color: Colors.red,
@@ -88,7 +88,7 @@ class RoutinePage extends StatelessWidget {
                           );
                       }),
                 ),
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width * 0.3,
                   // color: Colors.blue,
                   height: 500,

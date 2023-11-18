@@ -1,8 +1,5 @@
 import "package:flutter/material.dart";
-import "package:muve_application/models/exercise_model.dart";
 import "package:muve_application/models/routine_model.dart";
-import "package:muve_application/models/set_model.dart";
-import "package:muve_application/models/track_model.dart";
 
 // FAKE DATA
 import "package:muve_application/data.dart";

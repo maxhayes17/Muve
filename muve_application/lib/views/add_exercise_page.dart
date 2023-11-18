@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:muve_application/models/exercise_model.dart';
 import 'package:go_router/go_router.dart';
-import 'package:muve_application/models/routine_model.dart';
-import 'package:muve_application/models/set_model.dart';
 import 'package:muve_application/viewmodels/compose_view_model.dart';
-import 'package:muve_application/viewmodels/routine_view_model.dart';
 import 'package:muve_application/widgets/exercise_form.dart';
 import 'package:provider/provider.dart';
 import 'package:muve_application/routes.dart' as routes;

@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:muve_application/models/exercise_model.dart';
-import 'package:muve_application/models/routine_model.dart';
-import 'package:muve_application/models/set_model.dart';
 import 'package:muve_application/models/track_model.dart';
 import 'package:muve_application/viewmodels/compose_view_model.dart';
-import 'package:muve_application/viewmodels/routine_view_model.dart';
 import 'package:muve_application/widgets/exercise.dart';
 import 'package:muve_application/widgets/track.dart';
 import 'package:provider/provider.dart';
@@ -35,10 +31,10 @@ class AddMusicPage extends StatelessWidget {
             Container(
                 width: MediaQuery.of(context).size.width,
                 // height: MediaQuery.of(context).size.height / 4,
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color:  Colors.grey[200],
-                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
+                  borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
                 ),
                 child: Column(
                   children: [
@@ -64,15 +60,15 @@ class AddMusicPage extends StatelessWidget {
                       ),
                     ),
                     trackSearchResults!.isNotEmpty ?
-                    Container(
+                    SizedBox(
                       width: MediaQuery.of(context).size.width * 0.9,
                       height: MediaQuery.of(context).size.height / 6,
                       // color: Colors.red,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: trackSearchResults?.length,
+                        itemCount: trackSearchResults.length,
                         itemBuilder: (context, index) {
-                        final track = trackSearchResults?[index];
+                        final track = trackSearchResults[index];
                         return Padding(
                             padding: const EdgeInsets.only(left: 10, right: 10, top: 20),
                             child: GestureDetector(
@@ -82,14 +78,14 @@ class AddMusicPage extends StatelessWidget {
                           );
                       }),
                     )
-                    : SizedBox(),
+                    : const SizedBox(),
                   ]
                 ),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             Expanded(
               child: Row(children: [
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width * 0.7,
                   height: 500,
                   // color: Colors.red,
@@ -104,7 +100,7 @@ class AddMusicPage extends StatelessWidget {
                           );
                       }),
                 ),
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width * 0.3,
                   // color: Colors.blue,
                   height: 500,
@@ -121,8 +117,8 @@ class AddMusicPage extends StatelessWidget {
                 ),
               ]),
             ),
-            SizedBox(height: 20,),
-            Container(
+            const SizedBox(height: 20,),
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               height: 70,
               child: FilledButton(
