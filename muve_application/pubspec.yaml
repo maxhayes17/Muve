@@ -39,6 +39,7 @@ dependencies:
   form_validator: ^2.1.1
   provider: ^6.0.5
   firebase_core: ^2.22.0
+  cloud_firestore: ^4.13.1
 
 dev_dependencies:
   flutter_test:
