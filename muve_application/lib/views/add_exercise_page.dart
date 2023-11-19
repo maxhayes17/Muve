@@ -23,10 +23,10 @@ class AddExercisePage extends StatelessWidget {
               Expanded(
                 child: ListView.builder(
                     shrinkWrap: true,
-                    itemCount: composeVM.newRoutine?.exercises?.length,
+                    itemCount: composeVM.newRoutine?.exercises.length,
                     itemBuilder: (context, index) {
                       Exercise? exercise =
-                          composeVM.newRoutine?.exercises?[index];
+                          composeVM.newRoutine?.exercises[index];
                       return Dismissible(
                         key: Key(exercise?.id.toString() as String),
                         onDismissed: (direction) =>
@@ -50,7 +50,8 @@ class AddExercisePage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: 50,
                 child: FilledButton(
-                  style: FilledButton.styleFrom(backgroundColor: Colors.blueGrey[700]),
+                  style: FilledButton.styleFrom(
+                      backgroundColor: Colors.blueGrey[700]),
                   onPressed: () => composeVM.addExercise(),
                   child: const Text(
                     "Add Exercise",
@@ -65,7 +66,8 @@ class AddExercisePage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: 50,
                 child: FilledButton(
-                  style: FilledButton.styleFrom(backgroundColor: Colors.amber[900]),
+                  style: FilledButton.styleFrom(
+                      backgroundColor: Colors.amber[900]),
                   onPressed: () => context.push(routes.addMusicPath),
                   child: const Text(
                     "Add Music",

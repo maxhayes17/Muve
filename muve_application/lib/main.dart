@@ -19,7 +19,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  loadDefaultRoutines();
+  loadFakeDataRoutines();
 
   runApp(MultiProvider(
     providers: [
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-void loadDefaultRoutines() async {
+void loadFakeDataRoutines() async {
   final db = FirebaseFirestore.instance;
   for (var routine in routines) {
     //add to Firestore db

@@ -6,13 +6,36 @@ import "package:muve_application/models/routine_model.dart";
 import "package:muve_application/data.dart";
 
 class RoutineViewModel with ChangeNotifier {
-  //Firebase test
   final db = FirebaseFirestore.instance;
-  late Routine? _currentRoutine;
 
+  //search Firebase by tags
+  final List<Routine> _routineSearchResults = [];
+  List<Routine> get routineSearchResults => _routineSearchResults;
+
+  void searchRoutineTags(String tag) async {
+    _routineSearchResults.clear();
+    db
+        .collection("routines")
+        .where("tags", arrayContains: tag.toLowerCase())
+        .withConverter(
+          fromFirestore: Routine.fromFirestore,
+          toFirestore: (Routine routine, _) => routine.toFirestore(),
+        )
+        .get()
+        .then((querySnapShot) {
+      for (var docSnapShot in querySnapShot.docs) {
+        _routineSearchResults.add(docSnapShot.data());
+        // print(docSnapShot.data().name);
+        // print(_routineSearchResults.length);
+      }
+    }).then((value) => notifyListeners());
+  }
+
+  //Firebase test of getting a routine not used
+  late Routine? _currentRoutine;
   Routine? get currentRoutine => _currentRoutine;
 
-  Future<void> setRoutineById(int id) async {
+  void setRoutineById(int id) async {
     String docName = id.toString();
 
     final docRef = db.collection("routines").doc(docName).withConverter(
@@ -27,8 +50,7 @@ class RoutineViewModel with ChangeNotifier {
       _currentRoutine = null;
     }
     notifyListeners();
-  }
-  //
+  } //end Firebase get routine test
 
   Routine? getRoutineById(int id) {
     for (var routine in routines) {

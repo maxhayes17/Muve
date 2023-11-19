@@ -24,6 +24,7 @@ class ComposeViewModel with ChangeNotifier {
       name: '',
       duration: '00:00',
       author: user!.username,
+      tags: [],
       exercises: [
         Exercise(id: 1, sets: [ExerciseSet(id: 1)])
       ],
@@ -39,23 +40,23 @@ class ComposeViewModel with ChangeNotifier {
   }
 
   void addExercise() {
-    _newRoutine?.exercises?.add(Exercise(
-        id: _newRoutine!.exercises!.length + 1, sets: [ExerciseSet(id: 1)]));
+    _newRoutine?.exercises.add(Exercise(
+        id: _newRoutine!.exercises.length + 1, sets: [ExerciseSet(id: 1)]));
     notifyListeners();
   }
 
   void removeExercise(Exercise? exercise) {
-    _newRoutine?.exercises?.remove(exercise);
+    _newRoutine?.exercises.remove(exercise);
     notifyListeners();
   }
 
   void addTrack(Track? track) {
-    _newRoutine?.tracks?.add(track!);
+    _newRoutine?.tracks.add(track!);
     notifyListeners();
   }
 
   void removeTrack(Track? track) {
-    _newRoutine?.tracks?.remove(track);
+    _newRoutine?.tracks.remove(track);
     notifyListeners();
   }
 
@@ -87,6 +88,9 @@ class ComposeViewModel with ChangeNotifier {
   }
 
   void saveRoutine(User? user) async {
+    for (var e in _newRoutine!.exercises) {
+      _newRoutine!.tags.add(e.name!.toLowerCase());
+    }
     routines.add(_newRoutine!);
     user?.routines?.add(_newRoutine!);
 

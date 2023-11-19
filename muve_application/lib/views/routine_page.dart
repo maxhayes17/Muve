@@ -27,9 +27,10 @@ class RoutinePage extends StatelessWidget {
                 height: MediaQuery.of(context).size.height / 5,
                 // color: Colors.red,
                 decoration: BoxDecoration(
-                  color:  Colors.grey[200],
-                  borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
-                ),
+                    color: Colors.grey[200],
+                    borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10))),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Row(
@@ -70,40 +71,41 @@ class RoutinePage extends StatelessWidget {
                       ),
                     ],
                   ),
-                )
+                )),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.7,
+                height: 500,
+                // color: Colors.red,
+                child: ListView.builder(
+                    itemCount: routine.exercises.length,
+                    itemBuilder: (context, index) {
+                      final exercise = routine.exercises[index];
+                      return Padding(
+                          padding: const EdgeInsets.only(left: 20, bottom: 20),
+                          child: ExerciseCard(exercise: exercise));
+                    }),
               ),
-              const SizedBox(height: 20,),
-              Row(children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  height: 500,
-                  // color: Colors.red,
-                  child: ListView.builder(
-                      itemCount: routine.exercises?.length,
-                      itemBuilder: (context, index) {
-                        final exercise = routine.exercises?[index];
-                        return Padding(
-                            padding: const EdgeInsets.only(left:20, bottom: 20),
-                            child: ExerciseCard(exercise: exercise)
-                          );
-                      }),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.3,
-                  // color: Colors.blue,
-                  height: 500,
-                  child: ListView.builder(
-                      itemCount: routine.tracks?.length,
-                      itemBuilder: (context, index) {
-                        final track = routine.tracks?[index];
-                        return Padding(
-                            padding: const EdgeInsets.only(),
-                            child: TrackElement(track: track,)
-                          );
-                      }),
-                ),
-              ]),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.3,
+                // color: Colors.blue,
+                height: 500,
+                child: ListView.builder(
+                    itemCount: routine.tracks.length,
+                    itemBuilder: (context, index) {
+                      final track = routine.tracks[index];
+                      return Padding(
+                          padding: const EdgeInsets.only(),
+                          child: TrackElement(
+                            track: track,
+                          ));
+                    }),
+              ),
             ]),
+          ]),
         ));
   }
 }

@@ -9,9 +9,9 @@ class Routine {
   String name;
   String duration;
   String author;
-  final List<String>? tags;
-  List<Track>? tracks;
-  List<Exercise>? exercises;
+  final List<String> tags;
+  List<Track> tracks;
+  List<Exercise> exercises;
   final String? picturePath;
 
   Routine(
@@ -19,7 +19,7 @@ class Routine {
       required this.name,
       required this.duration,
       required this.author,
-      this.tags,
+      required this.tags,
       required this.tracks,
       required this.exercises,
       this.picturePath});
@@ -70,6 +70,7 @@ class Routine {
         name: data?['name'],
         duration: data?['duration'],
         author: data?['author'],
+        tags: List.from(data?['tags']),
         tracks: tracks,
         exercises: exercises,
         picturePath: data?['picturePath']);
@@ -77,7 +78,7 @@ class Routine {
 
   Map<String, dynamic> toFirestore() {
     var exerciseList = List<Map<String, dynamic>>.empty(growable: true);
-    for (var e in exercises!) {
+    for (var e in exercises) {
       var exerciseMap = <String, dynamic>{};
       exerciseMap['id'] = e.id;
       exerciseMap['name'] = e.name;
@@ -96,7 +97,7 @@ class Routine {
     }
 
     var trackList = List<Map<String, dynamic>>.empty(growable: true);
-    for (var t in tracks!) {
+    for (var t in tracks) {
       var trackMap = <String, dynamic>{};
       trackMap['id'] = t.id;
       trackMap['name'] = t.name;
@@ -111,9 +112,9 @@ class Routine {
       "name": name,
       "duration": duration,
       "author": author,
-      if (tags != null) "tags": tags,
-      if (tracks != null) "tracks": trackList,
-      if (exercises != null) "exercises": exerciseList,
+      "tags": tags,
+      "tracks": trackList,
+      "exercises": exerciseList,
       if (picturePath != null) "picturePath": picturePath,
     };
   }
