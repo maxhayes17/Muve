@@ -61,7 +61,7 @@ class ComposeViewModel with ChangeNotifier {
 
   // Updating exercise...
   void addExerciseSet(Exercise? exercise) {
-    exercise?.sets?.add(ExerciseSet(id: exercise.sets!.length + 1));
+    exercise?.sets.add(ExerciseSet(id: exercise.sets.length + 1));
     notifyListeners();
   }
 
@@ -91,13 +91,15 @@ class ComposeViewModel with ChangeNotifier {
     user?.routines?.add(_newRoutine!);
 
     //add to Firestore db
+    var routineId = _newRoutine?.id.toString();
+
     final docRef = db
         .collection("routines")
         .withConverter(
           fromFirestore: Routine.fromFirestore,
           toFirestore: (Routine routine, options) => routine.toFirestore(),
         )
-        .doc();
+        .doc(routineId);
     await docRef.set(_newRoutine!);
 
     // Reset _newRoutine

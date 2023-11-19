@@ -20,8 +20,7 @@ class _ExerciseFormState extends State<ExerciseForm> {
     final composeVM = context.watch<ComposeViewModel>();
     Exercise? exercise = composeVM.newRoutine?.exercises?[widget.index];
 
-    return Expanded(
-        child: Container(
+    return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
@@ -31,7 +30,8 @@ class _ExerciseFormState extends State<ExerciseForm> {
             decoration: const InputDecoration(
               border: UnderlineInputBorder(),
               labelText: 'Name',
-              labelStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              labelStyle:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
             onChanged: (value) {
               composeVM.updateExerciseName(exercise, value);
@@ -45,9 +45,9 @@ class _ExerciseFormState extends State<ExerciseForm> {
         ),
         ListView.builder(
             shrinkWrap: true,
-            itemCount: exercise?.sets?.length,
+            itemCount: exercise?.sets.length,
             itemBuilder: (context, index) {
-              ExerciseSet? set = exercise?.sets?[index];
+              ExerciseSet? set = exercise?.sets[index];
               return Padding(
                 padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: Row(
@@ -70,7 +70,7 @@ class _ExerciseFormState extends State<ExerciseForm> {
                             labelStyle: TextStyle(color: Colors.white70),
                           ),
                           onChanged: (value) {
-                            if (value.isNotEmpty){
+                            if (value.isNotEmpty) {
                               composeVM.updateSetWeight(set, value);
                             }
                           },
@@ -94,9 +94,9 @@ class _ExerciseFormState extends State<ExerciseForm> {
                             labelStyle: TextStyle(color: Colors.white70),
                           ),
                           onChanged: (value) {
-                            if (value.isNotEmpty){
+                            if (value.isNotEmpty) {
                               composeVM.updateSetReps(set, value);
-                            }                          
+                            }
                           },
                           keyboardType: TextInputType.number,
                           inputFormatters: [
@@ -118,7 +118,7 @@ class _ExerciseFormState extends State<ExerciseForm> {
                             labelStyle: TextStyle(color: Colors.white70),
                           ),
                           onChanged: (value) {
-                            if (value.isNotEmpty){
+                            if (value.isNotEmpty) {
                               composeVM.updateSetDuration(set, value);
                             }
                           },
@@ -136,7 +136,8 @@ class _ExerciseFormState extends State<ExerciseForm> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             FilledButton(
-                style: FilledButton.styleFrom(backgroundColor: Colors.blueGrey[700]),
+                style: FilledButton.styleFrom(
+                    backgroundColor: Colors.blueGrey[700]),
                 onPressed: () {
                   composeVM.addExerciseSet(exercise);
                 },
@@ -148,6 +149,6 @@ class _ExerciseFormState extends State<ExerciseForm> {
           ],
         ),
       ]),
-    ));
+    );
   }
 }

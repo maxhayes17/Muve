@@ -34,9 +34,9 @@ class ExerciseCard extends StatelessWidget {
               shrinkWrap: true,
               physics:
                   const NeverScrollableScrollPhysics(), // Disable ListView scrolling
-              itemCount: exercise?.sets?.length,
+              itemCount: exercise?.sets.length,
               itemBuilder: (context, index) {
-                final set = exercise?.sets?[index];
+                final set = exercise?.sets[index];
                 return Padding(
                   padding: const EdgeInsets.only(top:5, bottom: 5),
                   child: Row(
