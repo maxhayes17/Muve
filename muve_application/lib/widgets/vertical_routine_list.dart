@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:muve_application/models/routine_model.dart';
 import 'package:muve_application/widgets/vertical_routine_element.dart';
 
-class VerticalRoutine extends StatelessWidget {
+class VerticalRoutineList extends StatelessWidget {
   final List<Routine>? routines;
 
-  const VerticalRoutine({super.key, required this.routines});
+  const VerticalRoutineList({super.key, required this.routines});
 
   @override
   Widget build(BuildContext context) {
