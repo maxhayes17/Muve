@@ -43,17 +43,26 @@ class AddMusicPage extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.blueGrey[800],
                       borderRadius: BorderRadius.circular(10)),
-                  child: TextField(
-                    onSubmitted: (value) {
-                      if (value.isNotEmpty) {
-                        composeVM.searchTracks(value);
-                      }
-                    },
-                    style: const TextStyle(color: Colors.white),
-                    decoration: const InputDecoration(
-                        hintText: "Search",
-                        hintStyle: TextStyle(color: Colors.white),
-                        border: InputBorder.none),
+                  child: Row(
+                    children: [
+                      Icon(Icons.search, color: Colors.white,),
+                      SizedBox(width: 10,),
+                      Expanded(
+                        child: TextField(
+                          onSubmitted: (value) {
+                            if (value.isNotEmpty) {
+                            composeVM.searchTracks(value);
+                            // routineVM.searchRoutineTags(value);
+                            }
+                          },
+                          style: const TextStyle(color: Colors.white),
+                          decoration: const InputDecoration(
+                              hintText: "Search Tracks...",
+                              hintStyle: TextStyle(color: Colors.white70),
+                              border: InputBorder.none),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 trackSearchResults!.isNotEmpty
