@@ -40,6 +40,9 @@ class ComposeViewModel with ChangeNotifier {
     _newRoutine?.name = value;
     notifyListeners();
   }
+  void addTag(String value){
+    _newRoutine?.tags.add(value);
+  }
 
   void addExercise() {
     _newRoutine?.exercises.add(Exercise(
@@ -90,9 +93,9 @@ class ComposeViewModel with ChangeNotifier {
   }
 
   void saveRoutine(User? user) async {
-    for (var e in _newRoutine!.exercises) {
-      _newRoutine?.tags.add(e.name!.toLowerCase());
-    }
+    // for (var e in _newRoutine!.exercises) {
+    //   _newRoutine?.tags.add(e.name!.toLowerCase());
+    // }
     routines.add(_newRoutine!);
     user?.routines?.add(_newRoutine!);
 

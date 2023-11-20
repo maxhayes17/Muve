@@ -28,7 +28,7 @@ class ComposePage extends StatelessWidget {
             const SizedBox(height: 24,),
             const Text("Create routine",
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)
-              ),
+            ),
             // SizedBox(height: 12,),
             SizedBox(
               width: MediaQuery.of(context).size.width,
@@ -43,27 +43,112 @@ class ComposePage extends StatelessWidget {
                   ),
                   const SizedBox(width: 20),
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment:
                         CrossAxisAlignment.start, // Align text to the left
                     children: [
-                      SizedBox(
+                      Container(
                         width: 128,
+                        padding: EdgeInsets.only(top: 24),
                         child: TextFormField(
-                          decoration: const InputDecoration(hintText: "Name"),
+                          decoration: const InputDecoration(hintText: "Name",),
                           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                           onChanged: (value){
                             composeVM.updateRoutineName(value);
                           },
                         ),
                       ),
-                      ],
-                    ),
-                  ],
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Divider(),
+            SizedBox(height: 12,),
+            const Text("Add tags",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.9,
+              height: 100,
+              // color: Colors.grey[200],
+              child: 
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child:
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(10)),
+                            padding: EdgeInsets.only(left:15),
+                            child: DropdownMenu(
+                              width: 126,
+                              inputDecorationTheme: InputDecorationTheme(border: InputBorder.none),
+                              label: Text("Duration"),
+                              dropdownMenuEntries: const [
+                                DropdownMenuEntry(value: '0-30min', label: '0-30min'),
+                                DropdownMenuEntry(value: '1-2hr', label: '1-2hr'),
+                                DropdownMenuEntry(value: '2+ hr', label: '2+ hr'),
+                              ], 
+                              onSelected: (String? value) {
+                                if (value != null){
+                                  composeVM.addTag(value);
+                                }
+                              },
+                            ),
+                          ),
+                          SizedBox(width: 10,),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(10)),
+                            padding: EdgeInsets.only(left:15),
+                            child: DropdownMenu(
+                              width: 132,
+                              label: Text("Skill level"),
+                              inputDecorationTheme: InputDecorationTheme(border: InputBorder.none),
+                              dropdownMenuEntries: const [
+                                DropdownMenuEntry(value: 'Beginner', label: 'Beginner'),
+                                DropdownMenuEntry(value: 'Advanced', label: 'Advanced'),
+                              ], 
+                              onSelected: (String? value) {
+                                if (value != null){
+                                  composeVM.addTag(value);
+                                }
+                              },
+                            ),
+                          ),
+                          SizedBox(width: 10,),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(10)),
+                            padding: EdgeInsets.only(left:15),
+                            child: DropdownMenu(
+                              width: 146,
+                              label: Text("Equipment"),
+                              inputDecorationTheme: InputDecorationTheme(border: InputBorder.none),
+                              dropdownMenuEntries: const [
+                                DropdownMenuEntry(value: 'Equipment Required', label: 'Required'),
+                                DropdownMenuEntry(value: 'Equiptment Not Required', label: 'Not Required'),
+                              ], 
+                              onSelected: (String? value) {
+                                if (value != null){
+                                  composeVM.addTag(value);
+                                }
+                              },
+                            ),
+                          ),
+                        ]
+                      ),
                 ),
-                ),
-            //),
-            const SizedBox(height: 128,),
+              ),
+            Divider(),
+            const SizedBox(height: 32,),
             Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -93,7 +178,7 @@ class ComposePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 128,),
+                  SizedBox(height: 72,),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.8,
                     height: 70,
@@ -108,7 +193,7 @@ class ComposePage extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                       ),
                     ),
-                    ),
+                  ),
               ]
               ),
             ),

@@ -16,7 +16,7 @@ class RoutineViewModel with ChangeNotifier {
     _routineSearchResults.clear();
     db
         .collection("routines")
-        .where("tags", arrayContains: tag.toLowerCase())
+        .where("tags", arrayContains: tag)
         .withConverter(
           fromFirestore: Routine.fromFirestore,
           toFirestore: (Routine routine, _) => routine.toFirestore(),

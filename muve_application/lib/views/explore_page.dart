@@ -72,9 +72,9 @@ class ExplorePage extends StatelessWidget {
                               inputDecorationTheme: InputDecorationTheme(border: InputBorder.none),
                               label: Text("Duration"),
                               dropdownMenuEntries: const [
-                                DropdownMenuEntry(value: 'bench press', label: '0-30min'),
-                                DropdownMenuEntry(value: 'bench press', label: '1-2hr'),
-                                DropdownMenuEntry(value: 'bench press', label: '2+ hr'),
+                                DropdownMenuEntry(value: '0-30min', label: '0-30min'),
+                                DropdownMenuEntry(value: '1-2hr', label: '1-2hr'),
+                                DropdownMenuEntry(value: '2+ hr', label: '2+ hr'),
                               ], 
                               onSelected: (String? value) {
                                 if (value != null){
@@ -94,8 +94,8 @@ class ExplorePage extends StatelessWidget {
                               label: Text("Skill level"),
                               inputDecorationTheme: InputDecorationTheme(border: InputBorder.none),
                               dropdownMenuEntries: const [
-                                DropdownMenuEntry(value: 'bench press', label: 'Beginner'),
-                                DropdownMenuEntry(value: 'bench press', label: 'Advanced'),
+                                DropdownMenuEntry(value: 'Beginner', label: 'Beginner'),
+                                DropdownMenuEntry(value: 'Advanced', label: 'Advanced'),
                               ], 
                               onSelected: (String? value) {
                                 if (value != null){
@@ -115,8 +115,8 @@ class ExplorePage extends StatelessWidget {
                               label: Text("Equipment"),
                               inputDecorationTheme: InputDecorationTheme(border: InputBorder.none),
                               dropdownMenuEntries: const [
-                                DropdownMenuEntry(value: 'bench press', label: 'Required'),
-                                DropdownMenuEntry(value: 'bench press', label: 'Not Required'),
+                                DropdownMenuEntry(value: 'Equiptment Required', label: 'Required'),
+                                DropdownMenuEntry(value: 'Equiptment Not Required', label: 'Not Required'),
                               ], 
                               onSelected: (String? value) {
                                 if (value != null){
