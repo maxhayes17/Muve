@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:muve_application/viewmodels/user_view_model.dart';
-import 'package:muve_application/widgets/vertical_routine.dart';
+import 'package:muve_application/widgets/vertical_routine_list.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
               height: 12,
             ),
             Expanded(
-              child: VerticalRoutine(routines: userVM.getRecentRoutines()),
+              child: VerticalRoutineList(routines: userVM.getRecentRoutines()),
             )
           ]),
     ));
