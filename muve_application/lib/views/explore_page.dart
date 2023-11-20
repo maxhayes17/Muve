@@ -50,7 +50,85 @@ class ExplorePage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 24,),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.9,
+              height: 100,
+              // color: Colors.grey[200],
+              child: 
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child:
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(10)),
+                            padding: EdgeInsets.only(left:15),
+                            child: DropdownMenu(
+                              width: 126,
+                              inputDecorationTheme: InputDecorationTheme(border: InputBorder.none),
+                              label: Text("Duration"),
+                              dropdownMenuEntries: const [
+                                DropdownMenuEntry(value: 'bench press', label: '0-30min'),
+                                DropdownMenuEntry(value: 'bench press', label: '1-2hr'),
+                                DropdownMenuEntry(value: 'bench press', label: '2+ hr'),
+                              ], 
+                              onSelected: (String? value) {
+                                if (value != null){
+                                  routineVM.searchRoutineTags(value);
+                                }
+                              },
+                            ),
+                          ),
+                          SizedBox(width: 10,),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(10)),
+                            padding: EdgeInsets.only(left:15),
+                            child: DropdownMenu(
+                              width: 132,
+                              label: Text("Skill level"),
+                              inputDecorationTheme: InputDecorationTheme(border: InputBorder.none),
+                              dropdownMenuEntries: const [
+                                DropdownMenuEntry(value: 'bench press', label: 'Beginner'),
+                                DropdownMenuEntry(value: 'bench press', label: 'Advanced'),
+                              ], 
+                              onSelected: (String? value) {
+                                if (value != null){
+                                  routineVM.searchRoutineTags(value);
+                                }
+                              },
+                            ),
+                          ),
+                          SizedBox(width: 10,),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(10)),
+                            padding: EdgeInsets.only(left:15),
+                            child: DropdownMenu(
+                              width: 146,
+                              label: Text("Equipment"),
+                              inputDecorationTheme: InputDecorationTheme(border: InputBorder.none),
+                              dropdownMenuEntries: const [
+                                DropdownMenuEntry(value: 'bench press', label: 'Required'),
+                                DropdownMenuEntry(value: 'bench press', label: 'Not Required'),
+                              ], 
+                              onSelected: (String? value) {
+                                if (value != null){
+                                  routineVM.searchRoutineTags(value);
+                                }
+                              },
+                            ),
+                          ),
+                        ]
+                      ),
+                ),
+            ),
             routineVM.routineSearchResults.isNotEmpty 
             ? Text("${count} Results",
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)
