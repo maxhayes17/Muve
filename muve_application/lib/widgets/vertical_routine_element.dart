@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:muve_application/routes.dart' as routes;
 import 'package:muve_application/models/routine_model.dart';
+import 'package:muve_application/viewmodels/routine_view_model.dart';
+import 'package:provider/provider.dart';
 
 class VerticalRoutineElement extends StatelessWidget {
   final Routine? routine;
@@ -10,6 +12,8 @@ class VerticalRoutineElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final routineVM = context.watch<RoutineViewModel>();
+
     return GestureDetector(
         child: Container(
           padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -35,7 +39,10 @@ class VerticalRoutineElement extends StatelessWidget {
             ],
           ),
         ),
-        onTap: () => context.push(routes.routinePath + routine!.id.toString()));
+        onTap: () {
+          routineVM.setRoutineById(routine!.id);
+          context.push(routes.routinePath);
+        });
   }
 }
 

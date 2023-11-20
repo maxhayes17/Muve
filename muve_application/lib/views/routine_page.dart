@@ -7,14 +7,11 @@ import 'package:muve_application/widgets/track.dart';
 import 'package:provider/provider.dart';
 
 class RoutinePage extends StatelessWidget {
-  final int id;
-
-  const RoutinePage({super.key, required this.id});
+  const RoutinePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final routineVM = context.read<RoutineViewModel>();
-    final routine = routineVM.getRoutineById(id);
+    final routineVM = context.watch<RoutineViewModel>();
 
     return Scaffold(
         appBar: AppBar(
@@ -46,12 +43,12 @@ class RoutinePage extends StatelessWidget {
                         crossAxisAlignment:
                             CrossAxisAlignment.start, // Align text to the left
                         children: [
-                          Text(routine!.name,
+                          Text(routineVM.currentRoutine!.name,
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20)),
-                          Text(routine.duration,
+                          Text(routineVM.currentRoutine!.duration,
                               style: const TextStyle(fontSize: 16)),
-                          Text(routine.author,
+                          Text(routineVM.currentRoutine!.author,
                               style: const TextStyle(fontSize: 16)),
                         ],
                       ),
@@ -81,9 +78,10 @@ class RoutinePage extends StatelessWidget {
                 height: 500,
                 // color: Colors.red,
                 child: ListView.builder(
-                    itemCount: routine.exercises.length,
+                    itemCount: routineVM.currentRoutine!.exercises.length,
                     itemBuilder: (context, index) {
-                      final exercise = routine.exercises[index];
+                      final exercise =
+                          routineVM.currentRoutine!.exercises[index];
                       return Padding(
                           padding: const EdgeInsets.only(left: 20, bottom: 20),
                           child: ExerciseCard(exercise: exercise));
@@ -94,9 +92,9 @@ class RoutinePage extends StatelessWidget {
                 // color: Colors.blue,
                 height: 500,
                 child: ListView.builder(
-                    itemCount: routine.tracks.length,
+                    itemCount: routineVM.currentRoutine!.tracks.length,
                     itemBuilder: (context, index) {
-                      final track = routine.tracks[index];
+                      final track = routineVM.currentRoutine!.tracks[index];
                       return Padding(
                           padding: const EdgeInsets.only(),
                           child: TrackElement(

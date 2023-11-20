@@ -13,14 +13,16 @@ class ComposeViewModel with ChangeNotifier {
   final db = FirebaseFirestore.instance;
 
   Routine? _newRoutine;
-  List<Track> _trackSearchResults = [];
-
-  List<Track>? get trackSearchResults => _trackSearchResults;
   Routine? get newRoutine => _newRoutine;
+
+  List<Track> _trackSearchResults = [];
+  List<Track>? get trackSearchResults => _trackSearchResults;
+
+  late int routineCount = totalRoutines;
 
   void createRoutine(User? user) {
     _newRoutine = Routine(
-      id: numOfRoutines() + 1,
+      id: routineCount + 1,
       name: '',
       duration: '00:00',
       author: user!.username,
@@ -89,7 +91,7 @@ class ComposeViewModel with ChangeNotifier {
 
   void saveRoutine(User? user) async {
     for (var e in _newRoutine!.exercises) {
-      _newRoutine!.tags.add(e.name!.toLowerCase());
+      _newRoutine?.tags.add(e.name!.toLowerCase());
     }
     routines.add(_newRoutine!);
     user?.routines?.add(_newRoutine!);
@@ -107,6 +109,7 @@ class ComposeViewModel with ChangeNotifier {
     await docRef.set(_newRoutine!);
 
     // Reset _newRoutine
+    routineCount++;
     createRoutine(user);
   }
 

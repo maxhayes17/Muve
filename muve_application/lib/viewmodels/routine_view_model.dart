@@ -32,7 +32,14 @@ class RoutineViewModel with ChangeNotifier {
   }
 
   //Firebase test of getting a routine not used
-  late Routine? _currentRoutine;
+  late Routine? _currentRoutine = Routine(
+      id: 0,
+      name: "name",
+      duration: "duration",
+      author: "author",
+      tags: [],
+      tracks: [],
+      exercises: []);
   Routine? get currentRoutine => _currentRoutine;
 
   void setRoutineById(int id) async {
@@ -46,10 +53,8 @@ class RoutineViewModel with ChangeNotifier {
     final routine = docSnap.data();
     if (routine != null) {
       _currentRoutine = routine;
-    } else {
-      _currentRoutine = null;
+      notifyListeners();
     }
-    notifyListeners();
   } //end Firebase get routine test
 
   Routine? getRoutineById(int id) {

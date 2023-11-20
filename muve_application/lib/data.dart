@@ -32,6 +32,8 @@ final List<Track> tracks = [
   Track(id: 6,name: 'Song 6',artist: 'artist',duration: '3:00',picturePath: ''),
 ];
 
+int totalRoutines = routines.length;
+
 final List<Routine> routines = [
   Routine(id: 1,name: 'Routine 1',duration: '45:00',author: 'jeremy',tags:tags, exercises: exercises,tracks: tracks),
   Routine(id: 2,name: 'Routine 2',duration: '30:00',author: 'jeremy',tags: tags.sublist(0,3), exercises: exercises.sublist(0, 3),tracks: tracks.sublist(0, 4)),
@@ -48,8 +50,13 @@ final List<Routine> routines = [
 ];
 
 final List<User> users = [
-  User(id: 1,email: 'jeremy@muve.com',username: 'jeremy',password: 'pw',routines: routines.sublist(0,3)),
-  User(id: 2,email: 'max@muve.com',username: 'max',password: 'pw',routines: routines.sublist(3,6)),
-  User(id: 3,email: 'ethan@muve.com',username: 'ethan',password: 'pw',routines: routines.sublist(6,9)),
-  User(id: 4,email: 'user@test.com',username: 'user',password: 'test',routines: routines.sublist(9,12)),
+  User(id: 1,email: 'jeremy@muve.com',username: 'jeremy',password: 'pw',routines: []),
+  User(id: 2,email: 'max@muve.com',username: 'max',password: 'pw',routines: []),
+  User(id: 3,email: 'ethan@muve.com',username: 'ethan',password: 'pw',routines:[] ),
+  User(id: 4,email: 'user@test.com',username: 'user',password: 'test',routines:[] ),
 ];
+
+// routines.sublist(0,3)
+// routines.sublist(3,6)
+// routines.sublist(6,9)
+// routines.sublist(9,12)

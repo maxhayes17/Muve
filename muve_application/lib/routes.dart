@@ -38,9 +38,6 @@ GoRouter generateRouter() {
         builder: (context, state) => const AddExercisePage()),
     GoRoute(
         path: '/add_music', builder: (context, state) => const AddMusicPage()),
-    GoRoute(
-        path: '/routine/:id',
-        builder: (context, state) =>
-            RoutinePage(id: int.parse(state.pathParameters['id']!)))
+    GoRoute(path: '/routine', builder: (context, state) => RoutinePage())
   ]);
 }

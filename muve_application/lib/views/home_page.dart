@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userVM = context.read<UserViewModel>();
+    final userVM = context.watch<UserViewModel>();
 
     return SafeArea(
         child: Padding(
