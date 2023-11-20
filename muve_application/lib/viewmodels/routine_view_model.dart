@@ -31,6 +31,24 @@ class RoutineViewModel with ChangeNotifier {
     }).then((value) => notifyListeners());
   }
 
+
+  void searchRoutineByName(String name) async {
+    _routineSearchResults.clear();
+    db
+        .collection("routines")
+        .where("name", isEqualTo: name)
+        .withConverter(
+          fromFirestore: Routine.fromFirestore,
+          toFirestore: (Routine routine, _) => routine.toFirestore(),
+        )
+        .get()
+        .then((querySnapShot) {
+      for (var docSnapShot in querySnapShot.docs) {
+        _routineSearchResults.add(docSnapShot.data());
+      }
+    }).then((value) => notifyListeners());
+  }
+
   //Firebase test of getting a routine not used
   late Routine? _currentRoutine = Routine(
       id: 0,
