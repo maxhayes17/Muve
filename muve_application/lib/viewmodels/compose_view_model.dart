@@ -25,7 +25,7 @@ class ComposeViewModel with ChangeNotifier {
       id: routineCount + 1,
       name: '',
       duration: '00:00',
-      author: user!.username,
+      author: user?.username ?? "",
       tags: [],
       exercises: [
         Exercise(id: 1, sets: [ExerciseSet(id: 1)])

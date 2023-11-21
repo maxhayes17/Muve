@@ -134,7 +134,7 @@ class ComposePage extends StatelessWidget {
                               inputDecorationTheme: InputDecorationTheme(border: InputBorder.none),
                               dropdownMenuEntries: const [
                                 DropdownMenuEntry(value: 'Equipment Required', label: 'Required'),
-                                DropdownMenuEntry(value: 'Equiptment Not Required', label: 'Not Required'),
+                                DropdownMenuEntry(value: 'Equipment Not Required', label: 'Not Required'),
                               ], 
                               onSelected: (String? value) {
                                 if (value != null){

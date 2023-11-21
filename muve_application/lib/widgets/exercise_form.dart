@@ -18,7 +18,7 @@ class _ExerciseFormState extends State<ExerciseForm> {
   @override
   Widget build(BuildContext context) {
     final composeVM = context.watch<ComposeViewModel>();
-    Exercise? exercise = composeVM.newRoutine?.exercises?[widget.index];
+    Exercise? exercise = composeVM.newRoutine?.exercises[widget.index];
 
     return Container(
       padding: const EdgeInsets.all(20),

@@ -115,8 +115,8 @@ class ExplorePage extends StatelessWidget {
                               label: Text("Equipment"),
                               inputDecorationTheme: InputDecorationTheme(border: InputBorder.none),
                               dropdownMenuEntries: const [
-                                DropdownMenuEntry(value: 'Equiptment Required', label: 'Required'),
-                                DropdownMenuEntry(value: 'Equiptment Not Required', label: 'Not Required'),
+                                DropdownMenuEntry(value: 'Equipment Required', label: 'Required'),
+                                DropdownMenuEntry(value: 'Equipment Not Required', label: 'Not Required'),
                               ], 
                               onSelected: (String? value) {
                                 if (value != null){
@@ -130,7 +130,7 @@ class ExplorePage extends StatelessWidget {
                 ),
             ),
             routineVM.routineSearchResults.isNotEmpty 
-            ? Text("${count} Results",
+            ? Text("${count} ${count == 1 ? 'Result' : 'Results'}",
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)
             ) : SizedBox(),
             SizedBox(height: 12,),

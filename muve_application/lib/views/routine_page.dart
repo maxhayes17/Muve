@@ -43,28 +43,58 @@ class RoutinePage extends StatelessWidget {
                         crossAxisAlignment:
                             CrossAxisAlignment.start, // Align text to the left
                         children: [
-                          Text(routineVM.currentRoutine!.name,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20)),
-                          Text(routineVM.currentRoutine!.duration,
-                              style: const TextStyle(fontSize: 16)),
+                          Container( 
+                            width: 240,
+                            child:
+                              Row(children: [
+                                Text(routineVM.currentRoutine!.name,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold, fontSize: 20)
+                                ),
+                                // SizedBox(width: 20,),
+                                Spacer(),
+                                IconButton(
+                                  onPressed: () => context.push(routes.libraryPath),
+                                  icon: const Icon(Icons.add_circle_outline_rounded),
+                                  tooltip: "Add",
+                                ),
+                                IconButton(
+                                  onPressed: () => context.push(routes.sharePath),
+                                  icon: const Icon(Icons.send),
+                                  tooltip: "Share",
+                                ),
+                              ],
+                            ),
+                          ),
                           Text(routineVM.currentRoutine!.author,
                               style: const TextStyle(fontSize: 16)),
+                          SizedBox(height: 10,),
+                          Container(
+                            height: 45,
+                            width: 240,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              shrinkWrap: true,
+                              itemCount: routineVM.currentRoutine!.tags.length,
+                              itemBuilder: (context, index){
+                                final tag = routineVM.currentRoutine!.tags[index];
+                                return Padding(
+                                  padding: EdgeInsets.only(right: 10),
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    padding: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      color: Colors.blueGrey[700],
+                                      borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    child: Text('${tag}', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),)
+                                  ),
+                                );
+                              }
+                              
+                            )
+                          ),
                         ],
-                      ),
-                      // const SizedBox(
-                      //   width: 20,
-                      // ),
-                      const Spacer(),
-                      IconButton(
-                        onPressed: () => context.push(routes.libraryPath),
-                        icon: const Icon(Icons.add_circle_outline_rounded),
-                        tooltip: "Add",
-                      ),
-                      IconButton(
-                        onPressed: () => context.push(routes.sharePath),
-                        icon: const Icon(Icons.send),
-                        tooltip: "Share",
                       ),
                     ],
                   ),

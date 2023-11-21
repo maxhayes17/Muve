@@ -32,7 +32,7 @@ class VerticalRoutineElement extends StatelessWidget {
                   Text(routine!.name,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 16)),
-                  Text(routine!.duration),
+                  // Text(routine!.duration),
                   Text(routine!.author),
                 ],
               ),
