@@ -16,7 +16,7 @@ const addMusicPath = '/add_music';
 const routinePath = '/routine/';
 
 GoRouter generateRouter() {
-  return GoRouter(initialLocation: '/compose', routes: [
+  return GoRouter(initialLocation: '/login', routes: [
     GoRoute(path: '/login', builder: (context, state) => const LoginPage()),
     GoRoute(
         path: '/home',
