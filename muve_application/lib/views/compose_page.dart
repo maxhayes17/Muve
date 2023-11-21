@@ -153,32 +153,41 @@ class ComposePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children:[
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    height: 50,
-                    child: FilledButton(
-                      style: FilledButton.styleFrom(backgroundColor: Colors.blueGrey[700]),
-                      onPressed: () => context.push(routes.addExercisePath),
-                      child: const Text(
-                        "Add Exercises",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                      ),
+                  GestureDetector(
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      padding: EdgeInsets.only(top:20, bottom: 20),
+                      decoration: BoxDecoration(
+                        color: Colors.blueGrey[700],
+                        borderRadius: BorderRadius.circular(15)
+                        ),
+                        child: const Text(
+                          "Add Exercises",
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
+                        ),
                     ),
+                    onTap: () => context.push(routes.addExercisePath),
                   ),
-                  const SizedBox(height: 32,),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    height: 50,
-                    child: FilledButton(
-                      style: FilledButton.styleFrom(backgroundColor: Colors.blueGrey[700]),
-                      onPressed: () => context.push(routes.addMusicPath),
-                      child: const Text(
-                        "Add Music",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                      ),
+                  const SizedBox(height: 20,),
+                  GestureDetector(
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      padding: EdgeInsets.only(top:20, bottom: 20),
+                      decoration: BoxDecoration(
+                        color: Colors.blueGrey[700],
+                        borderRadius: BorderRadius.circular(15)
+                        ),
+                        child: const Text(
+                          "Add Music",
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
+                        ),
+                      // ),
                     ),
+                    onTap: () => context.push(routes.addMusicPath),
                   ),
-                  SizedBox(height: 72,),
+                  SizedBox(height: 60,),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.8,
                     height: 70,
