@@ -24,13 +24,6 @@ class LoginPage extends StatelessWidget {
                     fontWeight: FontWeight.w800,
                   ),
                 ),
-                // Text("Muvin'",
-                //   style: TextStyle(
-                //     fontSize: 80,
-                //     fontWeight: FontWeight.w800,
-                //   ),
-                // ),
-                // Container(child:Image.asset('assets/Muvin.png') ,),
                 Image.asset('assets/Muvin.png'),
             ],
             )

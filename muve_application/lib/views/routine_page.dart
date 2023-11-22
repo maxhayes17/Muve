@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:muve_application/routes.dart' as routes;
 import 'package:muve_application/viewmodels/routine_view_model.dart';
+import 'package:muve_application/viewmodels/user_view_model.dart';
 import 'package:muve_application/widgets/exercise.dart';
 import 'package:muve_application/widgets/track.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +13,8 @@ class RoutinePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final routineVM = context.watch<RoutineViewModel>();
+    final userVM = context.watch<UserViewModel>();
+
 
     return Scaffold(
         appBar: AppBar(
@@ -24,18 +27,26 @@ class RoutinePage extends StatelessWidget {
                 height: MediaQuery.of(context).size.height / 5,
                 // color: Colors.red,
                 decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10))),
+                    color: Colors.black87,
+                    // borderRadius: const BorderRadius.only(
+                    //     bottomLeft: Radius.circular(10),
+                    //     bottomRight: Radius.circular(10))
+                  ),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Row(
                     children: [
                       Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(7)),
+                          // color: Colors.blueGrey,
+                        ),
                         width: 128,
                         height: 128,
-                        color: Colors.blueGrey,
+                        child: routineVM.currentRoutine!.picturePath != null
+                        && routineVM.currentRoutine!.picturePath!.isNotEmpty
+                          ? Image.asset('assets/${routineVM.currentRoutine!.picturePath}')
+                          : Image.asset('assets/Muve_routine_logo.png'),
                       ),
                       const SizedBox(width: 20),
                       Column(
@@ -49,25 +60,25 @@ class RoutinePage extends StatelessWidget {
                               Row(children: [
                                 Text(routineVM.currentRoutine!.name,
                                   style: const TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 20)
+                                      fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)
                                 ),
                                 // SizedBox(width: 20,),
                                 Spacer(),
                                 IconButton(
                                   onPressed: () => context.push(routes.libraryPath),
-                                  icon: const Icon(Icons.add_circle_outline_rounded),
+                                  icon: const Icon(Icons.add_circle, color: Colors.orange),
                                   tooltip: "Add",
                                 ),
                                 IconButton(
                                   onPressed: () => context.push(routes.sharePath),
-                                  icon: const Icon(Icons.send),
+                                  icon: const Icon(Icons.send, color: Colors.white),
                                   tooltip: "Share",
                                 ),
                               ],
                             ),
                           ),
                           Text(routineVM.currentRoutine!.author,
-                              style: const TextStyle(fontSize: 16)),
+                              style: const TextStyle(fontSize: 18, color: Colors.white70)),
                           SizedBox(height: 10,),
                           Container(
                             height: 45,
@@ -84,14 +95,13 @@ class RoutinePage extends StatelessWidget {
                                     alignment: Alignment.center,
                                     padding: EdgeInsets.all(10),
                                     decoration: BoxDecoration(
-                                      color: Colors.blueGrey[700],
+                                      color: Colors.orange[800],
                                       borderRadius: BorderRadius.circular(10)
                                     ),
                                     child: Text('${tag}', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),)
                                   ),
                                 );
-                              }
-                              
+                              } 
                             )
                           ),
                         ],

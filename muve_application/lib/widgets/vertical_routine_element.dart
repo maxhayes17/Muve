@@ -22,7 +22,14 @@ class VerticalRoutineElement extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.height / 12,
                 height: MediaQuery.of(context).size.height / 12,
-                color: Colors.blueGrey,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(4)),
+                  // color: Colors.blueGrey,
+                ),
+                child: routine!.picturePath != null
+                        && routine!.picturePath!.isNotEmpty
+                          ? Image.asset('assets/${routine!.picturePath}')
+                          : Image.asset('assets/Muve_routine_logo.png'),
               ),
               const SizedBox(width: 10),
               Column(

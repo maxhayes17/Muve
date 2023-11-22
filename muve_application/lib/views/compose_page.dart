@@ -39,7 +39,14 @@ class ComposePage extends StatelessWidget {
                   Container(
                     width: 128,
                     height: 128,
-                    color: Colors.blueGrey,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(7)),
+                      // color: Colors.blueGrey,
+                    ),
+                    child: composeVM.newRoutine!.picturePath != null
+                        && composeVM.newRoutine!.picturePath!.isNotEmpty
+                          ? Image.asset('assets/${composeVM.newRoutine!.picturePath}')
+                          : Image.asset('assets/Muve_routine_logo.png'),
                   ),
                   const SizedBox(width: 20),
                   Column(
@@ -156,7 +163,7 @@ class ComposePage extends StatelessWidget {
                   GestureDetector(
                     child: Container(
                       alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width * 0.8,
+                      width: MediaQuery.of(context).size.width * 0.7,
                       padding: EdgeInsets.only(top:20, bottom: 20),
                       decoration: BoxDecoration(
                         color: Colors.blueGrey[700],
@@ -173,7 +180,7 @@ class ComposePage extends StatelessWidget {
                   GestureDetector(
                     child: Container(
                       alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width * 0.8,
+                      width: MediaQuery.of(context).size.width * 0.7,
                       padding: EdgeInsets.only(top:20, bottom: 20),
                       decoration: BoxDecoration(
                         color: Colors.blueGrey[700],

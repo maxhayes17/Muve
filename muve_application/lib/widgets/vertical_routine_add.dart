@@ -15,7 +15,10 @@ class VerticalRoutineAdd extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.height / 12,
                 height: MediaQuery.of(context).size.height / 12,
-                color: Colors.blueGrey,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(3)),
+                    color: Colors.blueGrey,
+                  ),
               ),
               const SizedBox(width: 10),
               const Column(
