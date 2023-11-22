@@ -109,40 +109,44 @@ class RoutinePage extends StatelessWidget {
                     ],
                   ),
                 )),
-            const SizedBox(
-              height: 20,
+            Expanded(child:
+              Row(children: [
+                Container(
+                  color: Colors.black45,
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  // height: 500,
+                  padding: EdgeInsets.only(top:20),
+                  // color: Colors.red,
+                  child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: routineVM.currentRoutine!.exercises.length,
+                      itemBuilder: (context, index) {
+                        final exercise =
+                            routineVM.currentRoutine!.exercises[index];
+                        return Padding(
+                            padding: const EdgeInsets.only(left: 20, bottom: 20, right: 20),
+                            child: ExerciseCard(exercise: exercise));
+                      }),
+                ),
+                Container(
+                  color: Colors.black38,
+                  width: MediaQuery.of(context).size.width * 0.25,
+                  // color: Colors.blue,
+                  padding: EdgeInsets.only(top:20),
+                  child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: routineVM.currentRoutine!.tracks.length,
+                      itemBuilder: (context, index) {
+                        final track = routineVM.currentRoutine!.tracks[index];
+                        return Padding(
+                            padding: const EdgeInsets.only(),
+                            child: TrackElement(
+                              track: track,
+                            ));
+                      }),
+                ),
+              ]),
             ),
-            Row(children: [
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.7,
-                height: 500,
-                // color: Colors.red,
-                child: ListView.builder(
-                    itemCount: routineVM.currentRoutine!.exercises.length,
-                    itemBuilder: (context, index) {
-                      final exercise =
-                          routineVM.currentRoutine!.exercises[index];
-                      return Padding(
-                          padding: const EdgeInsets.only(left: 20, bottom: 20),
-                          child: ExerciseCard(exercise: exercise));
-                    }),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.3,
-                // color: Colors.blue,
-                height: 500,
-                child: ListView.builder(
-                    itemCount: routineVM.currentRoutine!.tracks.length,
-                    itemBuilder: (context, index) {
-                      final track = routineVM.currentRoutine!.tracks[index];
-                      return Padding(
-                          padding: const EdgeInsets.only(),
-                          child: TrackElement(
-                            track: track,
-                          ));
-                    }),
-              ),
-            ]),
           ]),
         ));
   }

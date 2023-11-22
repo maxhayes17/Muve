@@ -88,32 +88,34 @@ class AddMusicPage extends StatelessWidget {
                     : const SizedBox(),
               ]),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            // const SizedBox(
+            //   height: 20,
+            // ),
             Expanded(
               child: Row(children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  height: 500,
-                  // color: Colors.red,
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  color: Colors.black45,
+                  padding: EdgeInsets.only(top:20),
                   child: ListView.builder(
-                      shrinkWrap: true,
+                      // shrinkWrap: true,
                       itemCount: composeVM.newRoutine?.exercises.length,
                       itemBuilder: (context, index) {
                         final exercise = composeVM.newRoutine?.exercises[index];
                         return Padding(
                             padding:
-                                const EdgeInsets.only(left: 20, bottom: 20),
+                                const EdgeInsets.only(left: 20, bottom: 20, right: 20),
                             child: ExerciseCard(exercise: exercise));
                       }),
                 ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.3,
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.25,
+                  color: Colors.black38,
                   // color: Colors.blue,
-                  height: 500,
+                  // height: 500,
+                  padding: EdgeInsets.only(top:20),
                   child: ListView.builder(
-                      shrinkWrap: true,
+                      // shrinkWrap: true,
                       itemCount: composeVM.newRoutine?.tracks.length,
                       itemBuilder: (context, index) {
                         final track = composeVM.newRoutine?.tracks[index];

@@ -51,7 +51,7 @@ class TrackElement extends StatelessWidget {
             // const SizedBox(width: 10),
             Text('${track?.name}',
                 style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 16,)),
             Text('${track?.artist}'),
           ],
         ),
