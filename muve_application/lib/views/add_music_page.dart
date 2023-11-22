@@ -45,8 +45,8 @@ class AddMusicPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)),
                   child: Row(
                     children: [
-                      Icon(Icons.search, color: Colors.white,),
-                      SizedBox(width: 10,),
+                      const Icon(Icons.search, color: Colors.white,),
+                      const SizedBox(width: 10,),
                       Expanded(
                         child: TextField(
                           onSubmitted: (value) {
@@ -96,7 +96,7 @@ class AddMusicPage extends StatelessWidget {
                 Container(
                   width: MediaQuery.of(context).size.width * 0.75,
                   color: Colors.black45,
-                  padding: EdgeInsets.only(top:20),
+                  padding: const EdgeInsets.only(top:20),
                   child: ListView.builder(
                       // shrinkWrap: true,
                       itemCount: composeVM.newRoutine?.exercises.length,
@@ -113,7 +113,7 @@ class AddMusicPage extends StatelessWidget {
                   color: Colors.black38,
                   // color: Colors.blue,
                   // height: 500,
-                  padding: EdgeInsets.only(top:20),
+                  padding: const EdgeInsets.only(top:20),
                   child: ListView.builder(
                       // shrinkWrap: true,
                       itemCount: composeVM.newRoutine?.tracks.length,

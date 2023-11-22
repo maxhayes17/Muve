@@ -39,7 +39,7 @@ class ComposePage extends StatelessWidget {
                   Container(
                     width: 128,
                     height: 128,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(7)),
                       // color: Colors.blueGrey,
                     ),
@@ -56,7 +56,7 @@ class ComposePage extends StatelessWidget {
                     children: [
                       Container(
                         width: 128,
-                        padding: EdgeInsets.only(top: 24),
+                        padding: const EdgeInsets.only(top: 24),
                         child: TextFormField(
                           decoration: const InputDecoration(hintText: "Name",),
                           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -70,12 +70,12 @@ class ComposePage extends StatelessWidget {
                 ],
               ),
             ),
-            Divider(),
-            SizedBox(height: 12,),
+            const Divider(),
+            const SizedBox(height: 12,),
             const Text("Add tags",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)
             ),
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.9,
               height: 100,
               // color: Colors.grey[200],
@@ -91,11 +91,11 @@ class ComposePage extends StatelessWidget {
                             decoration: BoxDecoration(
                               color: Colors.grey[300],
                               borderRadius: BorderRadius.circular(10)),
-                            padding: EdgeInsets.only(left:15),
+                            padding: const EdgeInsets.only(left:15),
                             child: DropdownMenu(
                               width: 126,
-                              inputDecorationTheme: InputDecorationTheme(border: InputBorder.none),
-                              label: Text("Duration"),
+                              inputDecorationTheme: const InputDecorationTheme(border: InputBorder.none),
+                              label: const Text("Duration"),
                               dropdownMenuEntries: const [
                                 DropdownMenuEntry(value: '0-30min', label: '0-30min'),
                                 DropdownMenuEntry(value: '1-2hr', label: '1-2hr'),
@@ -108,16 +108,16 @@ class ComposePage extends StatelessWidget {
                               },
                             ),
                           ),
-                          SizedBox(width: 10,),
+                          const SizedBox(width: 10,),
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.grey[300],
                               borderRadius: BorderRadius.circular(10)),
-                            padding: EdgeInsets.only(left:15),
+                            padding: const EdgeInsets.only(left:15),
                             child: DropdownMenu(
                               width: 132,
-                              label: Text("Skill level"),
-                              inputDecorationTheme: InputDecorationTheme(border: InputBorder.none),
+                              label: const Text("Skill level"),
+                              inputDecorationTheme: const InputDecorationTheme(border: InputBorder.none),
                               dropdownMenuEntries: const [
                                 DropdownMenuEntry(value: 'Beginner', label: 'Beginner'),
                                 DropdownMenuEntry(value: 'Advanced', label: 'Advanced'),
@@ -129,16 +129,16 @@ class ComposePage extends StatelessWidget {
                               },
                             ),
                           ),
-                          SizedBox(width: 10,),
+                          const SizedBox(width: 10,),
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.grey[300],
                               borderRadius: BorderRadius.circular(10)),
-                            padding: EdgeInsets.only(left:15),
+                            padding: const EdgeInsets.only(left:15),
                             child: DropdownMenu(
                               width: 146,
-                              label: Text("Equipment"),
-                              inputDecorationTheme: InputDecorationTheme(border: InputBorder.none),
+                              label: const Text("Equipment"),
+                              inputDecorationTheme: const InputDecorationTheme(border: InputBorder.none),
                               dropdownMenuEntries: const [
                                 DropdownMenuEntry(value: 'Equipment Required', label: 'Required'),
                                 DropdownMenuEntry(value: 'Equipment Not Required', label: 'Not Required'),
@@ -154,7 +154,7 @@ class ComposePage extends StatelessWidget {
                       ),
                 ),
               ),
-            Divider(),
+            const Divider(),
             const SizedBox(height: 32,),
             Center(
               child: Column(
@@ -164,7 +164,7 @@ class ComposePage extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.center,
                       width: MediaQuery.of(context).size.width * 0.7,
-                      padding: EdgeInsets.only(top:20, bottom: 20),
+                      padding: const EdgeInsets.only(top:20, bottom: 20),
                       decoration: BoxDecoration(
                         color: Colors.blueGrey[700],
                         borderRadius: BorderRadius.circular(15)
@@ -181,7 +181,7 @@ class ComposePage extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.center,
                       width: MediaQuery.of(context).size.width * 0.7,
-                      padding: EdgeInsets.only(top:20, bottom: 20),
+                      padding: const EdgeInsets.only(top:20, bottom: 20),
                       decoration: BoxDecoration(
                         color: Colors.blueGrey[700],
                         borderRadius: BorderRadius.circular(15)
@@ -194,7 +194,7 @@ class ComposePage extends StatelessWidget {
                     ),
                     onTap: () => context.push(routes.addMusicPath),
                   ),
-                  SizedBox(height: 60,),
+                  const SizedBox(height: 60,),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.8,
                     height: 70,

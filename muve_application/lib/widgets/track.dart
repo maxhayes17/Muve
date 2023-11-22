@@ -43,7 +43,7 @@ class TrackElement extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.height / 12,
               height: MediaQuery.of(context).size.height / 12,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(3)),
                 color: Colors.blueGrey,
                 ),

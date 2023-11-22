@@ -38,6 +38,6 @@ GoRouter generateRouter() {
         builder: (context, state) => const AddExercisePage()),
     GoRoute(
         path: '/add_music', builder: (context, state) => const AddMusicPage()),
-    GoRoute(path: '/routine', builder: (context, state) => RoutinePage())
+    GoRoute(path: '/routine', builder: (context, state) => const RoutinePage())
   ]);
 }
