@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muve_application/viewmodels/explore_view_model.dart';
 import 'package:muve_application/viewmodels/routine_view_model.dart';
 import 'package:muve_application/widgets/vertical_routine_list.dart';
 import 'package:provider/provider.dart';
@@ -8,8 +9,8 @@ class ExplorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final routineVM = context.watch<RoutineViewModel>();
-    final count = routineVM.routineSearchResults.length;
+    final exploreVM = context.watch<ExploreViewModel>();
+    final count = exploreVM.routineSearchResults.length;
 
     return SafeArea(
       child: Padding(
@@ -36,8 +37,8 @@ class ExplorePage extends StatelessWidget {
                     child: TextField(
                       onSubmitted: (value) {
                         if (value.isNotEmpty) {
-                        routineVM.searchRoutineByName(value);
-                        // routineVM.searchRoutineTags(value);
+                        exploreVM.searchRoutineByName(value);
+                        // exploreVM.searchRoutineTags(value);
                         }
                       },
                       style: const TextStyle(color: Colors.white),
@@ -78,7 +79,7 @@ class ExplorePage extends StatelessWidget {
                               ], 
                               onSelected: (String? value) {
                                 if (value != null){
-                                  routineVM.searchRoutineTags(value);
+                                  exploreVM.searchRoutineTags(value);
                                 }
                               },
                             ),
@@ -99,7 +100,7 @@ class ExplorePage extends StatelessWidget {
                               ], 
                               onSelected: (String? value) {
                                 if (value != null){
-                                  routineVM.searchRoutineTags(value);
+                                  exploreVM.searchRoutineTags(value);
                                 }
                               },
                             ),
@@ -120,7 +121,7 @@ class ExplorePage extends StatelessWidget {
                               ], 
                               onSelected: (String? value) {
                                 if (value != null){
-                                  routineVM.searchRoutineTags(value);
+                                  exploreVM.searchRoutineTags(value);
                                 }
                               },
                             ),
@@ -129,13 +130,13 @@ class ExplorePage extends StatelessWidget {
                       ),
                 ),
             ),
-            routineVM.routineSearchResults.isNotEmpty 
+            exploreVM.routineSearchResults.isNotEmpty 
             ? Text("$count ${count == 1 ? 'Result' : 'Results'}",
                 style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold)
             ) : const SizedBox(),
             const SizedBox(height: 12,),
             Expanded(
-              child: VerticalRoutineList(routines: routineVM.routineSearchResults,)
+              child: VerticalRoutineList(routines: exploreVM.routineSearchResults,)
             ),
           ]
         ),
