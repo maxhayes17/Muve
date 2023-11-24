@@ -29,6 +29,18 @@ class UserViewModel with ChangeNotifier {
     return false;
   }
 
+  bool routineInLibrary(int id){
+    if(_user?.routines != null && _user!.routines!.any((routine) => routine.id == id)){
+      return true;
+    }
+    return false;
+  }
+
+  void addRoutineToLibrary(Routine routine){
+    _user!.routines!.add(routine);
+    notifyListeners();
+  }
+
   //load user routines from Firebase after authentication
   void loadUserRoutines() async {
     db
