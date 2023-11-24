@@ -46,34 +46,39 @@ class AddExercisePage extends StatelessWidget {
               const SizedBox(
                 height: 24,
               ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: 50,
-                child: FilledButton(
-                  style: FilledButton.styleFrom(
-                      backgroundColor: Colors.blueGrey[700]),
-                  onPressed: () => composeVM.addExercise(),
-                  child: const Text(
-                    "Add Exercise",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
+              GestureDetector(
+                child: Container(
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  padding: const EdgeInsets.only(top:20, bottom: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.amber[900],
+                    borderRadius: BorderRadius.circular(15)
+                    ),
+                    child: const Text(
+                      "Add Exercise",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
+                    ),
                 ),
+                onTap: () => composeVM.addExercise(),
               ),
-              const SizedBox(
-                height: 24,
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: 50,
-                child: FilledButton(
-                  style: FilledButton.styleFrom(
-                      backgroundColor: Colors.amber[900]),
-                  onPressed: () => context.push(routes.addMusicPath),
-                  child: const Text(
-                    "Add Music",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
+              const SizedBox(height: 20,),
+              GestureDetector(
+                child: Container(
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  padding: const EdgeInsets.only(top:20, bottom: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.blueGrey[700],
+                    borderRadius: BorderRadius.circular(15)
+                    ),
+                    child: const Text(
+                      "Add Music",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
+                    ),
+                  // ),
                 ),
+                onTap: () => context.push(routes.addMusicPath),
               ),
             ],
           ),
