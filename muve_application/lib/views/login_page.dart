@@ -24,6 +24,13 @@ class LoginPage extends StatelessWidget {
                     fontWeight: FontWeight.w800,
                   ),
                 ),
+                // Text("Muvin'",
+                //   style: TextStyle(
+                //     fontSize: 80,
+                //     fontWeight: FontWeight.w800,
+                //   ),
+                // ),
+                // Container(child:Image.asset('assets/Muvin.png') ,),
                 Image.asset('assets/Muvin.png'),
             ],
             )
@@ -40,7 +47,7 @@ class LoginPage extends StatelessWidget {
             child: Container(
               height: MediaQuery.of(context).size.height * (0.6),
               width: MediaQuery.of(context).size.width,
-              color: Colors.blueGrey[900],
+              color: Colors.black87,
               padding: const EdgeInsets.all(50),
               child: const Column(
                 children: [

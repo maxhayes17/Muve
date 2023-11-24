@@ -30,7 +30,7 @@ class RoutinePage extends StatelessWidget {
                 height: MediaQuery.of(context).size.height / 5,
                 // color: Colors.red,
                 decoration: const BoxDecoration(
-                  color: Colors.black87,
+                  color: Colors.black54,
                   // borderRadius: const BorderRadius.only(
                   //     bottomLeft: Radius.circular(10),
                   //     bottomRight: Radius.circular(10))
@@ -140,7 +140,7 @@ class RoutinePage extends StatelessWidget {
             Expanded(
               child: Row(children: [
                 Container(
-                  color: Colors.black45,
+                  color: Colors.black26,
                   width: MediaQuery.of(context).size.width * 0.75,
                   // height: 500,
                   padding: const EdgeInsets.only(top: 20),
@@ -158,7 +158,7 @@ class RoutinePage extends StatelessWidget {
                       }),
                 ),
                 Container(
-                  color: Colors.black38,
+                  color: Colors.black12,
                   width: MediaQuery.of(context).size.width * 0.25,
                   // color: Colors.blue,
                   padding: const EdgeInsets.only(top: 20),

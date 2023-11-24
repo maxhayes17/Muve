@@ -50,7 +50,7 @@ class _LoginFormState extends State<LoginForm> {
                     left: 10, top: 12, bottom: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: Colors.white,
+                  color: Colors.blueGrey[800],
                 ),
                 child: Center(
                     child: Row(
@@ -79,7 +79,7 @@ class _LoginFormState extends State<LoginForm> {
                     left: 10, top: 12, bottom: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: Colors.white,
+                  color: Colors.blueGrey[800],
                 ),
                 child: Center(
                     child: Row(
@@ -115,7 +115,7 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ),
             const SizedBox(
-              height: 50,
+              height: 40,
             ),
             const Text(
               "New user?",

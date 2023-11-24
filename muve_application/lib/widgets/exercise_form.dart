@@ -137,11 +137,12 @@ class _ExerciseFormState extends State<ExerciseForm> {
           children: [
             FilledButton(
                 style: FilledButton.styleFrom(
-                    backgroundColor: Colors.blueGrey[700]),
+                    backgroundColor: Colors.blueGrey[700]
+                    ),
                 onPressed: () {
                   composeVM.addExerciseSet(exercise);
                 },
-                child: const Text("Add Set")),
+                child: const Text("Add Set", style: TextStyle(color: Colors.white),)),
             const Icon(
               Icons.delete_sweep_outlined,
               color: Colors.red,

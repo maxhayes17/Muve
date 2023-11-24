@@ -89,7 +89,7 @@ class ComposePage extends StatelessWidget {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey[300],
+                              color: Colors.grey[800],
                               borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.only(left:15),
                             child: DropdownMenu(
@@ -111,7 +111,7 @@ class ComposePage extends StatelessWidget {
                           const SizedBox(width: 10,),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey[300],
+                              color: Colors.grey[800],
                               borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.only(left:15),
                             child: DropdownMenu(
@@ -132,7 +132,7 @@ class ComposePage extends StatelessWidget {
                           const SizedBox(width: 10,),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey[300],
+                              color: Colors.grey[800],
                               borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.only(left:15),
                             child: DropdownMenu(
@@ -163,7 +163,7 @@ class ComposePage extends StatelessWidget {
                   GestureDetector(
                     child: Container(
                       alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width * 0.7,
+                      width: MediaQuery.of(context).size.width * 0.8,
                       padding: const EdgeInsets.only(top:20, bottom: 20),
                       decoration: BoxDecoration(
                         color: Colors.blueGrey[700],
@@ -180,7 +180,7 @@ class ComposePage extends StatelessWidget {
                   GestureDetector(
                     child: Container(
                       alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width * 0.7,
+                      width: MediaQuery.of(context).size.width * 0.8,
                       padding: const EdgeInsets.only(top:20, bottom: 20),
                       decoration: BoxDecoration(
                         color: Colors.blueGrey[700],
@@ -194,7 +194,7 @@ class ComposePage extends StatelessWidget {
                     ),
                     onTap: () => context.push(routes.addMusicPath),
                   ),
-                  const SizedBox(height: 60,),
+                  const SizedBox(height: 40,),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.8,
                     height: 70,
@@ -206,7 +206,7 @@ class ComposePage extends StatelessWidget {
                       },
                       child: const Text(
                         "Create routine",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),
                       ),
                     ),
                   ),
