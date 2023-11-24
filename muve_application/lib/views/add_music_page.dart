@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:muve_application/models/track_model.dart';
 import 'package:muve_application/viewmodels/compose_view_model.dart';
 import 'package:muve_application/widgets/exercise.dart';
@@ -19,6 +20,8 @@ class AddMusicPage extends StatelessWidget {
     final currentUser = userVM.user;
     final composeVM = context.watch<ComposeViewModel>();
 
+    final _searchController = TextEditingController();
+
     List<Track>? trackSearchResults = composeVM.trackSearchResults;
 
     return Scaffold(
@@ -32,7 +35,7 @@ class AddMusicPage extends StatelessWidget {
               // height: MediaQuery.of(context).size.height / 4,
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                  color: Colors.grey[200],
+                  color: Colors.black54,
                   borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(10),
                       bottomRight: Radius.circular(10))),
@@ -49,6 +52,7 @@ class AddMusicPage extends StatelessWidget {
                       const SizedBox(width: 10,),
                       Expanded(
                         child: TextField(
+                          controller: _searchController,
                           onSubmitted: (value) {
                             if (value.isNotEmpty) {
                             composeVM.searchTracks(value);
@@ -61,6 +65,15 @@ class AddMusicPage extends StatelessWidget {
                               hintStyle: TextStyle(color: Colors.white70),
                               border: InputBorder.none),
                         ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          _searchController.clear();
+                          composeVM.clearSearchResults();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text("Cleared search results")));  
+                        }, 
+                        icon: Icon(Icons.cancel)
                       ),
                     ],
                   ),
@@ -95,7 +108,7 @@ class AddMusicPage extends StatelessWidget {
               child: Row(children: [
                 Container(
                   width: MediaQuery.of(context).size.width * 0.75,
-                  color: Colors.black45,
+                  color: Colors.black26,
                   padding: const EdgeInsets.only(top:20),
                   child: ListView.builder(
                       // shrinkWrap: true,
@@ -110,7 +123,7 @@ class AddMusicPage extends StatelessWidget {
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width * 0.25,
-                  color: Colors.black38,
+                  color: Colors.black12,
                   // color: Colors.blue,
                   // height: 500,
                   padding: const EdgeInsets.only(top:20),
@@ -143,7 +156,7 @@ class AddMusicPage extends StatelessWidget {
                 },
                 child: const Text(
                   "Create routine",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),
                 ),
               ),
             ),

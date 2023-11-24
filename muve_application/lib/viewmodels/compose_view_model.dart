@@ -20,6 +20,7 @@ class ComposeViewModel with ChangeNotifier {
 
   late int routineCount = totalRoutines;
 
+
   void createRoutine(User? user) {
     _newRoutine = Routine(
       id: routineCount + 1,
@@ -130,4 +131,11 @@ class ComposeViewModel with ChangeNotifier {
     _trackSearchResults = results;
     notifyListeners();
   }
+
+  void clearSearchResults(){
+    _trackSearchResults.clear();
+    notifyListeners();
+  }
+
 }
+

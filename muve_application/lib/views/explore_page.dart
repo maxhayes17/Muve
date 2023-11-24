@@ -12,6 +12,8 @@ class ExplorePage extends StatelessWidget {
     final exploreVM = context.watch<ExploreViewModel>();
     final count = exploreVM.routineSearchResults.length;
 
+    final _searchController = TextEditingController();
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.only(left: 32, right: 32),
@@ -35,6 +37,7 @@ class ExplorePage extends StatelessWidget {
                   const SizedBox(width: 10,),
                   Expanded(
                     child: TextField(
+                      controller: _searchController,
                       onSubmitted: (value) {
                         if (value.isNotEmpty) {
                         exploreVM.searchRoutineByName(value);
@@ -47,6 +50,15 @@ class ExplorePage extends StatelessWidget {
                           hintStyle: TextStyle(color: Colors.white70),
                           border: InputBorder.none),
                     ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      _searchController.clear();
+                      exploreVM.clearSearchResults();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("Cleared search results")));  
+                    }, 
+                    icon: Icon(Icons.cancel)
                   ),
                 ],
               ),
@@ -65,7 +77,7 @@ class ExplorePage extends StatelessWidget {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey[300],
+                              color: Colors.grey[800],
                               borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.only(left:15),
                             child: DropdownMenu(
@@ -87,7 +99,7 @@ class ExplorePage extends StatelessWidget {
                           const SizedBox(width: 10,),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey[300],
+                              color: Colors.grey[800],
                               borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.only(left:15),
                             child: DropdownMenu(
@@ -108,7 +120,7 @@ class ExplorePage extends StatelessWidget {
                           const SizedBox(width: 10,),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey[300],
+                              color: Colors.grey[800],
                               borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.only(left:15),
                             child: DropdownMenu(
@@ -125,6 +137,14 @@ class ExplorePage extends StatelessWidget {
                                 }
                               },
                             ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              exploreVM.clearSearchResults();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text("Cleared search results")));  
+                            }, 
+                            icon: Icon(Icons.cancel)
                           ),
                         ]
                       ),

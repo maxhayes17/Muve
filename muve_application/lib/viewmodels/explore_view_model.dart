@@ -10,6 +10,7 @@ class ExploreViewModel with ChangeNotifier {
 
   void clearSearchResults(){
     _routineSearchResults.clear();
+    notifyListeners();
   }
 
     //query Firebase by routine name case-sensitive
