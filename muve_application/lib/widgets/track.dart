@@ -4,6 +4,10 @@ import 'package:muve_application/models/track_model.dart';
 import 'package:muve_application/viewmodels/compose_view_model.dart';
 import 'package:provider/provider.dart';
 
+// Infinite text scroll
+import 'package:marquee/marquee.dart';
+
+
 class TrackElement extends StatelessWidget {
   final Track? track;
 
@@ -37,6 +41,8 @@ class TrackElement extends StatelessWidget {
         );
       },
       child: Container(
+        // color: Colors.red,
+        // width: (MediaQuery.of(context).size.height / 12) + 10,
         padding: const EdgeInsets.only(bottom: 10),
         child: Column(
           children: [
@@ -44,11 +50,15 @@ class TrackElement extends StatelessWidget {
               width: MediaQuery.of(context).size.height / 12,
               height: MediaQuery.of(context).size.height / 12,
               decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(3)),
+                borderRadius: BorderRadius.all(Radius.circular(4)),
                 color: Colors.blueGrey,
                 ),
+                child: track!.picturePath != null
+                        && track!.picturePath!.isNotEmpty
+                          ? Image.network('${track!.picturePath}')
+                          : SizedBox(),
             ),
-            // const SizedBox(width: 10),
+            const SizedBox(width: 10),
             Text('${track?.name}',
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 16,)),

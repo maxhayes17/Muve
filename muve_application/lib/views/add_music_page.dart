@@ -55,7 +55,7 @@ class AddMusicPage extends StatelessWidget {
                           controller: _searchController,
                           onSubmitted: (value) {
                             if (value.isNotEmpty) {
-                            composeVM.searchTracks(value);
+                              composeVM.searchTracks(value);
                             // routineVM.searchRoutineTags(value);
                             }
                           },
