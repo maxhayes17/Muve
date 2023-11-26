@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:muve_application/models/track_model.dart';
 import 'package:muve_application/viewmodels/compose_view_model.dart';
 import 'package:muve_application/widgets/exercise.dart';
@@ -20,7 +19,7 @@ class AddMusicPage extends StatelessWidget {
     final currentUser = userVM.user;
     final composeVM = context.watch<ComposeViewModel>();
 
-    final _searchController = TextEditingController();
+    final searchController = TextEditingController();
 
     List<Track>? trackSearchResults = composeVM.trackSearchResults;
 
@@ -34,9 +33,9 @@ class AddMusicPage extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               // height: MediaQuery.of(context).size.height / 4,
               padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.black54,
-                  borderRadius: const BorderRadius.only(
+                  borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(10),
                       bottomRight: Radius.circular(10))),
               child: Column(children: [
@@ -52,7 +51,7 @@ class AddMusicPage extends StatelessWidget {
                       const SizedBox(width: 10,),
                       Expanded(
                         child: TextField(
-                          controller: _searchController,
+                          controller: searchController,
                           onSubmitted: (value) {
                             if (value.isNotEmpty) {
                               composeVM.searchTracks(value);
@@ -68,12 +67,12 @@ class AddMusicPage extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () {
-                          _searchController.clear();
+                          searchController.clear();
                           composeVM.clearSearchResults();
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(content: Text("Cleared search results")));  
                         }, 
-                        icon: Icon(Icons.cancel)
+                        icon: const Icon(Icons.cancel)
                       ),
                     ],
                   ),

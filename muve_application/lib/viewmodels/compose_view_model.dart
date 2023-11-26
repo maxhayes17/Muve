@@ -17,7 +17,7 @@ class ComposeViewModel with ChangeNotifier {
   Routine? _newRoutine;
   Routine? get newRoutine => _newRoutine;
 
-  List<Track> _trackSearchResults = [];
+  final List<Track> _trackSearchResults = [];
   List<Track>? get trackSearchResults => _trackSearchResults;
 
   late int routineCount = totalRoutines;
@@ -148,8 +148,8 @@ class ComposeViewModel with ChangeNotifier {
     _trackSearchResults.clear();
 
     // API params
-    final apiKey = 'd49f225e7ef13866f25b182c31d02bca';
-    final baseUrl = 'http://ws.audioscrobbler.com/2.0/';
+    const apiKey = 'd49f225e7ef13866f25b182c31d02bca';
+    const baseUrl = 'http://ws.audioscrobbler.com/2.0/';
 
       // Make API request, handle if successful, else print error code
       final response = await http.get(Uri.parse('$baseUrl?method=track.search&track=$value&api_key=$apiKey&format=json'));

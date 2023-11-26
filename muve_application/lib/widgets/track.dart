@@ -5,7 +5,6 @@ import 'package:muve_application/viewmodels/compose_view_model.dart';
 import 'package:provider/provider.dart';
 
 // Infinite text scroll
-import 'package:marquee/marquee.dart';
 
 
 class TrackElement extends StatelessWidget {
@@ -56,7 +55,7 @@ class TrackElement extends StatelessWidget {
                 child: track!.picturePath != null
                         && track!.picturePath!.isNotEmpty
                           ? Image.network('${track!.picturePath}')
-                          : SizedBox(),
+                          : const SizedBox(),
             ),
             const SizedBox(width: 10),
             Text('${track?.name}',

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:muve_application/viewmodels/explore_view_model.dart';
-import 'package:muve_application/viewmodels/routine_view_model.dart';
 import 'package:muve_application/widgets/vertical_routine_list.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +11,7 @@ class ExplorePage extends StatelessWidget {
     final exploreVM = context.watch<ExploreViewModel>();
     final count = exploreVM.routineSearchResults.length;
 
-    final _searchController = TextEditingController();
+    final searchController = TextEditingController();
 
     return SafeArea(
       child: Padding(
@@ -37,7 +36,7 @@ class ExplorePage extends StatelessWidget {
                   const SizedBox(width: 10,),
                   Expanded(
                     child: TextField(
-                      controller: _searchController,
+                      controller: searchController,
                       onSubmitted: (value) {
                         if (value.isNotEmpty) {
                         exploreVM.searchRoutineByName(value);
@@ -53,12 +52,12 @@ class ExplorePage extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {
-                      _searchController.clear();
+                      searchController.clear();
                       exploreVM.clearSearchResults();
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text("Cleared search results")));  
                     }, 
-                    icon: Icon(Icons.cancel)
+                    icon: const Icon(Icons.cancel)
                   ),
                 ],
               ),
@@ -144,7 +143,7 @@ class ExplorePage extends StatelessWidget {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(content: Text("Cleared search results")));  
                             }, 
-                            icon: Icon(Icons.cancel)
+                            icon: const Icon(Icons.cancel)
                           ),
                         ]
                       ),

@@ -197,10 +197,15 @@ class ShareOptions extends StatelessWidget {
           ),
         ),
         ElevatedButton(
-            onPressed: () => routineVM.sendSMS(), child: const Text("SMS")),
+            onPressed: () {
+              routineVM.sendSMS();
+              context.pop();
+            },
+            child: const Text("SMS")),
         ElevatedButton(
             onPressed: () {
               routineVM.saveToClipboard();
+              context.pop();
               ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text("copied to clipboard")));
             },
