@@ -171,8 +171,10 @@ class ComposeViewModel with ChangeNotifier {
               
               final trackData = data['track'];
               // Create track object, add to list of results to be displayed
+              if (trackData != null){
               var track = Track.fromJson(trackData);
               _trackSearchResults.add(track);
+              }
               notifyListeners();
             }
             else{
