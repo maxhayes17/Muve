@@ -50,7 +50,7 @@ class TrackElement extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 12,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(4)),
-                color: Colors.blueGrey,
+                color: Colors.white12,
                 ),
                 child: track!.picturePath != null
                         && track!.picturePath!.isNotEmpty
@@ -58,10 +58,30 @@ class TrackElement extends StatelessWidget {
                           : const SizedBox(),
             ),
             const SizedBox(width: 10),
-            Text('${track?.name}',
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 16,)),
-            Text('${track?.artist}'),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.2,
+              alignment: Alignment.center,
+              child:             
+              Expanded(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Text('${track?.name}',
+                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16,)
+                          ),
+                )
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.2,
+              alignment: Alignment.center,
+              child:             
+              Expanded(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Text('${track?.artist}'),
+                )
+              ),
+            ),
           ],
         ),
       ),
