@@ -165,7 +165,7 @@ class RoutinePage extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final track = routineVM.currentRoutine!.tracks[index];
                         return Padding(
-                            padding: const EdgeInsets.only(),
+                            padding: const EdgeInsets.only(left: 10, right: 10),
                             child: TrackElement(
                               track: track,
                             ));

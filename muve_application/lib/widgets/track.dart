@@ -40,8 +40,8 @@ class TrackElement extends StatelessWidget {
         );
       },
       child: Container(
-        // color: Colors.red,
-        // width: (MediaQuery.of(context).size.height / 12) + 10,
+        width: MediaQuery.of(context).size.width * 0.2,
+        alignment: Alignment.center,
         padding: const EdgeInsets.only(bottom: 10),
         child: Column(
           children: [
@@ -57,30 +57,16 @@ class TrackElement extends StatelessWidget {
                           ? Image.network('${track!.picturePath}')
                           : const SizedBox(),
             ),
-            const SizedBox(width: 10),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.2,
-              alignment: Alignment.center,
-              child:             
-              Expanded(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Text('${track?.name}',
-                            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16,)
-                          ),
-                )
-              ),
+            const SizedBox(height: 4),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Text('${track?.name}',
+                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16,)
+                      ),
             ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.2,
-              alignment: Alignment.center,
-              child:             
-              Expanded(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Text('${track?.artist}'),
-                )
-              ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Text('${track?.artist}'),
             ),
           ],
         ),

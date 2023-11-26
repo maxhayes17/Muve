@@ -35,9 +35,7 @@ class AddMusicPage extends StatelessWidget {
               padding: const EdgeInsets.all(20),
               decoration: const BoxDecoration(
                   color: Colors.black54,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10),
-                      bottomRight: Radius.circular(10))),
+              ),
               child: Column(children: [
                 Container(
                   width: MediaQuery.of(context).size.width * 0.9,
