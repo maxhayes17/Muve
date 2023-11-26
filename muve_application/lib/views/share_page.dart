@@ -35,11 +35,13 @@ class _SharePageState extends State<SharePage> {
             Row(children: [
               const Text("Method",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                Spacer(),
+                // SizedBox(width: 60,),
               IconButton(
                 onPressed: () {
                   routineVM.saveToClipboard();
                   ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("copied to clipboard")));
+                      const SnackBar(content: Text("Copied to clipboard")));
                 },
                 icon: const Icon(Icons.add_link),
                 iconSize: 60,
@@ -47,15 +49,17 @@ class _SharePageState extends State<SharePage> {
               IconButton(
                 onPressed: () => routineVM.sendSMS(),
                 icon: const Icon(Icons.sms_outlined),
-                iconSize: 60,
+                iconSize: 50,
               ),
             ]),
+            Divider(),
             const Text("Select routine",
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
             const SizedBox(
               height: 12,
             ),
-            SingleChildScrollView(
+            Expanded(
+              child: SingleChildScrollView(
                 child: ListView.builder(
                     shrinkWrap: true,
                     physics:
@@ -68,10 +72,14 @@ class _SharePageState extends State<SharePage> {
                             padding: const EdgeInsets.only(top: 10, bottom: 10),
                             decoration: BoxDecoration(
                               borderRadius:
-                                  const BorderRadius.all(Radius.circular(4)),
-                              border: index == selected
-                                  ? Border.all(color: Colors.white)
-                                  : null,
+                                const BorderRadius.all(Radius.circular(4)),
+                              color: index == selected ? Colors.black45 : null,
+                              // border: index == selected
+                              //     ? Border(
+                              //       bottom: BorderSide(color: Colors.white10),
+                              //       top: BorderSide(color: Colors.white10),
+                              //     )
+                              //     : null,
                             ),
                             child: Row(
                               children: [
@@ -114,7 +122,9 @@ class _SharePageState extends State<SharePage> {
                               selected = index;
                             });
                           });
-                    })),
+                    })
+              ),
+            ),
           ],
         ),
       ),
