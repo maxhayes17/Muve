@@ -74,9 +74,10 @@ class ExerciseCard extends StatelessWidget {
                               )
                             )
                           : const SizedBox(),
-                      const SizedBox(
-                        width: 25,
-                      ),
+                      // const SizedBox(
+                      //   width: 25,
+                      // ),
+                      Spacer(),
                       set?.duration != null
                           ? Text(
                               '${set?.duration}',
