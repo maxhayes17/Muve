@@ -27,7 +27,19 @@ class HomePage extends StatelessWidget {
             ),
             Expanded(
               child: VerticalRoutineList(routines: userVM.getRecentRoutines()),
-            )
+            ),
+            const SizedBox(
+              height: 24,
+            ),
+            const Text("Recommended Routines",
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+            const SizedBox(
+              height: 12,
+            ),
+            Expanded(
+                child: VerticalRoutineList(
+              routines: userVM.recommendedRoutines,
+            )),
           ]),
     ));
   }

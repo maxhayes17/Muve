@@ -8,13 +8,15 @@ import "package:muve_application/data.dart";
 
 class UserViewModel with ChangeNotifier {
   final db = FirebaseFirestore.instance;
+
   User? _user;
-
   User? get user => _user;
-
   String? get username => _user?.username;
   int? get id => _user?.id;
   List<Routine>? get routines => _user?.routines;
+
+  final List<Routine> _recommendedRoutines = [];
+  List<Routine> get recommendedRoutines => _recommendedRoutines;
 
   bool authenticateUser(String email, String password) {
     for (var user in users) {
@@ -22,6 +24,7 @@ class UserViewModel with ChangeNotifier {
         _user = user;
         loadUserRoutines();
         updateRoutineCount();
+        recommendRoutines();
         notifyListeners();
         return true;
       }
@@ -29,20 +32,26 @@ class UserViewModel with ChangeNotifier {
     return false;
   }
 
-  bool routineInLibrary(int id){
-    if(_user?.routines != null && _user!.routines!.any((routine) => routine.id == id)){
+  bool routineInLibrary(int id) {
+    if (_user?.routines != null &&
+        _user!.routines!.any((routine) => routine.id == id)) {
       return true;
     }
     return false;
   }
 
-  void addRoutineToLibrary(Routine routine){
-    _user!.routines!.add(routine);
+  //add to the front of the list i.e. most recent
+  //update recommened routines list
+  void addRoutineToLibrary(Routine routine) {
+    // _user!.routines!.add(routine);
+    _user!.routines!.insert(0, routine);
+    recommendRoutines();
     notifyListeners();
   }
 
   //load user routines from Firebase after authentication
   void loadUserRoutines() async {
+    user?.routines?.clear();
     db
         .collection("routines")
         .where("author", isEqualTo: _user!.username)
@@ -85,6 +94,32 @@ class UserViewModel with ChangeNotifier {
       return _user!.routines!;
     }
   }
+
+  //query Firebase for routines NOT by the current user. Keep first 5.
+  void recommendRoutines() async {
+    _recommendedRoutines.clear();
+    db
+        .collection("routines")
+        .where("author", isNotEqualTo: _user!.username)
+        .withConverter(
+          fromFirestore: Routine.fromFirestore,
+          toFirestore: (Routine routine, _) => routine.toFirestore(),
+        )
+        .get()
+        .then((querySnapshot) {
+      var count = 0;
+      for (var docSnapShot in querySnapshot.docs) {
+        //skip routine if already in the user's routines
+        if (routineInLibrary(docSnapShot.data().id)) {
+          continue;
+        }
+        _recommendedRoutines.add(docSnapShot.data());
+        count++;
+        //max five recommended routines
+        if (count == 5) {
+          break;
+        }
+      }
+    }).then((value) => notifyListeners());
+  }
 }//end class
-
-
