@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:form_validator/form_validator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:muve_application/routes.dart' as routes;
 import 'package:muve_application/viewmodels/routine_view_model.dart';
@@ -8,7 +6,6 @@ import 'package:muve_application/viewmodels/user_view_model.dart';
 import 'package:muve_application/widgets/exercise.dart';
 import 'package:muve_application/widgets/track.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class RoutinePage extends StatelessWidget {
   const RoutinePage({super.key});
@@ -70,20 +67,20 @@ class RoutinePage extends StatelessWidget {
                                         color: Colors.white)),
                                 // SizedBox(width: 20,),
                                 const Spacer(),
-                                userVM.routineInLibrary(routineVM.currentRoutine!.id) ?
-                                Icon(Icons.check_circle,
-                                      color: Colors.orange)
-                                :
-                                IconButton(
-                                  onPressed: () {
-                                      userVM.addRoutineToLibrary(routineVM.currentRoutine!);
-                                      context.push(routes.libraryPath);
-                                  },
-                                  icon: const Icon(Icons.add_circle,
-                                      color: Colors.orange),
-                                  tooltip: "Add",
-                                )
-                                ,
+                                userVM.routineInLibrary(
+                                        routineVM.currentRoutine!.id)
+                                    ? const Icon(Icons.check_circle,
+                                        color: Colors.orange)
+                                    : IconButton(
+                                        onPressed: () {
+                                          userVM.addRoutineToLibrary(
+                                              routineVM.currentRoutine!);
+                                          context.push(routes.libraryPath);
+                                        },
+                                        icon: const Icon(Icons.add_circle,
+                                            color: Colors.orange),
+                                        tooltip: "Add",
+                                      ),
                                 IconButton(
                                   onPressed: () {
                                     showDialog(
@@ -187,24 +184,6 @@ class ShareOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final routineVM = context.watch<RoutineViewModel>();
-    final smsController = TextEditingController();
-    final routinePath = routineVM.currentRoutine!.name;
-
-    void sendSMS() async {
-      String phoneNumber = smsController.text;
-      String body = "Check out my routine on Muve!\n$routinePath";
-
-      var url = Uri.parse("sms:$phoneNumber&body=$body");
-      if (await canLaunchUrl(url)) {
-        await launchUrl(url);
-      } else {
-        // throw "coult not launch $url";
-      }
-    }
-
-    void saveToClipboard() async {
-      await Clipboard.setData(ClipboardData(text: routinePath));
-    }
 
     return AlertDialog(
       title: const Text("Share Routine"),
@@ -217,10 +196,11 @@ class ShareOptions extends StatelessWidget {
             style: TextStyle(color: Colors.red),
           ),
         ),
-        ElevatedButton(onPressed: () => sendSMS(), child: const Text("SMS")),
+        ElevatedButton(
+            onPressed: () => routineVM.sendSMS(), child: const Text("SMS")),
         ElevatedButton(
             onPressed: () {
-              saveToClipboard();
+              routineVM.saveToClipboard();
               ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text("copied to clipboard")));
             },
@@ -229,15 +209,3 @@ class ShareOptions extends StatelessWidget {
     );
   }
 }
-
-// Row(
-//         children: [
-//           Expanded(
-//             child: TextFormField(
-//               decoration: const InputDecoration(hintText: "phone number"),
-//               controller: smsController,
-//               validator: ValidationBuilder().phone().build(),
-//             ),
-//           )
-//         ],
-//       )

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:form_validator/form_validator.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:go_router/go_router.dart';
+import 'package:muve_application/viewmodels/routine_view_model.dart';
+import 'package:muve_application/viewmodels/user_view_model.dart';
+import 'package:provider/provider.dart';
 
 class SharePage extends StatefulWidget {
   const SharePage({super.key});
@@ -11,76 +14,113 @@ class SharePage extends StatefulWidget {
 }
 
 class _SharePageState extends State<SharePage> {
-  // final _formKey = GlobalKey<_SharePageState>();
-  final _emailController = TextEditingController();
-  final _smsController = TextEditingController();
-  final _clipController = TextEditingController();
-
-  sendEmail() async {
-    String email = _emailController.text.toLowerCase();
-
-    var url = Uri.parse("mailto:$email");
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      throw "could not launch $url";
-    }
-  }
-
-  sendSMS() async {
-    String phoneNumber = _smsController.text;
-    String body = "Check out my routine on Muve";
-
-    // final Uri smsLaunchUri = Uri(
-    //   scheme: 'sms',
-    //   path: phoneNumber,
-    //   queryParameters: <String, String>{
-    //     'body': Uri.encodeComponent("check our my routine from Muve")
-    //   },
-    // );
-    // launchUrl(smsLaunchUri);
-
-    var url = Uri.parse("sms:$phoneNumber&body=$body");
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      throw "coult not launch $url";
-    }
-  }
-
-  saveToClipboard() async {
-    await Clipboard.setData(ClipboardData(text: _clipController.text));
-  }
+  late int selected = 0;
 
   @override
   Widget build(BuildContext context) {
+    final userVM = context.read<UserViewModel>();
+    final routineVM = context.watch<RoutineViewModel>();
+
     return SafeArea(
-      child: Column(children: [
-        const Text("Share Page"),
-        TextFormField(
-          controller: _emailController,
-          validator: ValidationBuilder().email().build(),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 32, right: 32),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 24,
+            ),
+            const Text("Share routine",
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+            const SizedBox(
+              height: 12,
+            ),
+            Row(children: [
+              const Text("Method",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              IconButton(
+                onPressed: () {
+                  routineVM.saveToClipboard();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("copied to clipboard")));
+                },
+                icon: const Icon(Icons.add_link),
+                iconSize: 60,
+              ),
+              IconButton(
+                onPressed: () => routineVM.sendSMS(),
+                icon: const Icon(Icons.sms_outlined),
+                iconSize: 60,
+              ),
+            ]),
+            const Text("Select routine",
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
+            const SizedBox(
+              height: 12,
+            ),
+            SingleChildScrollView(
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    physics:
+                        const NeverScrollableScrollPhysics(), // Disable ListView scrolling
+                    itemCount: userVM.routines?.length,
+                    itemBuilder: (context, index) {
+                      final routine = userVM.routines?[index];
+                      return GestureDetector(
+                          child: Container(
+                            padding: const EdgeInsets.only(top: 10, bottom: 10),
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(4)),
+                              border: index == selected
+                                  ? Border.all(color: Colors.white)
+                                  : null,
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.height / 12,
+                                  height:
+                                      MediaQuery.of(context).size.height / 12,
+                                  decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(4)),
+                                    // color: Colors.blueGrey,
+                                  ),
+                                  child: routine!.picturePath != null &&
+                                          routine.picturePath!.isNotEmpty
+                                      ? Image.asset(
+                                          'assets/${routine.picturePath}')
+                                      : Image.asset(
+                                          'assets/Muve_routine_logo.png'),
+                                ),
+                                const SizedBox(width: 10),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment
+                                      .start, // Align text to the left
+                                  children: [
+                                    Text(routine.name,
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16)),
+                                    // Text(routine!.duration),
+                                    Text(routine.author),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          onTap: () {
+                            routineVM.setRoutineById(routine.id);
+                            setState(() {
+                              selected = index;
+                            });
+                          });
+                    })),
+          ],
         ),
-        ElevatedButton(onPressed: sendEmail, child: const Text("send email")),
-        const SizedBox(height: 20),
-        TextFormField(
-          controller: _smsController,
-          validator: ValidationBuilder().phone().build(),
-        ),
-        ElevatedButton(onPressed: sendSMS, child: const Text("send sms ")),
-        const SizedBox(height: 20),
-        TextFormField(
-          controller: _clipController,
-        ),
-        ElevatedButton(
-          onPressed: () {
-            saveToClipboard();
-            ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("copied to clipboard")));
-          },
-          child: const Text('save to clipboard'),
-        ),
-      ]),
+      ),
     );
   }
 }

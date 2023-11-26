@@ -1,9 +1,11 @@
 import "package:flutter/material.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
+import "package:flutter/services.dart";
 import "package:muve_application/models/routine_model.dart";
 
 // FAKE DATA
 import "package:muve_application/data.dart";
+import "package:url_launcher/url_launcher.dart";
 
 class RoutineViewModel with ChangeNotifier {
   final db = FirebaseFirestore.instance;
@@ -88,5 +90,25 @@ class RoutineViewModel with ChangeNotifier {
       }
     }
     return null;
+  }
+
+  void sendSMS() async {
+    String routineString =
+        "www.muve.com/users.${_currentRoutine!.author}.${_currentRoutine!.name}";
+    String body = "Check out my routine on Muve!\n$routineString";
+
+    var url = Uri.parse("sms:&body=$body");
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      // throw "coult not launch $url";
+    }
+  }
+
+  void saveToClipboard() async {
+    String routineString =
+        "www.muve.com/users.${_currentRoutine!.author}.${_currentRoutine!.name}";
+    String body = "Check out my routine on Muve!\n$routineString";
+    await Clipboard.setData(ClipboardData(text: body));
   }
 }
