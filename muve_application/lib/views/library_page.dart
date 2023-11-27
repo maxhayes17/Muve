@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:muve_application/viewmodels/user_view_model.dart';
 import 'package:muve_application/widgets/vertical_routine_add.dart';
-import 'package:muve_application/widgets/vertical_routine.dart';
+import 'package:muve_application/widgets/vertical_routine_list.dart';
 import 'package:provider/provider.dart';
 
 class LibraryPage extends StatelessWidget {
@@ -28,7 +28,7 @@ class LibraryPage extends StatelessWidget {
             ),
             const VerticalRoutineAdd(),
             Expanded(
-              child: VerticalRoutine(routines: userVM.routines),
+              child: VerticalRoutineList(routines: userVM.routines),
             )
           ]),
     ));

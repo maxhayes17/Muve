@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:muve_application/models/exercise_model.dart';
 import 'package:go_router/go_router.dart';
-import 'package:muve_application/models/routine_model.dart';
-import 'package:muve_application/models/set_model.dart';
 import 'package:muve_application/viewmodels/compose_view_model.dart';
-import 'package:muve_application/viewmodels/routine_view_model.dart';
 import 'package:muve_application/widgets/exercise_form.dart';
 import 'package:provider/provider.dart';
 import 'package:muve_application/routes.dart' as routes;
@@ -26,10 +23,10 @@ class AddExercisePage extends StatelessWidget {
               Expanded(
                 child: ListView.builder(
                     shrinkWrap: true,
-                    itemCount: composeVM.newRoutine?.exercises?.length,
+                    itemCount: composeVM.newRoutine?.exercises.length,
                     itemBuilder: (context, index) {
                       Exercise? exercise =
-                          composeVM.newRoutine?.exercises?[index];
+                          composeVM.newRoutine?.exercises[index];
                       return Dismissible(
                         key: Key(exercise?.id.toString() as String),
                         onDismissed: (direction) =>
@@ -49,32 +46,46 @@ class AddExercisePage extends StatelessWidget {
               const SizedBox(
                 height: 24,
               ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: 50,
-                child: FilledButton(
-                  style: FilledButton.styleFrom(backgroundColor: Colors.blueGrey[700]),
-                  onPressed: () => composeVM.addExercise(),
-                  child: const Text(
-                    "Add Exercise",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
+              GestureDetector(
+                child: Container(
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  padding: const EdgeInsets.only(top:20, bottom: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.orange[700],
+                    borderRadius: BorderRadius.circular(15)
+                    ),
+                    child: const Text(
+                      "Add Exercise",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold, 
+                        fontSize: 16, 
+                        color: Colors.white
+                      ),
+                    ),
                 ),
+                onTap: () => composeVM.addExercise(),
               ),
-              const SizedBox(
-                height: 24,
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: 50,
-                child: FilledButton(
-                  style: FilledButton.styleFrom(backgroundColor: Colors.amber[900]),
-                  onPressed: () => context.push(routes.addMusicPath),
-                  child: const Text(
-                    "Add Music",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
+              const SizedBox(height: 20,),
+              GestureDetector(
+                child: Container(
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  padding: const EdgeInsets.only(top:20, bottom: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.white12,
+                    borderRadius: BorderRadius.circular(15)
+                    ),
+                    child: const Text(
+                      "Add Music",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold, 
+                        fontSize: 16, 
+                        color: Colors.orangeAccent),
+                    ),
+                  // ),
                 ),
+                onTap: () => context.push(routes.addMusicPath),
               ),
             ],
           ),

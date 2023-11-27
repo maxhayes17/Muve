@@ -50,25 +50,27 @@ class _LoginFormState extends State<LoginForm> {
                     left: 10, top: 12, bottom: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: Colors.white,
+                  color: Colors.white12,
                 ),
                 child: Center(
                     child: Row(
                   children: [
-                    const Icon(Icons.email, color: Colors.grey),
+                    const Icon(Icons.email, color: Colors.white70),
                     const SizedBox(width: 10),
                     Expanded(
                       child: TextFormField(
                         decoration: const InputDecoration.collapsed(
                           hintText: "Email",
-                          hintStyle: TextStyle(color: Colors.grey),
+                          hintStyle: TextStyle(color: Colors.white70),
                         ),
                         controller: _usernameController,
                         validator: ValidationBuilder().email().build(),
                       ),
                     )
                   ],
-                ))),
+                )
+              )
+            ),
             const SizedBox(
               height: 10,
             ),
@@ -79,18 +81,18 @@ class _LoginFormState extends State<LoginForm> {
                     left: 10, top: 12, bottom: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: Colors.white,
+                  color: Colors.white12,
                 ),
                 child: Center(
                     child: Row(
                   children: [
-                    const Icon(Icons.lock, color: Colors.grey),
+                    const Icon(Icons.lock, color:Colors.white70),
                     const SizedBox(width: 10),
                     Expanded(
                       child: TextFormField(
                         decoration: const InputDecoration.collapsed(
                           hintText: "Password",
-                          hintStyle: TextStyle(color: Colors.grey),
+                          hintStyle: TextStyle(color:Colors.white70),
                         ),
                         obscureText: true,
                         controller: _passwordController,
@@ -98,24 +100,26 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                     )
                   ],
-                ))),
+                )
+              )
+            ),
             const SizedBox(
               height: 40,
             ),
             //login button
             GestureDetector(
+              onTap: _login,
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.7,
                 height: 60,
-                decoration: BoxDecoration(color: Colors.amber[900], borderRadius: BorderRadius.all(Radius.circular(10)),),
-                child: Center(child: Text(
+                decoration: BoxDecoration(color: Colors.orange[700], borderRadius: const BorderRadius.all(Radius.circular(10)),),
+                child: const Center(child: Text(
                     "Login",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),),
               ),
-              onTap: _login,
             ),
             const SizedBox(
-              height: 50,
+              height: 40,
             ),
             const Text(
               "New user?",
@@ -125,15 +129,22 @@ class _LoginFormState extends State<LoginForm> {
               height: 10,
             ),
             GestureDetector(
+              onTap: () => context.push(routes.signupPath),
               child: Container(
-                width: MediaQuery.of(context).size.width * 0.6,
+                width: MediaQuery.of(context).size.width * 0.7,
                 height: 60,
-                decoration: BoxDecoration(color: Colors.blueGrey[700], borderRadius: BorderRadius.all(Radius.circular(10)),),
-                child: Center(child: Text(
+                decoration: const BoxDecoration(
+                  color: Colors.white12, 
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                child: const Center(child: Text(
                     "Sign up",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white)),),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold, 
+                      fontSize: 18, 
+                      color: Colors.orangeAccent)),
+                    ),
               ),
-              onTap: _login,
             )
           ],
         ));

@@ -1,23 +1,23 @@
 class Track {
-  final int id;
+  int? id;
   final String name;
   final String artist;
-  final String duration;
-  final String picturePath;
+  String? duration;
+  String? picturePath;
 
   Track(
-      {required this.id,
+      {
+      this.id,
       required this.name,
       required this.artist,
-      required this.duration,
-      required this.picturePath});
+      this.duration,
+      this.picturePath});
 
   factory Track.fromJson(Map<String, dynamic> json) {
     return Track(
-        id: json['id'],
         name: json['name'],
-        artist: json['artist'],
-        duration: json['duration'],
-        picturePath: json['picture_path']);
+        artist: json['artist']['name'],
+        picturePath: json['album']?['image']?.elementAt(2)['#text']
+      );
   }
 }

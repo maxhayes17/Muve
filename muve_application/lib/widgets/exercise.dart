@@ -17,28 +17,28 @@ class ExerciseCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start, 
         children: [
           Container(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 10),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 10),
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
               color: Colors.blueGrey[800]
             ),
           child: Text(
-            '${exercise?.name ?? '' }',
+            exercise?.name ?? '',
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           ),
           Container(
-            padding: EdgeInsets.only(left: 20, right: 10, top:10, bottom: 20),
+            padding: const EdgeInsets.only(left: 20, right: 10, top:10, bottom: 20),
             child: ListView.builder(
               shrinkWrap: true,
               physics:
                   const NeverScrollableScrollPhysics(), // Disable ListView scrolling
-              itemCount: exercise?.sets?.length,
+              itemCount: exercise?.sets.length,
               itemBuilder: (context, index) {
-                final set = exercise?.sets?[index];
+                final set = exercise?.sets[index];
                 return Padding(
-                  padding: EdgeInsets.only(top:5, bottom: 5),
+                  padding: const EdgeInsets.only(top:5, bottom: 5),
                   child: Row(
                     children: [
                       Text(
@@ -54,8 +54,8 @@ class ExerciseCard extends StatelessWidget {
                             text: TextSpan(
                               text: '${set?.weight}', 
                               style: const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
-                              children: [
-                                TextSpan(text: ' lbs', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal))
+                              children: const [
+                                TextSpan(text: ' lbs', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal))
                               ]
                               )
                             )
@@ -68,15 +68,16 @@ class ExerciseCard extends StatelessWidget {
                             text: TextSpan(
                               text: '${set?.repetitions}', 
                               style: const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
-                              children: [
-                                TextSpan(text: ' reps', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.normal,))
+                              children: const [
+                                TextSpan(text: ' reps', style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal,))
                               ]
                               )
                             )
                           : const SizedBox(),
-                      const SizedBox(
-                        width: 25,
-                      ),
+                      // const SizedBox(
+                      //   width: 25,
+                      // ),
+                      Spacer(),
                       set?.duration != null
                           ? Text(
                               '${set?.duration}',

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:muve_application/routes.dart' as routes;
 import 'package:muve_application/models/track_model.dart';
 import 'package:muve_application/viewmodels/compose_view_model.dart';
 import 'package:provider/provider.dart';
+
+// Infinite text scroll
+
 
 class TrackElement extends StatelessWidget {
   final Track? track;
@@ -38,19 +40,34 @@ class TrackElement extends StatelessWidget {
         );
       },
       child: Container(
+        width: MediaQuery.of(context).size.width * 0.2,
+        alignment: Alignment.center,
         padding: const EdgeInsets.only(bottom: 10),
         child: Column(
           children: [
             Container(
               width: MediaQuery.of(context).size.height / 12,
               height: MediaQuery.of(context).size.height / 12,
-              color: Colors.blueGrey,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(4)),
+                color: Colors.white12,
+                ),
+                child: track!.picturePath != null
+                        && track!.picturePath!.isNotEmpty
+                          ? Image.network('${track!.picturePath}')
+                          : const SizedBox(),
             ),
-            // const SizedBox(width: 10),
-            Text('${track?.name}',
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-            Text('${track?.artist}'),
+            const SizedBox(height: 4),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Text('${track?.name}',
+                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16,)
+                      ),
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Text('${track?.artist}'),
+            ),
           ],
         ),
       ),

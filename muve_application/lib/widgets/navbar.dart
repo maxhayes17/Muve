@@ -27,20 +27,40 @@ class _NavScaffoldState extends State<NavScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
-        // backgroundColor: Colors.blueGrey[00],
-        // indicatorColor: Colors.amber[800],
         onDestinationSelected: (int index) {
           setState(() {
             currentPageIndex = index;
           });
         },
         selectedIndex: currentPageIndex,
+        indicatorColor: Colors.white12,
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         destinations: const <Widget>[
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home',),
-          NavigationDestination(icon: Icon(Icons.search), label: 'Explore'),
-          NavigationDestination(icon: Icon(Icons.add_circle), label: 'Compose'),
-          NavigationDestination(icon: Icon(Icons.send), label: 'Share'),
-          NavigationDestination(icon: Icon(Icons.inventory), label: 'Library'),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.home, color: Colors.orangeAccent,),
+            icon: Icon(Icons.home, color: Colors.white,), 
+            label: 'Home',
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.search, color: Colors.orangeAccent,),
+            icon: Icon(Icons.search, color: Colors.white,), 
+            label: 'Explore'
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.add_circle, color: Colors.orangeAccent,),
+            icon: Icon(Icons.add_circle, color: Colors.white,), 
+            label: 'Compose'
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.send, color: Colors.orangeAccent,),
+            icon: Icon(Icons.send, color: Colors.white,),  
+            label: 'Share'
+          ),
+          NavigationDestination(
+            selectedIcon: Icon(Icons.inventory, color: Colors.orangeAccent,),
+            icon: Icon(Icons.inventory, color: Colors.white,),  
+            label: 'Library',
+          ),
         ],
       ),
       body: <Widget>[

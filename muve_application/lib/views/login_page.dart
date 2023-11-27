@@ -9,28 +9,21 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          children:[
       const SizedBox(
         height: 150,
       ),
       Padding(
-          padding: EdgeInsets.symmetric(horizontal: 50),
+          padding: const EdgeInsets.symmetric(horizontal: 50),
            child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Let's get",
+              const Text("Let's get",
                   style: TextStyle(
                     fontSize: 50,
                     fontWeight: FontWeight.w800,
                   ),
                 ),
-                // Text("Muvin'",
-                //   style: TextStyle(
-                //     fontSize: 80,
-                //     fontWeight: FontWeight.w800,
-                //   ),
-                // ),
-                // Container(child:Image.asset('assets/Muvin.png') ,),
                 Image.asset('assets/Muvin.png'),
             ],
             )
@@ -47,9 +40,9 @@ class LoginPage extends StatelessWidget {
             child: Container(
               height: MediaQuery.of(context).size.height * (0.6),
               width: MediaQuery.of(context).size.width,
-              color: Colors.blueGrey[900],
-              padding: EdgeInsets.all(50),
-              child: Column(
+              color: Colors.black87,
+              padding: const EdgeInsets.all(50),
+              child: const Column(
                 children: [
                   SizedBox(height: 20,),
                   LoginForm(),

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "124052908667",
+    "project_id": "muve-c6469",
+    "storage_bucket": "muve-c6469.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124052908667:android:331a293cf82bf99f0d10de",
+        "android_client_info": {
+          "package_name": "com.example.muve_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCalyyZwboWEjmD6Zq00wDkEwdsPBZudPw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SettingsPage extends StatelessWidget{
-  const SettingsPage({super.key});
+class SignupPage extends StatelessWidget{
+  const SignupPage({super.key});
   
   @override
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Settings'),
+          title: const Text('Sign up'),
       ),
       body: SafeArea(
         child: Padding(
@@ -26,7 +26,7 @@ class SettingsPage extends StatelessWidget{
                 padding: EdgeInsets.all(20),
                 child: Column(
                   children: [
-                    const Text("Change your information",
+                    const Text("Start using Muve",
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   ],
                 ),

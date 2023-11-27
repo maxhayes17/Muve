@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:muve_application/models/exercise_model.dart';
-import 'package:muve_application/models/routine_model.dart';
-import 'package:muve_application/models/set_model.dart';
 import 'package:muve_application/models/track_model.dart';
 import 'package:muve_application/viewmodels/compose_view_model.dart';
-import 'package:muve_application/viewmodels/routine_view_model.dart';
 import 'package:muve_application/widgets/exercise.dart';
 import 'package:muve_application/widgets/track.dart';
 import 'package:provider/provider.dart';
@@ -23,8 +19,9 @@ class AddMusicPage extends StatelessWidget {
     final currentUser = userVM.user;
     final composeVM = context.watch<ComposeViewModel>();
 
-    List<Track>? trackSearchResults = composeVM.trackSearchResults;
+    final searchController = TextEditingController();
 
+    List<Track>? trackSearchResults = composeVM.trackSearchResults;
 
     return Scaffold(
         appBar: AppBar(
@@ -33,107 +30,129 @@ class AddMusicPage extends StatelessWidget {
         body: SafeArea(
           child: Column(children: [
             Container(
-                width: MediaQuery.of(context).size.width,
-                // height: MediaQuery.of(context).size.height / 4,
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color:  Colors.grey[200],
-                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      padding: const EdgeInsets.only(left: 15),
-                      decoration: BoxDecoration(
-                          color: Colors.blueGrey[800],
-                          borderRadius: BorderRadius.circular(10)
-                      ),
-                      child: TextField(
-                        onSubmitted: (value) {
-                          if(value.isNotEmpty) {
-                            composeVM.searchTracks(value);
-                          }
-                        },
-                        style: const TextStyle(color: Colors.white),
-                        decoration: const InputDecoration(
-                            hintText: "Search",
-                            hintStyle: TextStyle(color: Colors.white),
-                            border: InputBorder.none
+              width: MediaQuery.of(context).size.width,
+              // height: MediaQuery.of(context).size.height / 4,
+              padding: const EdgeInsets.all(20),
+              decoration: const BoxDecoration(
+                  color: Colors.black54,
+              ),
+              child: Column(children: [
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  padding: const EdgeInsets.only(left: 15),
+                  decoration: BoxDecoration(
+                      color: Colors.white12,
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.search, color: Colors.white70,),
+                      const SizedBox(width: 10,),
+                      Expanded(
+                        child: TextField(
+                          controller: searchController,
+                          onSubmitted: (value) {
+                            if (value.isNotEmpty) {
+                              composeVM.searchTracks(value);
+                            }
+                          },
+                          style: const TextStyle(color: Colors.white),
+                          decoration: const InputDecoration(
+                              hintText: "Search Tracks...",
+                              hintStyle: TextStyle(color: Colors.white70),
+                              border: InputBorder.none),
                         ),
                       ),
-                    ),
-                    trackSearchResults!.isNotEmpty ?
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      height: MediaQuery.of(context).size.height / 6,
-                      // color: Colors.red,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: trackSearchResults?.length,
-                        itemBuilder: (context, index) {
-                        final track = trackSearchResults?[index];
-                        return Padding(
-                            padding: const EdgeInsets.only(left: 10, right: 10, top: 20),
-                            child: GestureDetector(
-                              child: TrackElement(track: track),
-                              onTap: () => composeVM.addTrack(track),
-                            ),
-                          );
-                      }),
-                    )
-                    : SizedBox(),
-                  ]
+                      IconButton(
+                        onPressed: () {
+                          searchController.clear();
+                          composeVM.clearSearchResults();
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text("Cleared search results")));  
+                        }, 
+                        icon: const Icon(Icons.cancel)
+                      ),
+                    ],
+                  ),
                 ),
+                trackSearchResults!.isNotEmpty
+                    ? SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        height: MediaQuery.of(context).size.height / 6,
+                        // color: Colors.red,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: trackSearchResults.length,
+                            itemBuilder: (context, index) {
+                              final track = trackSearchResults[index];
+                              return Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 10, right: 10, top: 20),
+                                child: GestureDetector(
+                                  child: TrackElement(track: track),
+                                  onTap: () => composeVM.addTrack(track),
+                                ),
+                              );
+                            }),
+                      )
+                    : const SizedBox(),
+              ]),
             ),
-            SizedBox(height: 20,),
+            // const SizedBox(
+            //   height: 20,
+            // ),
             Expanded(
               child: Row(children: [
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  height: 500,
-                  // color: Colors.red,
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  color: Colors.black26,
+                  padding: const EdgeInsets.only(top:20),
                   child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: composeVM.newRoutine?.exercises?.length,
+                      // shrinkWrap: true,
+                      itemCount: composeVM.newRoutine?.exercises.length,
                       itemBuilder: (context, index) {
-                        final exercise = composeVM.newRoutine?.exercises?[index];
+                        final exercise = composeVM.newRoutine?.exercises[index];
                         return Padding(
-                            padding: const EdgeInsets.only(left:20, bottom: 20),
-                            child: ExerciseCard(exercise: exercise)
-                          );
+                            padding:
+                                const EdgeInsets.only(left: 20, bottom: 20, right: 20),
+                            child: ExerciseCard(exercise: exercise));
                       }),
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.3,
+                  width: MediaQuery.of(context).size.width * 0.25,
+                  color: Colors.black12,
                   // color: Colors.blue,
-                  height: 500,
+                  // height: 500,
+                  padding: const EdgeInsets.only(top:20),
                   child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: composeVM.newRoutine?.tracks?.length,
+                      // shrinkWrap: true,
+                      itemCount: composeVM.newRoutine?.tracks.length,
                       itemBuilder: (context, index) {
-                        final track = composeVM.newRoutine?.tracks?[index];
+                        final track = composeVM.newRoutine?.tracks[index];
                         return Padding(
                             padding: const EdgeInsets.only(),
-                            child: TrackElement(track: track,)
-                          );
+                            child: TrackElement(
+                              track: track,
+                            ));
                       }),
                 ),
               ]),
             ),
-            SizedBox(height: 20,),
-            Container(
+            const SizedBox(
+              height: 20,
+            ),
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               height: 70,
               child: FilledButton(
-                style: FilledButton.styleFrom(backgroundColor: Colors.amber[900]),
+                style:
+                    FilledButton.styleFrom(backgroundColor: Colors.orange[700]),
                 onPressed: () {
                   composeVM.saveRoutine(currentUser);
                   context.push(routes.homePath);
                 },
                 child: const Text(
                   "Create routine",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white),
                 ),
               ),
             ),
