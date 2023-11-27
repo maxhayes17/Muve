@@ -11,6 +11,7 @@ class VerticalRoutineList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         child: ListView.builder(
+            scrollDirection: Axis.vertical,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(), // Disable ListView scrolling
             itemCount: routines?.length,

@@ -65,6 +65,7 @@ flutter:
   assets:
     - assets/Muvin.png
     - assets/Muve_routine_logo.png
+    - assets/Muve_logo_sm.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
