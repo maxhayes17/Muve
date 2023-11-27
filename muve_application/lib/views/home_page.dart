@@ -1,8 +1,10 @@
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:muve_application/viewmodels/user_view_model.dart';
 import 'package:muve_application/widgets/horizontal_routine_list.dart';
 import 'package:muve_application/widgets/vertical_routine_list.dart';
 import 'package:provider/provider.dart';
+import 'package:muve_application/routes.dart' as routes;
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,6 +12,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userVM = context.watch<UserViewModel>();
+    userVM.getRecentRoutines();
 
     return SafeArea(
         child: Padding(
@@ -36,9 +39,18 @@ class HomePage extends StatelessWidget {
                       fontWeight: FontWeight.bold)
                   ),
                   Spacer(),
-                  Icon(Icons.settings_outlined, color: Colors.white70,),
-                  SizedBox(width: 10,),
-                  Icon(Icons.logout, color: Colors.white70,)
+                  IconButton(
+                    icon: Icon(Icons.settings_outlined, color: Colors.white70,),
+                    onPressed: () => context.push(routes.settingsPath),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.logout, color: Colors.white70,),
+                    onPressed: () {
+                      userVM.logout();
+                      context.go(routes.loginPath);
+                    },
+                  
+                  )
                   ]
                 ),
                 SizedBox(height: 32,),
@@ -53,7 +65,10 @@ class HomePage extends StatelessWidget {
                 ),
                 Expanded(
                   child: VerticalRoutineList(
-                    routines: userVM.getRecentRoutines()),
+                    routines: userVM.recentRoutines),
+                ),
+                const SizedBox(
+                  height: 24,
                 ),
                 const Text(
                   "Recommended Routines",
@@ -65,7 +80,7 @@ class HomePage extends StatelessWidget {
                   height: 12,
                 ),
                 Container(
-                  height: 200,
+                  height: 190,
                 child: HorizontalRoutineList(
                     routines: userVM.recommendedRoutines,
                 ),

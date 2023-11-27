@@ -20,7 +20,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  loadFakeDataRoutines();
+  // loadFakeDataRoutines();
 
   runApp(MultiProvider(
     providers: [

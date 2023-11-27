@@ -10,13 +10,31 @@ class UserViewModel with ChangeNotifier {
   final db = FirebaseFirestore.instance;
 
   User? _user;
+  final List<Routine> _recommendedRoutines = [];
+  List<Routine> _recentRoutines = [];
+
+  // Get current user
   User? get user => _user;
   String? get username => _user?.username;
   int? get id => _user?.id;
-  List<Routine>? get routines => _user?.routines;
 
-  final List<Routine> _recommendedRoutines = [];
+  // Get user's routines
+  List<Routine>? get routines => _user?.routines;
+  // Get user's recommended routines
   List<Routine> get recommendedRoutines => _recommendedRoutines;
+  // Get user's recent routines
+  List<Routine> get recentRoutines => _recentRoutines;
+
+  // Settings
+  void updateUsername(String value){
+    
+  }
+
+
+  // Auth
+  void logout(){
+    _user = null;
+  }
 
   bool authenticateUser(String email, String password) {
     for (var user in users) {
@@ -24,7 +42,6 @@ class UserViewModel with ChangeNotifier {
         _user = user;
         loadUserRoutines();
         updateRoutineCount();
-        recommendRoutines();
         notifyListeners();
         return true;
       }
@@ -32,6 +49,8 @@ class UserViewModel with ChangeNotifier {
     return false;
   }
 
+
+  // User routines
   bool routineInLibrary(int id) {
     if (_user?.routines != null &&
         _user!.routines!.any((routine) => routine.id == id)) {
@@ -40,12 +59,9 @@ class UserViewModel with ChangeNotifier {
     return false;
   }
 
-  //add to the front of the list i.e. most recent
-  //update recommened routines list
+  //add to the end of the list i.e. most recent
   void addRoutineToLibrary(Routine routine) {
-    // _user!.routines!.add(routine);
-    _user!.routines!.insert(0, routine);
-    recommendRoutines();
+    _user!.routines!.add(routine);
     notifyListeners();
   }
 
@@ -64,7 +80,12 @@ class UserViewModel with ChangeNotifier {
       for (var docSnapShot in querySnapshot.docs) {
         _user!.routines!.add(docSnapShot.data());
       }
-    }).then((value) => notifyListeners());
+    }).then((value){
+      // After routines have been loaded in, can get recent and recommended routines
+      getRecentRoutines();
+      getRecommendRoutines();
+      notifyListeners();
+    });
   }
 
   void updateRoutineCount() async {
@@ -87,16 +108,16 @@ class UserViewModel with ChangeNotifier {
   // }
 
   // Assuming last 3 added routines are most recent... return last 3 routines
-  List<Routine> getRecentRoutines() {
+  void getRecentRoutines() {
     if (_user!.routines!.length >= 3) {
-      return _user!.routines!.sublist(_user!.routines!.length - 3);
+      _recentRoutines = _user!.routines!.sublist(_user!.routines!.length - 3, _user!.routines!.length);
     } else {
-      return _user!.routines!;
+      _recentRoutines = user!.routines!;
     }
   }
 
   //query Firebase for routines NOT by the current user. Keep first 5.
-  void recommendRoutines() async {
+  void getRecommendRoutines() async {
     _recommendedRoutines.clear();
     db
         .collection("routines")
@@ -122,4 +143,5 @@ class UserViewModel with ChangeNotifier {
       }
     }).then((value) => notifyListeners());
   }
+
 }//end class

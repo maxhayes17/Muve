@@ -123,18 +123,6 @@ class ComposeViewModel with ChangeNotifier {
     return routines.length;
   }
 
-  // Searching tracks
-  // void searchTracks(String value) {
-  //   List<Track> results = [];
-  //   for (var track in tracks) {
-  //     if (track.name.contains(value)) {
-  //       results.add(track);
-  //     }
-  //   }
-  //   _trackSearchResults = results;
-  //   notifyListeners();
-  // }
-
   void clearSearchResults(){
     _trackSearchResults.clear();
     notifyListeners();

@@ -13,7 +13,6 @@ class HorizontalRoutineList extends StatelessWidget {
     return ListView.builder(
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
-          // physics: const NeverScrollableScrollPhysics(), // Disable ListView scrolling
           itemCount: routines?.length,
           itemBuilder: (context, index) {
             final routine = routines?[index];

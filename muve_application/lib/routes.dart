@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:muve_application/views/add_exercise_page.dart';
 import 'package:muve_application/views/add_music_page.dart';
+import 'package:muve_application/views/settings_page.dart';
 import 'package:muve_application/views/signup_page.dart';
 import 'package:muve_application/widgets/navbar.dart';
 import 'package:muve_application/views/login_page.dart';
@@ -8,6 +9,7 @@ import 'package:muve_application/views/routine_page.dart';
 
 const signupPath = '/signup';
 const loginPath = '/login';
+const settingsPath = '/settings';
 const homePath = '/home';
 const explorePath = '/explore';
 const composePath = '/compose';
@@ -25,6 +27,9 @@ GoRouter generateRouter() {
     GoRoute(
       path: '/signup', 
       builder: (context, state) => const SignupPage()),
+    GoRoute(
+      path: '/settings', 
+      builder: (context, state) => const SettingsPage()),
     GoRoute(
         path: '/home',
         builder: (context, state) => const NavScaffold(index: 0)),

@@ -10,6 +10,8 @@ import "package:url_launcher/url_launcher.dart";
 class RoutineViewModel with ChangeNotifier {
   final db = FirebaseFirestore.instance;
 
+  //variable to hold results of Firabase query
+  final List<Routine> _routineSearchResults = [];
   //current routine for displaying/sharing
   late Routine? _currentRoutine = Routine(
       id: 0,
@@ -18,8 +20,10 @@ class RoutineViewModel with ChangeNotifier {
       author: "author",
       tags: [],
       tracks: [],
-      exercises: []);
-  Routine? get currentRoutine => _currentRoutine;
+      exercises: []
+    );
+    Routine? get currentRoutine => _currentRoutine;
+    List<Routine> get routineSearchResults => _routineSearchResults;
 
   //set current routine via a Firebase query
   void setRoutineById(int id) async {
@@ -36,10 +40,6 @@ class RoutineViewModel with ChangeNotifier {
       notifyListeners();
     }
   }
-
-  //variable to hold results of Firabase query
-  final List<Routine> _routineSearchResults = [];
-  List<Routine> get routineSearchResults => _routineSearchResults;
 
   //query Firebase by tags
   void searchRoutineTags(String tag) async {
