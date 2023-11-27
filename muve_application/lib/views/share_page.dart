@@ -32,27 +32,42 @@ class _SharePageState extends State<SharePage> {
             const SizedBox(
               height: 12,
             ),
-            Row(children: [
-              const Text("Method",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                Spacer(),
-                // SizedBox(width: 60,),
-              IconButton(
-                onPressed: () {
-                  routineVM.saveToClipboard();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Copied to clipboard")));
-                },
-                icon: const Icon(Icons.add_link),
-                iconSize: 60,
-              ),
-              IconButton(
-                onPressed: () => routineVM.sendSMS(),
-                icon: const Icon(Icons.sms_outlined),
-                iconSize: 50,
-              ),
-            ]),
-            Divider(),
+            Row(
+              children: [
+                const Text("Method",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                const Spacer(),
+                GestureDetector(
+                  child: Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: Colors.white10
+                    ),
+                    child: const Icon(Icons.add_link_outlined, size: 40,),
+                  ),
+                  onTap: () {
+                    routineVM.saveToClipboard();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("Copied to clipboard")));
+                  },
+                ),
+                const SizedBox(width: 10,),
+                GestureDetector(
+                  child: Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: Colors.white10
+                    ),
+                    child: const Icon(Icons.sms_outlined, size: 30,),
+                  ),
+                  onTap: () => routineVM.sendSMS(),
+                ),
+              ]
+            ),
             const Text("Select routine",
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
             const SizedBox(
@@ -62,24 +77,19 @@ class _SharePageState extends State<SharePage> {
               child: SingleChildScrollView(
                 child: ListView.builder(
                     shrinkWrap: true,
-                    physics:
-                        const NeverScrollableScrollPhysics(), // Disable ListView scrolling
+                    physics: const NeverScrollableScrollPhysics(), // Disable ListView scrolling
                     itemCount: userVM.routines?.length,
                     itemBuilder: (context, index) {
                       final routine = userVM.routines?[index];
                       return GestureDetector(
                           child: Container(
-                            padding: const EdgeInsets.only(top: 10, bottom: 10),
+                            padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               borderRadius:
-                                const BorderRadius.all(Radius.circular(4)),
-                              color: index == selected ? Colors.black45 : null,
-                              // border: index == selected
-                              //     ? Border(
-                              //       bottom: BorderSide(color: Colors.white10),
-                              //       top: BorderSide(color: Colors.white10),
-                              //     )
-                              //     : null,
+                                const BorderRadius.all(Radius.circular(8)),
+                              color: index == selected 
+                                ? Colors.white10 
+                                : null,
                             ),
                             child: Row(
                               children: [
@@ -91,7 +101,6 @@ class _SharePageState extends State<SharePage> {
                                   decoration: const BoxDecoration(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(4)),
-                                    // color: Colors.blueGrey,
                                   ),
                                   child: routine!.picturePath != null &&
                                           routine.picturePath!.isNotEmpty
@@ -102,14 +111,12 @@ class _SharePageState extends State<SharePage> {
                                 ),
                                 const SizedBox(width: 10),
                                 Column(
-                                  crossAxisAlignment: CrossAxisAlignment
-                                      .start, // Align text to the left
+                                  crossAxisAlignment: CrossAxisAlignment.start, // Align text to the left
                                   children: [
                                     Text(routine.name,
                                         style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 16)),
-                                    // Text(routine!.duration),
                                     Text(routine.author),
                                   ],
                                 ),
@@ -121,8 +128,10 @@ class _SharePageState extends State<SharePage> {
                             setState(() {
                               selected = index;
                             });
-                          });
-                    })
+                          }
+                        );
+                    }
+                  )
               ),
             ),
           ],
