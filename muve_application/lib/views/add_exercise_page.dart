@@ -52,12 +52,16 @@ class AddExercisePage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.8,
                   padding: const EdgeInsets.only(top:20, bottom: 20),
                   decoration: BoxDecoration(
-                    color: Colors.amber[900],
+                    color: Colors.orange[700],
                     borderRadius: BorderRadius.circular(15)
                     ),
                     child: const Text(
                       "Add Exercise",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold, 
+                        fontSize: 16, 
+                        color: Colors.white
+                      ),
                     ),
                 ),
                 onTap: () => composeVM.addExercise(),
@@ -69,12 +73,15 @@ class AddExercisePage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.8,
                   padding: const EdgeInsets.only(top:20, bottom: 20),
                   decoration: BoxDecoration(
-                    color: Colors.blueGrey[700],
+                    color: Colors.white12,
                     borderRadius: BorderRadius.circular(15)
                     ),
                     child: const Text(
                       "Add Music",
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold, 
+                        fontSize: 16, 
+                        color: Colors.orangeAccent),
                     ),
                   // ),
                 ),

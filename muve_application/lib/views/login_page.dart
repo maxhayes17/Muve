@@ -9,7 +9,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          children:[
       const SizedBox(
         height: 150,
       ),
@@ -24,13 +24,6 @@ class LoginPage extends StatelessWidget {
                     fontWeight: FontWeight.w800,
                   ),
                 ),
-                // Text("Muvin'",
-                //   style: TextStyle(
-                //     fontSize: 80,
-                //     fontWeight: FontWeight.w800,
-                //   ),
-                // ),
-                // Container(child:Image.asset('assets/Muvin.png') ,),
                 Image.asset('assets/Muvin.png'),
             ],
             )

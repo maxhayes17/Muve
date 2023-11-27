@@ -27,40 +27,37 @@ class _NavScaffoldState extends State<NavScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
-        // backgroundColor: Colors.black,
-        // backgroundColor: Colors.blueGrey[00],
-        // indicatorColor: Colors.amber[800],
-        // labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
         onDestinationSelected: (int index) {
           setState(() {
             currentPageIndex = index;
           });
         },
         selectedIndex: currentPageIndex,
-        indicatorColor: Colors.amber[800],
+        indicatorColor: Colors.white12,
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         destinations: const <Widget>[
           NavigationDestination(
-            selectedIcon: Icon(Icons.home, color: Colors.black,),
+            selectedIcon: Icon(Icons.home, color: Colors.orangeAccent,),
             icon: Icon(Icons.home, color: Colors.white,), 
             label: 'Home',
           ),
           NavigationDestination(
-            selectedIcon: Icon(Icons.search, color: Colors.black,),
+            selectedIcon: Icon(Icons.search, color: Colors.orangeAccent,),
             icon: Icon(Icons.search, color: Colors.white,), 
             label: 'Explore'
           ),
           NavigationDestination(
-            selectedIcon: Icon(Icons.add_circle, color: Colors.black,),
+            selectedIcon: Icon(Icons.add_circle, color: Colors.orangeAccent,),
             icon: Icon(Icons.add_circle, color: Colors.white,), 
             label: 'Compose'
           ),
           NavigationDestination(
-            selectedIcon: Icon(Icons.send, color: Colors.black,),
+            selectedIcon: Icon(Icons.send, color: Colors.orangeAccent,),
             icon: Icon(Icons.send, color: Colors.white,),  
             label: 'Share'
           ),
           NavigationDestination(
-            selectedIcon: Icon(Icons.inventory, color: Colors.black,),
+            selectedIcon: Icon(Icons.inventory, color: Colors.orangeAccent,),
             icon: Icon(Icons.inventory, color: Colors.white,),  
             label: 'Library',
           ),

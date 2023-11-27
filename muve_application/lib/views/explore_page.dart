@@ -28,11 +28,11 @@ class ExplorePage extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.9,
               padding: const EdgeInsets.only(left: 15),
               decoration: BoxDecoration(
-                      color: Colors.blueGrey[800],
+                      color: Colors.white12,
                       borderRadius: BorderRadius.circular(10)),
               child: Row(
                 children: [
-                  const Icon(Icons.search, color: Colors.white,),
+                  const Icon(Icons.search, color: Colors.white70,),
                   const SizedBox(width: 10,),
                   Expanded(
                     child: TextField(
@@ -40,7 +40,6 @@ class ExplorePage extends StatelessWidget {
                       onSubmitted: (value) {
                         if (value.isNotEmpty) {
                         exploreVM.searchRoutineByName(value);
-                        // exploreVM.searchRoutineTags(value);
                         }
                       },
                       style: const TextStyle(color: Colors.white),
@@ -76,12 +75,15 @@ class ExplorePage extends StatelessWidget {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey[800],
+                              color: Colors.white12,
                               borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.only(left:15),
                             child: DropdownMenu(
                               width: 126,
-                              inputDecorationTheme: const InputDecorationTheme(border: InputBorder.none),
+                              inputDecorationTheme: const InputDecorationTheme(
+                                border: InputBorder.none,
+                                floatingLabelStyle: TextStyle(color: Colors.orangeAccent),
+                              ),
                               label: const Text("Duration"),
                               dropdownMenuEntries: const [
                                 DropdownMenuEntry(value: '0-30min', label: '0-30min'),
@@ -98,13 +100,16 @@ class ExplorePage extends StatelessWidget {
                           const SizedBox(width: 10,),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey[800],
+                              color: Colors.white12,
                               borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.only(left:15),
                             child: DropdownMenu(
                               width: 132,
                               label: const Text("Skill level"),
-                              inputDecorationTheme: const InputDecorationTheme(border: InputBorder.none),
+                              inputDecorationTheme: const InputDecorationTheme(
+                                floatingLabelStyle: TextStyle(color: Colors.orangeAccent),
+                                border: InputBorder.none
+                                ),
                               dropdownMenuEntries: const [
                                 DropdownMenuEntry(value: 'Beginner', label: 'Beginner'),
                                 DropdownMenuEntry(value: 'Advanced', label: 'Advanced'),
@@ -119,13 +124,16 @@ class ExplorePage extends StatelessWidget {
                           const SizedBox(width: 10,),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey[800],
+                              color: Colors.white12,
                               borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.only(left:15),
                             child: DropdownMenu(
                               width: 146,
                               label: const Text("Equipment"),
-                              inputDecorationTheme: const InputDecorationTheme(border: InputBorder.none),
+                              inputDecorationTheme: const InputDecorationTheme(
+                                border: InputBorder.none,
+                                floatingLabelStyle: TextStyle(color: Colors.orangeAccent),
+                              ),
                               dropdownMenuEntries: const [
                                 DropdownMenuEntry(value: 'Equipment Required', label: 'Required'),
                                 DropdownMenuEntry(value: 'Equipment Not Required', label: 'Not Required'),
@@ -152,7 +160,8 @@ class ExplorePage extends StatelessWidget {
             exploreVM.routineSearchResults.isNotEmpty 
             ? Text("$count ${count == 1 ? 'Result' : 'Results'}",
                 style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold)
-            ) : const SizedBox(),
+            ) 
+            : const SizedBox(),
             const SizedBox(height: 12,),
             Expanded(
               child: VerticalRoutineList(routines: exploreVM.routineSearchResults,)

@@ -89,12 +89,15 @@ class ComposePage extends StatelessWidget {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey[800],
+                              color: Colors.white12,
                               borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.only(left:15),
                             child: DropdownMenu(
                               width: 126,
-                              inputDecorationTheme: const InputDecorationTheme(border: InputBorder.none),
+                              inputDecorationTheme: const InputDecorationTheme(
+                                border: InputBorder.none,
+                                floatingLabelStyle: TextStyle(color: Colors.orangeAccent),
+                              ),
                               label: const Text("Duration"),
                               dropdownMenuEntries: const [
                                 DropdownMenuEntry(value: '0-30min', label: '0-30min'),
@@ -111,13 +114,16 @@ class ComposePage extends StatelessWidget {
                           const SizedBox(width: 10,),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey[800],
+                              color: Colors.white12,
                               borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.only(left:15),
                             child: DropdownMenu(
                               width: 132,
                               label: const Text("Skill level"),
-                              inputDecorationTheme: const InputDecorationTheme(border: InputBorder.none),
+                              inputDecorationTheme: const InputDecorationTheme(
+                                border: InputBorder.none,
+                                floatingLabelStyle: TextStyle(color: Colors.orangeAccent),
+                              ),
                               dropdownMenuEntries: const [
                                 DropdownMenuEntry(value: 'Beginner', label: 'Beginner'),
                                 DropdownMenuEntry(value: 'Advanced', label: 'Advanced'),
@@ -132,13 +138,17 @@ class ComposePage extends StatelessWidget {
                           const SizedBox(width: 10,),
                           Container(
                             decoration: BoxDecoration(
-                              color: Colors.grey[800],
+                              color: Colors.white12,
                               borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.only(left:15),
                             child: DropdownMenu(
                               width: 146,
                               label: const Text("Equipment"),
-                              inputDecorationTheme: const InputDecorationTheme(border: InputBorder.none),
+                              inputDecorationTheme: const InputDecorationTheme(
+                                border: InputBorder.none,
+                                floatingLabelStyle: TextStyle(color: Colors.orangeAccent),
+
+                              ),
                               dropdownMenuEntries: const [
                                 DropdownMenuEntry(value: 'Equipment Required', label: 'Required'),
                                 DropdownMenuEntry(value: 'Equipment Not Required', label: 'Not Required'),
@@ -166,12 +176,15 @@ class ComposePage extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.8,
                       padding: const EdgeInsets.only(top:20, bottom: 20),
                       decoration: BoxDecoration(
-                        color: Colors.blueGrey[700],
+                        color: Colors.white12,
                         borderRadius: BorderRadius.circular(15)
                         ),
                         child: const Text(
                           "Add Exercises",
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold, 
+                            fontSize: 16, 
+                            color: Colors.orangeAccent),
                         ),
                     ),
                     onTap: () => context.push(routes.addExercisePath),
@@ -183,12 +196,15 @@ class ComposePage extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.8,
                       padding: const EdgeInsets.only(top:20, bottom: 20),
                       decoration: BoxDecoration(
-                        color: Colors.blueGrey[700],
+                        color: Colors.white12,
                         borderRadius: BorderRadius.circular(15)
                         ),
                         child: const Text(
                           "Add Music",
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold, 
+                            fontSize: 16, 
+                            color: Colors.orangeAccent),
                         ),
                       // ),
                     ),
@@ -199,7 +215,7 @@ class ComposePage extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.8,
                     height: 70,
                     child: FilledButton(
-                      style: FilledButton.styleFrom(backgroundColor: Colors.amber[900]),
+                      style: FilledButton.styleFrom(backgroundColor: Colors.orange[700]),
                       onPressed: () {
                         composeVM.saveRoutine(currentUser);
                         context.push(routes.homePath);

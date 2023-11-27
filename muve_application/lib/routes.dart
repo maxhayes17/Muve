@@ -1,10 +1,12 @@
 import 'package:go_router/go_router.dart';
 import 'package:muve_application/views/add_exercise_page.dart';
 import 'package:muve_application/views/add_music_page.dart';
+import 'package:muve_application/views/signup_page.dart';
 import 'package:muve_application/widgets/navbar.dart';
 import 'package:muve_application/views/login_page.dart';
 import 'package:muve_application/views/routine_page.dart';
 
+const signupPath = '/signup';
 const loginPath = '/login';
 const homePath = '/home';
 const explorePath = '/explore';
@@ -17,7 +19,12 @@ const routinePath = '/routine/';
 
 GoRouter generateRouter() {
   return GoRouter(initialLocation: '/login', routes: [
-    GoRoute(path: '/login', builder: (context, state) => const LoginPage()),
+    GoRoute(
+      path: '/login', 
+      builder: (context, state) => const LoginPage()),
+    GoRoute(
+      path: '/signup', 
+      builder: (context, state) => const SignupPage()),
     GoRoute(
         path: '/home',
         builder: (context, state) => const NavScaffold(index: 0)),
@@ -37,7 +44,10 @@ GoRouter generateRouter() {
         path: '/add_exercise',
         builder: (context, state) => const AddExercisePage()),
     GoRoute(
-        path: '/add_music', builder: (context, state) => const AddMusicPage()),
-    GoRoute(path: '/routine', builder: (context, state) => const RoutinePage())
+        path: '/add_music', 
+        builder: (context, state) => const AddMusicPage()),
+    GoRoute(
+        path: '/routine', 
+        builder: (context, state) => const RoutinePage())
   ]);
 }

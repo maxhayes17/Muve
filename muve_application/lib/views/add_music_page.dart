@@ -41,11 +41,11 @@ class AddMusicPage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.9,
                   padding: const EdgeInsets.only(left: 15),
                   decoration: BoxDecoration(
-                      color: Colors.blueGrey[800],
+                      color: Colors.white12,
                       borderRadius: BorderRadius.circular(10)),
                   child: Row(
                     children: [
-                      const Icon(Icons.search, color: Colors.white,),
+                      const Icon(Icons.search, color: Colors.white70,),
                       const SizedBox(width: 10,),
                       Expanded(
                         child: TextField(
@@ -53,7 +53,6 @@ class AddMusicPage extends StatelessWidget {
                           onSubmitted: (value) {
                             if (value.isNotEmpty) {
                               composeVM.searchTracks(value);
-                            // routineVM.searchRoutineTags(value);
                             }
                           },
                           style: const TextStyle(color: Colors.white),
@@ -146,7 +145,7 @@ class AddMusicPage extends StatelessWidget {
               height: 70,
               child: FilledButton(
                 style:
-                    FilledButton.styleFrom(backgroundColor: Colors.amber[900]),
+                    FilledButton.styleFrom(backgroundColor: Colors.orange[700]),
                 onPressed: () {
                   composeVM.saveRoutine(currentUser);
                   context.push(routes.homePath);
