@@ -75,7 +75,7 @@ class RoutinePage extends StatelessWidget {
                                         onPressed: () {
                                           userVM.addRoutineToLibrary(
                                               routineVM.currentRoutine!);
-                                          context.push(routes.libraryPath);
+                                          // context.push(routes.libraryPath);
                                         },
                                         icon: const Icon(Icons.add_circle,
                                             color: Colors.orange),
