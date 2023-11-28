@@ -21,19 +21,26 @@ class TrackElement extends StatelessWidget {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
+            backgroundColor: Colors.black,
             title: const Text("Remove Song"),
-            content: const Text("Do you want to remove song from routine?"),
+            content: const Text("Would you like to remove this song?"),
             actions: [
-              TextButton(
+              FilledButton(
+                style: FilledButton.styleFrom(
+                  backgroundColor: Colors.white10
+                ),
                 onPressed: () {
                   composeVM.removeTrack(track);
                   context.pop();
                 },
-                child: const Text("Yes"),
+                child: const Text("Yes", style: TextStyle(color: Colors.orangeAccent),),
               ),
-              TextButton(
+              FilledButton(
+                style: FilledButton.styleFrom(
+                  backgroundColor: Colors.orange[700]
+                ),
                 onPressed: () => context.pop(),
-                child: const Text("No"),
+                child: const Text("No", style: TextStyle(color: Colors.white),),
               )
             ],
           ),

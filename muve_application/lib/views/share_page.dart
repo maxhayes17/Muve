@@ -77,6 +77,7 @@ class _SharePageState extends State<SharePage> {
               child: SingleChildScrollView(
                 child: ListView.builder(
                     shrinkWrap: true,
+                    reverse: true,
                     physics: const NeverScrollableScrollPhysics(), // Disable ListView scrolling
                     itemCount: userVM.routines?.length,
                     itemBuilder: (context, index) {

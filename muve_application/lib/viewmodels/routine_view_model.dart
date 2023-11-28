@@ -94,20 +94,20 @@ class RoutineViewModel with ChangeNotifier {
 
   void sendSMS() async {
     String routineString =
-        "www.muve.com/users.${_currentRoutine!.author}.${_currentRoutine!.name}";
+        "www.muve.com/users/${_currentRoutine!.author}/${_currentRoutine!.name}";
     String body = "Check out my routine on Muve!\n$routineString";
 
     var url = Uri.parse("sms:&body=$body");
     if (await canLaunchUrl(url)) {
       await launchUrl(url);
     } else {
-      // throw "coult not launch $url";
+      // throw "could not launch $url";
     }
   }
 
   void saveToClipboard() async {
     String routineString =
-        "www.muve.com/users.${_currentRoutine!.author}.${_currentRoutine!.name}";
+        "www.muve.com/users/${_currentRoutine!.author}/${_currentRoutine!.name}";
     String body = "Check out my routine on Muve!\n$routineString";
     await Clipboard.setData(ClipboardData(text: body));
   }
