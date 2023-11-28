@@ -186,30 +186,37 @@ class ShareOptions extends StatelessWidget {
     final routineVM = context.watch<RoutineViewModel>();
 
     return AlertDialog(
+      backgroundColor: Colors.black,
       title: const Text("Share Routine"),
-      content: const Text("Send SMS or save to clipboard"),
+      content: const Text("How would you like to share this routine?"),
       actions: [
-        TextButton(
-          onPressed: () => context.pop(),
-          child: const Text(
-            "cancel",
-            style: TextStyle(color: Colors.red),
-          ),
-        ),
-        ElevatedButton(
+        // TextButton(
+        //   onPressed: () => context.pop(),
+        //   child: const Text(
+        //     "Cancel",
+        //     style: TextStyle(color: Colors.red),
+        //   ),
+        // ),
+        FilledButton(
+            style: FilledButton.styleFrom(
+              backgroundColor: Colors.white10,
+            ),
             onPressed: () {
               routineVM.sendSMS();
               context.pop();
             },
-            child: const Text("SMS")),
-        ElevatedButton(
+            child: const Text("Send SMS", style: TextStyle(color: Colors.orangeAccent),)),
+        FilledButton(
+            style: FilledButton.styleFrom(
+              backgroundColor: Colors.white10
+            ),
             onPressed: () {
               routineVM.saveToClipboard();
               context.pop();
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("copied to clipboard")));
+                  const SnackBar(content: Text("Copied to clipboard")));
             },
-            child: const Text("clipboard")),
+            child: const Text("Copy to clipboard", style: TextStyle(color: Colors.orangeAccent),)),
       ],
     );
   }
