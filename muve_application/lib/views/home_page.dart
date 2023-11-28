@@ -34,17 +34,17 @@ class HomePage extends StatelessWidget {
                 children: [
                   Text(
                   "Welcome back, ${userVM.user?.username}",
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 18, 
                       fontWeight: FontWeight.bold)
                   ),
-                  Spacer(),
+                  const Spacer(),
                   IconButton(
-                    icon: Icon(Icons.settings_outlined, color: Colors.white70,),
+                    icon: const Icon(Icons.settings_outlined, color: Colors.white70,),
                     onPressed: () => context.push(routes.settingsPath),
                   ),
                   IconButton(
-                    icon: Icon(Icons.logout, color: Colors.white70,),
+                    icon: const Icon(Icons.logout, color: Colors.white70,),
                     onPressed: () {
                       userVM.logout();
                       context.go(routes.loginPath);
@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
                   )
                   ]
                 ),
-                SizedBox(height: 32,),
+                const SizedBox(height: 32,),
                 const Text(
                   "Recent Routines",
                     style: TextStyle(

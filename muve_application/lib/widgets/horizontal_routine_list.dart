@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:muve_application/models/routine_model.dart';
 import 'package:muve_application/widgets/Horizontal_routine_element.dart';
-import 'package:muve_application/widgets/vertical_routine_element.dart';
 
 class HorizontalRoutineList extends StatelessWidget {
   final List<Routine>? routines;
