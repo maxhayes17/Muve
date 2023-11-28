@@ -65,6 +65,10 @@ class UserViewModel with ChangeNotifier {
     notifyListeners();
   }
 
+  void removeRoutineFromLibrary(Routine routine){
+    
+  }
+
   //load user routines from Firebase after authentication
   void loadUserRoutines() async {
     user?.routines?.clear();

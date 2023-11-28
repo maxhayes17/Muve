@@ -69,8 +69,14 @@ class RoutinePage extends StatelessWidget {
                                 const Spacer(),
                                 userVM.routineInLibrary(
                                         routineVM.currentRoutine!.id)
-                                    ? const Icon(Icons.check_circle,
-                                        color: Colors.orange)
+                                    ? 
+                                    IconButton(
+                                      icon: const Icon(Icons.check_circle,
+                                        color: Colors.orangeAccent
+                                      ),
+                                      onPressed: () => userVM.removeRoutineFromLibrary(routineVM.currentRoutine!),
+                                      tooltip: "Remove routine",
+                                    )
                                     : IconButton(
                                         onPressed: () {
                                           userVM.addRoutineToLibrary(
@@ -78,8 +84,9 @@ class RoutinePage extends StatelessWidget {
                                           // context.push(routes.libraryPath);
                                         },
                                         icon: const Icon(Icons.add_circle,
-                                            color: Colors.orange),
-                                        tooltip: "Add",
+                                            color: Colors.orangeAccent
+                                          ),
+                                        tooltip: "Add routine",
                                       ),
                                 IconButton(
                                   onPressed: () {
