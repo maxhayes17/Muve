@@ -49,6 +49,15 @@ class UserViewModel with ChangeNotifier {
     return false;
   }
 
+  bool addUser(String email, String username, String password){
+    int id = users.length;
+
+    _user = User(id: id, email: email, username: username, password: password, routines: []);
+    users.add(_user!);
+    notifyListeners();
+    return true;
+  }
+
 
   // User routines
   bool routineInLibrary(int id) {
