@@ -39,10 +39,10 @@ class HomePage extends StatelessWidget {
                       fontWeight: FontWeight.bold)
                   ),
                   const Spacer(),
-                  IconButton(
-                    icon: const Icon(Icons.settings_outlined, color: Colors.white70,),
-                    onPressed: () => context.push(routes.settingsPath),
-                  ),
+                  // IconButton(
+                  //   icon: const Icon(Icons.settings_outlined, color: Colors.white70,),
+                  //   onPressed: () => context.push(routes.settingsPath),
+                  // ),
                   IconButton(
                     icon: const Icon(Icons.logout, color: Colors.white70,),
                     onPressed: () {

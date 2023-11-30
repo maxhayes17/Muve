@@ -74,14 +74,19 @@ class RoutinePage extends StatelessWidget {
                                       icon: const Icon(Icons.check_circle,
                                         color: Colors.orangeAccent
                                       ),
-                                      onPressed: () => userVM.removeRoutineFromLibrary(routineVM.currentRoutine!),
+                                      onPressed: () { 
+                                        userVM.removeRoutineFromLibrary(routineVM.currentRoutine!);
+                                        ScaffoldMessenger.of(context).showSnackBar(
+                                          SnackBar(content: Text("Routine removed from Library")));
+                                        },
                                       tooltip: "Remove routine",
                                     )
                                     : IconButton(
                                         onPressed: () {
                                           userVM.addRoutineToLibrary(
                                               routineVM.currentRoutine!);
-                                          // context.push(routes.libraryPath);
+                                              ScaffoldMessenger.of(context).showSnackBar(
+                                                 SnackBar(content: Text("Routine added to Library")));
                                         },
                                         icon: const Icon(Icons.add_circle,
                                             color: Colors.orangeAccent
