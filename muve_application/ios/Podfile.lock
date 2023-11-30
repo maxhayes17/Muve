@@ -1,5 +1,5 @@
 PODS:
-  - cloud_firestore (4.13.2):
+  - cloud_firestore (4.13.3):
     - Firebase/Firestore (= 10.18.0)
     - firebase_core
     - Flutter
@@ -9,7 +9,7 @@ PODS:
   - Firebase/Firestore (10.18.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 10.18.0)
-  - firebase_core (2.23.0):
+  - firebase_core (2.24.0):
     - Firebase/CoreOnly (= 10.18.0)
     - Flutter
   - FirebaseCore (10.18.0):
@@ -76,9 +76,9 @@ CHECKOUT OPTIONS:
     :tag: 10.18.0
 
 SPEC CHECKSUMS:
-  cloud_firestore: 20bb019115acfc53278ed4c8bc5ddda77fc673bb
+  cloud_firestore: 9b25b77371a845d07a48e5146799f6d4552f5940
   Firebase: 414ad272f8d02dfbf12662a9d43f4bba9bec2a06
-  firebase_core: 29d66baf806970cda37c93621b27cd369b27db1b
+  firebase_core: f802c5c1f6caff9b8d38b591a36e7b25f8878936
   FirebaseCore: 2322423314d92f946219c8791674d2f3345b598f
   FirebaseCoreInternal: 8eb002e564b533bdcf1ba011f33f2b5c10e2ed4a
   FirebaseFirestore: 584e3f563142f63d20e9ec9c505370d674d44eba
@@ -90,4 +90,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 11f450b8c4b68ce31c901bce82258f281056e9da
 
-COCOAPODS: 1.14.2
+COCOAPODS: 1.14.3
