@@ -15,8 +15,6 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // loadFakeDataRoutines();
-
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider<UserViewModel>(
@@ -44,19 +42,3 @@ class MyApp extends StatelessWidget {
         routerConfig: generateRouter());
   }
 }
-
-// void loadFakeDataRoutines() async {
-//   final db = FirebaseFirestore.instance;
-//   for (var routine in routines) {
-//     //add to Firestore db
-//     var routineId = routine.id.toString();
-//     final docRef = db
-//         .collection("routines")
-//         .withConverter(
-//           fromFirestore: Routine.fromFirestore,
-//           toFirestore: (Routine routine, options) => routine.toFirestore(),
-//         )
-//         .doc(routineId);
-//     await docRef.set(routine);
-//   }
-// }

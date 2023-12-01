@@ -162,20 +162,20 @@ class UserViewModel with ChangeNotifier {
 final List<User> users = [
   User(
       id: 1,
-      email: 'jeremy@muve.com',
-      username: 'jeremy',
+      email: 'monty@muve.com',
+      username: 'monty',
       password: 'pw',
       routines: []),
   User(
       id: 2,
-      email: 'max@muve.com',
-      username: 'max',
+      email: 'abel@muve.com',
+      username: 'abel',
       password: 'pw',
       routines: []),
   User(
       id: 3,
-      email: 'ethan@muve.com',
-      username: 'ethan',
+      email: 'bart@muve.com',
+      username: 'bart',
       password: 'pw',
       routines: []),
   User(
