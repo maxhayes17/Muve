@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:muve_application/routes.dart' as routes;
 import 'package:muve_application/viewmodels/routine_view_model.dart';
 import 'package:muve_application/viewmodels/user_view_model.dart';
 import 'package:muve_application/widgets/exercise.dart';
@@ -69,28 +68,31 @@ class RoutinePage extends StatelessWidget {
                                 const Spacer(),
                                 userVM.routineInLibrary(
                                         routineVM.currentRoutine!.id)
-                                    ? 
-                                    IconButton(
-                                      icon: const Icon(Icons.check_circle,
-                                        color: Colors.orangeAccent
-                                      ),
-                                      onPressed: () { 
-                                        userVM.removeRoutineFromLibrary(routineVM.currentRoutine!);
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                          SnackBar(content: Text("Routine removed from Library")));
+                                    ? IconButton(
+                                        icon: const Icon(Icons.check_circle,
+                                            color: Colors.orangeAccent),
+                                        onPressed: () {
+                                          userVM.removeRoutineFromLibrary(
+                                              routineVM.currentRoutine!);
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(const SnackBar(
+                                                  content: Text(
+                                                      "Routine removed from Library")));
                                         },
-                                      tooltip: "Remove routine",
-                                    )
+                                        tooltip: "Remove routine",
+                                      )
                                     : IconButton(
                                         onPressed: () {
                                           userVM.addRoutineToLibrary(
                                               routineVM.currentRoutine!);
-                                              ScaffoldMessenger.of(context).showSnackBar(
-                                                 SnackBar(content: Text("Routine added to Library")));
+                                          userVM.getRecommendRoutines();
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(const SnackBar(
+                                                  content: Text(
+                                                      "Routine added to Library")));
                                         },
                                         icon: const Icon(Icons.add_circle,
-                                            color: Colors.orangeAccent
-                                          ),
+                                            color: Colors.orangeAccent),
                                         tooltip: "Add routine",
                                       ),
                                 IconButton(
@@ -217,18 +219,22 @@ class ShareOptions extends StatelessWidget {
               routineVM.sendSMS();
               context.pop();
             },
-            child: const Text("Send SMS", style: TextStyle(color: Colors.orangeAccent),)),
+            child: const Text(
+              "Send SMS",
+              style: TextStyle(color: Colors.orangeAccent),
+            )),
         FilledButton(
-            style: FilledButton.styleFrom(
-              backgroundColor: Colors.white10
-            ),
+            style: FilledButton.styleFrom(backgroundColor: Colors.white10),
             onPressed: () {
               routineVM.saveToClipboard();
               context.pop();
               ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text("Copied to clipboard")));
             },
-            child: const Text("Copy to clipboard", style: TextStyle(color: Colors.orangeAccent),)),
+            child: const Text(
+              "Copy to clipboard",
+              style: TextStyle(color: Colors.orangeAccent),
+            )),
       ],
     );
   }

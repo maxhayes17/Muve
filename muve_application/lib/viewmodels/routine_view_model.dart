@@ -2,9 +2,6 @@ import "package:flutter/material.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/services.dart";
 import "package:muve_application/models/routine_model.dart";
-
-// FAKE DATA
-import "package:muve_application/data.dart";
 import "package:url_launcher/url_launcher.dart";
 
 class RoutineViewModel with ChangeNotifier {
@@ -12,6 +9,7 @@ class RoutineViewModel with ChangeNotifier {
 
   //variable to hold results of Firabase query
   final List<Routine> _routineSearchResults = [];
+
   //current routine for displaying/sharing
   late Routine? _currentRoutine = Routine(
       id: 0,
@@ -20,25 +18,27 @@ class RoutineViewModel with ChangeNotifier {
       author: "author",
       tags: [],
       tracks: [],
-      exercises: []
-    );
-    Routine? get currentRoutine => _currentRoutine;
-    List<Routine> get routineSearchResults => _routineSearchResults;
+      exercises: []);
 
-  //set current routine via a Firebase query
+  Routine? get currentRoutine => _currentRoutine;
+
+  List<Routine> get routineSearchResults => _routineSearchResults;
+
+  //set current routine via a Firebase query of routine id
   void setRoutineById(int id) async {
-    String docName = id.toString();
-
-    final docRef = db.collection("routines").doc(docName).withConverter(
+    db
+        .collection("routines")
+        .where("id", isEqualTo: id)
+        .withConverter(
           fromFirestore: Routine.fromFirestore,
           toFirestore: (Routine routine, _) => routine.toFirestore(),
-        );
-    final docSnap = await docRef.get();
-    final routine = docSnap.data();
-    if (routine != null) {
-      _currentRoutine = routine;
-      notifyListeners();
-    }
+        )
+        .get()
+        .then((querySnapShot) {
+      for (var docSnapShot in querySnapShot.docs) {
+        _currentRoutine = docSnapShot.data();
+      }
+    }).then((value) => notifyListeners());
   }
 
   //query Firebase by tags
@@ -83,14 +83,14 @@ class RoutineViewModel with ChangeNotifier {
   //todo
 
   //legacy funciton to search local copy of routine database (not used?)
-  Routine? getRoutineById(int id) {
-    for (var routine in routines) {
-      if (routine.id == id) {
-        return routine;
-      }
-    }
-    return null;
-  }
+  // Routine? getRoutineById(int id) {
+  //   for (var routine in routines) {
+  //     if (routine.id == id) {
+  //       return routine;
+  //     }
+  //   }
+  //   return null;
+  // }
 
   void sendSMS() async {
     String routineString =

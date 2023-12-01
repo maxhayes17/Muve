@@ -3,9 +3,6 @@ import "package:flutter/material.dart";
 import "package:muve_application/models/routine_model.dart";
 import "package:muve_application/models/user_model.dart";
 
-// FAKE DATA
-import "package:muve_application/data.dart";
-
 class UserViewModel with ChangeNotifier {
   final db = FirebaseFirestore.instance;
 
@@ -26,13 +23,10 @@ class UserViewModel with ChangeNotifier {
   List<Routine> get recentRoutines => _recentRoutines;
 
   // Settings
-  void updateUsername(String value){
-    
-  }
-
+  void updateUsername(String value) {}
 
   // Auth
-  void logout(){
+  void logout() {
     _user = null;
   }
 
@@ -41,7 +35,6 @@ class UserViewModel with ChangeNotifier {
       if (user.email == email && user.password == password) {
         _user = user;
         loadUserRoutines();
-        updateRoutineCount();
         notifyListeners();
         return true;
       }
@@ -49,15 +42,19 @@ class UserViewModel with ChangeNotifier {
     return false;
   }
 
-  bool addUser(String email, String username, String password){
+  bool addUser(String email, String username, String password) {
     int id = users.length;
 
-    _user = User(id: id, email: email, username: username, password: password, routines: []);
+    _user = User(
+        id: id,
+        email: email,
+        username: username,
+        password: password,
+        routines: []);
     users.add(_user!);
     notifyListeners();
     return true;
   }
-
 
   // User routines
   bool routineInLibrary(int id) {
@@ -74,11 +71,9 @@ class UserViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void removeRoutineFromLibrary(Routine routine){
+  void removeRoutineFromLibrary(Routine routine) {
     _user!.routines!.removeWhere((element) => element.id == routine.id);
     notifyListeners();
-
-
   }
 
   //load user routines from Firebase after authentication
@@ -95,8 +90,9 @@ class UserViewModel with ChangeNotifier {
         .then((querySnapshot) {
       for (var docSnapShot in querySnapshot.docs) {
         _user!.routines!.add(docSnapShot.data());
+        _user?.routines?.sort();
       }
-    }).then((value){
+    }).then((value) {
       // After routines have been loaded in, can get recent and recommended routines
       getRecentRoutines();
       getRecommendRoutines();
@@ -104,10 +100,10 @@ class UserViewModel with ChangeNotifier {
     });
   }
 
-  void updateRoutineCount() async {
-    final docRef = await db.collection("routines").get();
-    totalRoutines = docRef.size;
-  }
+  // void updateRoutineCount() async {
+  //   final docRef = await db.collection("routines").get();
+  //   totalRoutines = docRef.size;
+  // }
 
   // void loadAllRoutines() async {
   //   db
@@ -126,7 +122,8 @@ class UserViewModel with ChangeNotifier {
   // Assuming last 3 added routines are most recent... return last 3 routines
   void getRecentRoutines() {
     if (_user!.routines!.length >= 3) {
-      _recentRoutines = _user!.routines!.sublist(_user!.routines!.length - 3, _user!.routines!.length);
+      _recentRoutines = _user!.routines!
+          .sublist(_user!.routines!.length - 3, _user!.routines!.length);
     } else {
       _recentRoutines = user!.routines!;
     }
@@ -144,20 +141,47 @@ class UserViewModel with ChangeNotifier {
         )
         .get()
         .then((querySnapshot) {
-      var count = 0;
+      // var count = 0;
       for (var docSnapShot in querySnapshot.docs) {
         //skip routine if already in the user's routines
         if (routineInLibrary(docSnapShot.data().id)) {
           continue;
         }
         _recommendedRoutines.add(docSnapShot.data());
-        count++;
+        // count++;
         //max five recommended routines
-        if (count == 5) {
-          break;
-        }
+        // if (count == 5) {
+        //   break;
+        // }
       }
     }).then((value) => notifyListeners());
   }
+} //end class
 
-}//end class
+//dummy user database
+final List<User> users = [
+  User(
+      id: 1,
+      email: 'jeremy@muve.com',
+      username: 'jeremy',
+      password: 'pw',
+      routines: []),
+  User(
+      id: 2,
+      email: 'max@muve.com',
+      username: 'max',
+      password: 'pw',
+      routines: []),
+  User(
+      id: 3,
+      email: 'ethan@muve.com',
+      username: 'ethan',
+      password: 'pw',
+      routines: []),
+  User(
+      id: 4,
+      email: 'user@test.com',
+      username: 'user',
+      password: 'test',
+      routines: []),
+];

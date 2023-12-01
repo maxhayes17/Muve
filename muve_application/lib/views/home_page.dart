@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
                   CrossAxisAlignment.start, // Align text to the left
               children: [
                 Center(
-                  child: Container(
+                  child: SizedBox(
                     width: 80,
                     child: Image.asset('assets/Muve_logo_sm.png'),
                   )
@@ -79,7 +79,7 @@ class HomePage extends StatelessWidget {
                 const SizedBox(
                   height: 12,
                 ),
-                Container(
+                SizedBox(
                   height: 190,
                 child: HorizontalRoutineList(
                     routines: userVM.recommendedRoutines,

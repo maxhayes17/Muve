@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:muve_application/routes.dart' as routes;
+import 'package:muve_application/viewmodels/compose_view_model.dart';
 import 'package:muve_application/viewmodels/user_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +20,7 @@ class _LoginFormState extends State<LoginForm> {
 
   void _login() {
     final UserViewModel userVM = context.read<UserViewModel>();
+    context.read<ComposeViewModel>().updateRoutineCount();
 
     if (_formKey.currentState!.validate()) {
       String email = _usernameController.text.toLowerCase();
@@ -68,9 +70,7 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                     )
                   ],
-                )
-              )
-            ),
+                ))),
             const SizedBox(
               height: 10,
             ),
@@ -86,13 +86,13 @@ class _LoginFormState extends State<LoginForm> {
                 child: Center(
                     child: Row(
                   children: [
-                    const Icon(Icons.lock, color:Colors.white70),
+                    const Icon(Icons.lock, color: Colors.white70),
                     const SizedBox(width: 10),
                     Expanded(
                       child: TextFormField(
                         decoration: const InputDecoration.collapsed(
                           hintText: "Password",
-                          hintStyle: TextStyle(color:Colors.white70),
+                          hintStyle: TextStyle(color: Colors.white70),
                         ),
                         obscureText: true,
                         controller: _passwordController,
@@ -100,9 +100,7 @@ class _LoginFormState extends State<LoginForm> {
                       ),
                     )
                   ],
-                )
-              )
-            ),
+                ))),
             const SizedBox(
               height: 40,
             ),
@@ -112,10 +110,17 @@ class _LoginFormState extends State<LoginForm> {
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.7,
                 height: 60,
-                decoration: BoxDecoration(color: Colors.orange[700], borderRadius: const BorderRadius.all(Radius.circular(10)),),
-                child: const Center(child: Text(
-                    "Login",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)),),
+                decoration: BoxDecoration(
+                  color: Colors.orange[700],
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                ),
+                child: const Center(
+                  child: Text("Login",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.white)),
+                ),
               ),
             ),
             const SizedBox(
@@ -123,7 +128,11 @@ class _LoginFormState extends State<LoginForm> {
             ),
             const Text(
               "New user?",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white,),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: Colors.white,
+              ),
             ),
             const SizedBox(
               height: 10,
@@ -134,16 +143,16 @@ class _LoginFormState extends State<LoginForm> {
                 width: MediaQuery.of(context).size.width * 0.7,
                 height: 60,
                 decoration: const BoxDecoration(
-                  color: Colors.white12, 
+                  color: Colors.white12,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
-                child: const Center(child: Text(
-                    "Sign up",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold, 
-                      fontSize: 18, 
-                      color: Colors.orangeAccent)),
-                    ),
+                child: const Center(
+                  child: Text("Sign up",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                          color: Colors.orangeAccent)),
+                ),
               ),
             )
           ],

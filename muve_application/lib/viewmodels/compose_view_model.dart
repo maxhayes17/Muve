@@ -6,10 +6,7 @@ import 'package:muve_application/models/set_model.dart';
 import 'package:muve_application/models/track_model.dart';
 import 'package:muve_application/models/user_model.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert'; 
-
-// FAKE DATA
-import 'package:muve_application/data.dart';
+import 'dart:convert';
 
 class ComposeViewModel with ChangeNotifier {
   final db = FirebaseFirestore.instance;
@@ -20,8 +17,12 @@ class ComposeViewModel with ChangeNotifier {
   final List<Track> _trackSearchResults = [];
   List<Track>? get trackSearchResults => _trackSearchResults;
 
-  late int routineCount = totalRoutines;
+  int routineCount = -1;
 
+  void updateRoutineCount() async {
+    final docRef = await db.collection("routines").get();
+    routineCount = docRef.size;
+  }
 
   void createRoutine(User? user) {
     _newRoutine = Routine(
@@ -43,7 +44,8 @@ class ComposeViewModel with ChangeNotifier {
     _newRoutine?.name = value;
     notifyListeners();
   }
-  void addTag(String value){
+
+  void addTag(String value) {
     _newRoutine?.tags.add(value);
   }
 
@@ -96,22 +98,17 @@ class ComposeViewModel with ChangeNotifier {
   }
 
   void saveRoutine(User? user) async {
-    // for (var e in _newRoutine!.exercises) {
-    //   _newRoutine?.tags.add(e.name!.toLowerCase());
-    // }
-    routines.add(_newRoutine!);
+    //add to local routine list
     user?.routines?.add(_newRoutine!);
 
     //add to Firestore db
-    var routineId = _newRoutine?.id.toString();
-
     final docRef = db
         .collection("routines")
         .withConverter(
           fromFirestore: Routine.fromFirestore,
           toFirestore: (Routine routine, options) => routine.toFirestore(),
         )
-        .doc(routineId);
+        .doc();
     await docRef.set(_newRoutine!);
 
     // Reset _newRoutine
@@ -119,19 +116,17 @@ class ComposeViewModel with ChangeNotifier {
     createRoutine(user);
   }
 
-  int numOfRoutines() {
-    return routines.length;
-  }
+  // int numOfRoutines() {
+  //   return routines.length;
+  // }
 
-  void clearSearchResults(){
+  void clearSearchResults() {
     _trackSearchResults.clear();
     notifyListeners();
   }
 
-
   // Search for music using last.fm API
   Future<void> searchTracks(String value) async {
-    
     // Clear previous search results
     _trackSearchResults.clear();
 
@@ -139,44 +134,43 @@ class ComposeViewModel with ChangeNotifier {
     const apiKey = 'd49f225e7ef13866f25b182c31d02bca';
     const baseUrl = 'http://ws.audioscrobbler.com/2.0/';
 
-      // Make API request, handle if successful, else print error code
-      final response = await http.get(Uri.parse('$baseUrl?method=track.search&track=$value&api_key=$apiKey&format=json'));
+    // Make API request, handle if successful, else print error code
+    final response = await http.get(Uri.parse(
+        '$baseUrl?method=track.search&track=$value&api_key=$apiKey&format=json'));
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> data = json.decode(response.body);
+      final results = data['results']['trackmatches']['track'];
+
+      // Only look at top 10 results
+      var count = 0;
+      for (var result in results) {
+        var artist = result['artist'];
+        var name = result['name'];
+
+        //Re-query to get track album art
+        final response = await http.get(Uri.parse(
+            '$baseUrl?method=track.getInfo&api_key=$apiKey&artist=$artist&track=$name&format=json'));
         if (response.statusCode == 200) {
-
           final Map<String, dynamic> data = json.decode(response.body);
-          final results = data['results']['trackmatches']['track'];
 
-          // Only look at top 10 results
-          for (var result in results.sublist(0,5)){
-
-            var artist = result['artist'];
-            var name = result['name'];
-
-            //Re-query to get track album art
-            final response = await http.get(Uri.parse('$baseUrl?method=track.getInfo&api_key=$apiKey&artist=$artist&track=$name&format=json'));
-            if (response.statusCode == 200) {
-              final Map<String, dynamic> data = json.decode(response.body);
-              
-              final trackData = data['track'];
-              // Create track object, add to list of results to be displayed
-              if (trackData != null){
-              var track = Track.fromJson(trackData);
-              _trackSearchResults.add(track);
-              }
-              notifyListeners();
-            }
-            else{
-              print('Error: ${response.statusCode}');
-            }
+          final trackData = data['track'];
+          // Create track object, add to list of results to be displayed
+          if (trackData != null) {
+            var track = Track.fromJson(trackData);
+            _trackSearchResults.add(track);
           }
-          // print(results);
+          notifyListeners();
         } else {
-          // Handle the error
           print('Error: ${response.statusCode}');
         }
-
-
+        count++;
+        if (count == 10) break;
+      }
+      notifyListeners();
+      // print(results);
+    } else {
+      // Handle the error
+      print('Error: ${response.statusCode}');
+    }
   }
-
 }
-

@@ -4,7 +4,7 @@ import 'package:muve_application/models/set_model.dart';
 import 'exercise_model.dart';
 import 'track_model.dart';
 
-class Routine {
+class Routine implements Comparable<Routine> {
   final int id;
   String name;
   String duration;
@@ -129,5 +129,10 @@ class Routine {
         tracks: List<Track>.from(json['tracks']),
         exercises: List<Exercise>.from(json['exercises']),
         picturePath: json['picture_path']);
+  }
+
+  @override
+  int compareTo(Routine other) {
+    return id.compareTo(other.id);
   }
 }
