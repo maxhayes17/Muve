@@ -14,7 +14,6 @@ class RoutineViewModel with ChangeNotifier {
   late Routine? _currentRoutine = Routine(
       id: 0,
       name: "name",
-      duration: "duration",
       author: "author",
       tags: [],
       tracks: [],

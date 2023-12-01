@@ -7,7 +7,6 @@ import 'track_model.dart';
 class Routine implements Comparable<Routine> {
   final int id;
   String name;
-  String duration;
   String author;
   final List<String> tags;
   List<Track> tracks;
@@ -17,7 +16,6 @@ class Routine implements Comparable<Routine> {
   Routine(
       {required this.id,
       required this.name,
-      required this.duration,
       required this.author,
       required this.tags,
       required this.tracks,
@@ -46,7 +44,6 @@ class Routine implements Comparable<Routine> {
       var inputExercise = Exercise(
         id: e['id'],
         name: e['name'],
-        // notes: e['notes'],
         sets: sets,
       );
       exercises.add(inputExercise);
@@ -68,7 +65,6 @@ class Routine implements Comparable<Routine> {
     return Routine(
         id: data?['id'],
         name: data?['name'],
-        duration: data?['duration'],
         author: data?['author'],
         tags: List.from(data?['tags']),
         tracks: tracks,
@@ -110,25 +106,12 @@ class Routine implements Comparable<Routine> {
     return {
       "id": id,
       "name": name,
-      "duration": duration,
       "author": author,
       "tags": tags,
       "tracks": trackList,
       "exercises": exerciseList,
       if (picturePath != null) "picturePath": picturePath,
     };
-  }
-
-  factory Routine.fromJson(Map<String, dynamic> json) {
-    return Routine(
-        id: json['id'],
-        name: json['name'],
-        duration: json['duration'],
-        author: json['author'],
-        tags: List<String>.from(json['tags']),
-        tracks: List<Track>.from(json['tracks']),
-        exercises: List<Exercise>.from(json['exercises']),
-        picturePath: json['picture_path']);
   }
 
   @override

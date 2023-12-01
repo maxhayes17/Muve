@@ -28,7 +28,6 @@ class ComposeViewModel with ChangeNotifier {
     _newRoutine = Routine(
       id: routineCount + 1,
       name: '',
-      duration: '00:00',
       author: user?.username ?? "",
       tags: [],
       exercises: [
