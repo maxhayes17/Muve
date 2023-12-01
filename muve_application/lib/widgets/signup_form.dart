@@ -26,7 +26,7 @@ class _SignupFormState extends State<SignupForm> {
       String password = _passwordController.text;
       String username = _usernameController.text;
       if (userVM.addUser(email, username, password)) {
-        context.go(routes.homePath);
+        context.go(routes.loginPath);
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text("Welcome back ${userVM.username}!")));
       } else {
