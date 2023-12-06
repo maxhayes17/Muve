@@ -1,59 +1,45 @@
 # Muve
  
-Muve is an iOS application built for **composing** exercise routines, **sharing** those routines with your network, and **exploring** routines of other Muve users.
+Muve is an mobile application built for **composing** exercise routines, **sharing** those routines with your network, and **exploring** routines of other Muve users.
 
-Version 0.1 supports the core tasks:
+Version 0.2 supports the **core tasks**:
 1. Logging in
+2. Creating a new user
 2. Viewing a homepage of recent routines
 3. Viewing a detailed view of a routine
 4. Viewing a library of all a user’s routines
 
-Version 0.1 also supports the **key task** of **composing** a new routine. This includes adding any number of exercises to a routine. Filling out those exercises with multiple sets and adding songs to the routine.
+Version 0.2 also supports the **key tasks**:
+1. Composing a new routine. This includes adding any number of exercises to a routine. Filling out those exercises with multiple sets and adding songs to the routine. Up to three tags can also be added to a routine.
+2. Exploring routines. Users can search by routine name or one of the tags.
+3. Sharing routines. Users can share a link to a routine either by SMS or by copying the link to the clipboard.
+
+## Installing
 
 Muve is written in the Dart/Flutter framework. It's been developed and tested using VS Code on MacOS running in the iOS *(iPhone 15 Pro Max)* simulator.
 
-The first screen you'll see after launching Muve is the login page. Here you can enter the following credentials for the test user:
+Muve uses Firebase/Firestore for cloud storage and retrieval of routines. The Firebase module is integrated into Muve with Cocoapods. The following steps may be needed to update the Cocoapods dependencies:
 
-Email: `user@test.com`
+**TODO**: pod file steps
 
-Password: `test`
+## Log in
 
-Along the bottom is a NavigationBar widget used to navigate between all the primary pages. After logging in, it defaults to the **Home** page, where you'll see a list of your most recent routines. Clicking on the **Library** button on the NavigationBar will show you a scrollable list of all your routines.
+1. test user
 
-Clicking on the **Compose** add-circle in the center of the NavigationBar will bring you to the first key task that has been implemented. 
+    Email: `user@test.com`
 
-At the top center of this page you can enter the name of a new routine:
+    Password: `test`
 
-Name: `new routine`
+2. new user
+    
+    `Sign up` to register a new user.
 
-Under the name are two buttons, one for adding exercises and one for adding music. You can select either one to navigate to the Add Exercise page or Add Music page, respectively. A back button will appear on the top of the page, to easily toggle back and forth between adding exercises and adding music.
+3. See Muve populated with routines by one of our three personas:
 
-At the **Add Exercise** page you'll see text fields for entering the name of the exercise.
+    Email: `monty@muve.com`
 
-Name: `bicep curl`
+    Email: `bart@muve.com`
 
-The next line is the first set, where you can enter weight, reps, duration.
-Each of these fields are optional, so you only have to enter details relevant to your exercise. In this example, we will fill all three: 
+    Email: `abel@muve.com`
 
-Weight: `20`
-
-Reps: `10`
-
-Duration `1 min`
-
-
-<img width="285" alt="Screenshot 2023-11-15 at 08 44 31" src="https://github.com/maxhayes17/Muve/assets/99774165/64f427e7-dde9-4ec2-a4f9-d72175d97155">
-
-Each exercise card has a button to add a new set, and a right-to-left swipe will delete the card.
-
-At the bottom of the list are buttons to add another exercise or add music. Pressing the Add Music button will navigate to the Add Music page.
-
-On the **Add Music** page, you will be able to see exercises currently in your routine, and search for songs by title ('Song 1' through 'Song 6' currently available) to go along with your exercises. Tapping on a song from a search will add it to the routine.
-
-Search: `Song 3`
-
-<img width="310" alt="Screenshot 2023-11-15 at 08 51 43" src="https://github.com/maxhayes17/Muve/assets/99774165/cb5aca55-9699-4a3b-8b04-93313505fa0f">
-
-Long pressing on a song in a routine will bring up a popup to remove the song from the routine.
-
-Pressing the **Create routine** button at the bottom of the page will add the routine to the user’s library and automatically route back to the home screen. From there you can see that the routine has been added, and is one of the most recently created. Clicking on the Library button, you can also see the new routine.
+    Password: `pw` (for all three personas)
