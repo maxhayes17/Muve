@@ -1,3 +1,5 @@
+import "dart:io";
+
 import "package:flutter/material.dart";
 import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:flutter/services.dart";
@@ -96,11 +98,12 @@ class RoutineViewModel with ChangeNotifier {
         "www.muve.com/users/${_currentRoutine!.author}/${_currentRoutine!.name}";
     String body = "Check out my routine on Muve!\n$routineString";
 
-    var url = Uri.parse("sms:&body=$body");
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      // throw "could not launch $url";
+    if (Platform.isAndroid) {
+      String uri = 'sms:?body=${Uri.encodeComponent(body)}';
+      await launchUrl(Uri.parse(uri));
+    } else if (Platform.isIOS) {
+      String uri = 'sms:&body=${Uri.encodeComponent(body)}';
+      await launchUrl(Uri.parse(uri));
     }
   }
 
