@@ -1,5 +1,6 @@
 # Muve
- 
+
+## About Muve
 Muve is an mobile application built for **composing** exercise routines, **sharing** those routines with your network, and **exploring** routines of other Muve users.
 
 Version 0.2 supports the **core tasks**:
@@ -14,23 +15,30 @@ Version 0.2 also supports the **key tasks**:
 2. Exploring routines. Users can search by routine name or one of the tags.
 3. Sharing routines. Users can share a link to a routine either by SMS or by copying the link to the clipboard.
 
-## Installing
+## Setting up
 
 Muve is written in the Dart/Flutter framework. It's been developed and tested using VS Code on MacOS running in the iOS *(iPhone 15 Pro Max)* simulator.
 
-Muve uses Firebase/Firestore for cloud storage and retrieval of routines. The Firebase module is integrated into Muve with Cocoapods. The following steps may be needed to update the Cocoapods dependencies:
+Muve uses Firebase/Firestore for cloud storage and retrieval of routines. The Firebase module is integrated into Muve with Cocoapods. 
 
-**TODO**: pod file steps
+To install the dependencies used for Firebase in this application, do the following
 
-## Log in
+```bash
+# If using an iOS simulator
+cd muve_application/ios
+pod install
 
-1. test user
+```
+
+## Logging in
+
+1. Test user
 
     Email: `user@test.com`
 
     Password: `test`
 
-2. new user
+2. New user
     
     `Sign up` to register a new user.
 
