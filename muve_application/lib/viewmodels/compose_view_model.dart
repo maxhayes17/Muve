@@ -133,43 +133,47 @@ class ComposeViewModel with ChangeNotifier {
     const apiKey = 'd49f225e7ef13866f25b182c31d02bca';
     const baseUrl = 'http://ws.audioscrobbler.com/2.0/';
 
-    // Make API request, handle if successful, else print error code
-    final response = await http.get(Uri.parse(
-        '$baseUrl?method=track.search&track=$value&api_key=$apiKey&format=json'));
-    if (response.statusCode == 200) {
-      final Map<String, dynamic> data = json.decode(response.body);
-      final results = data['results']['trackmatches']['track'];
+    try{
+      // Make API request, handle if successful, else print error code
+      final response = await http.get(Uri.parse(
+          '$baseUrl?method=track.search&track=$value&api_key=$apiKey&format=json'));
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> data = json.decode(response.body);
+        final results = data['results']['trackmatches']['track'];
 
-      // Only look at top 10 results
-      var count = 0;
-      for (var result in results) {
-        var artist = result['artist'];
-        var name = result['name'];
+        // Only look at top 10 results
+        var count = 0;
+        for (var result in results) {
+          var artist = result['artist'];
+          var name = result['name'];
 
-        //Re-query to get track album art
-        final response = await http.get(Uri.parse(
-            '$baseUrl?method=track.getInfo&api_key=$apiKey&artist=$artist&track=$name&format=json'));
-        if (response.statusCode == 200) {
-          final Map<String, dynamic> data = json.decode(response.body);
+          //Re-query to get track album art
+          final response = await http.get(Uri.parse(
+              '$baseUrl?method=track.getInfo&api_key=$apiKey&artist=$artist&track=$name&format=json'));
+          if (response.statusCode == 200) {
+            final Map<String, dynamic> data = await json.decode(response.body);  
 
-          final trackData = data['track'];
-          // Create track object, add to list of results to be displayed
-          if (trackData != null) {
-            var track = Track.fromJson(trackData);
-            _trackSearchResults.add(track);
+            final trackData = data['track'];
+            // Create track object, add to list of results to be displayed
+            if (trackData != null) {
+              var track = Track.fromJson(trackData);
+              _trackSearchResults.add(track);
+            }
+            notifyListeners();
+          } else {
+            print('Error: ${response.statusCode}');
           }
-          notifyListeners();
-        } else {
-          print('Error: ${response.statusCode}');
+          count++;
+          if (count == 10) break;
         }
-        count++;
-        if (count == 10) break;
+        notifyListeners();
+        // print(results);
+      } else {
+        // Handle the error
+        print('Error: ${response.statusCode}');
       }
-      notifyListeners();
-      // print(results);
-    } else {
-      // Handle the error
-      print('Error: ${response.statusCode}');
+    } catch(e){
+      print(e);
     }
   }
 }
