@@ -29,6 +29,18 @@ cd muve_application/ios
 pod install
 
 ```
+(If a repository out-of-date error occurs), do the following
+```bash
+cd muve_application/ios
+
+# Remove outdated dependencies 
+rm Podfile.lock
+pod repo remove trunk
+
+# Install updated repository
+pod install --repo-update
+
+```
 
 ## Logging in
 
