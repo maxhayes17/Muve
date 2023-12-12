@@ -28,7 +28,7 @@ class _SignupFormState extends State<SignupForm> {
       if (userVM.addUser(email, username, password)) {
         context.go(routes.loginPath);
         ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Welcome back ${userVM.username}!")));
+            SnackBar(content: Text("Welcome to Muve ${userVM.username}!")));
       } else {
         ScaffoldMessenger.of(context)
             .showSnackBar(const SnackBar(content: Text("INVALID INPUTS")));

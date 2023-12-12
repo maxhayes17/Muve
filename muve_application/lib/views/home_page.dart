@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:muve_application/viewmodels/user_view_model.dart';
 import 'package:muve_application/widgets/horizontal_routine_list.dart';
+import 'package:muve_application/widgets/vertical_routine_add.dart';
 import 'package:muve_application/widgets/vertical_routine_list.dart';
 import 'package:provider/provider.dart';
 import 'package:muve_application/routes.dart' as routes;
@@ -63,7 +64,14 @@ class HomePage extends StatelessWidget {
                 const SizedBox(
                   height: 12,
                 ),
-                Expanded(
+                userVM.recentRoutines.isEmpty 
+                ? const Column(
+                  children: [
+                    VerticalRoutineAdd(), 
+                    SizedBox(height: 195,)
+                    ]
+                ) 
+                : Expanded(
                   child: VerticalRoutineList(
                     routines: userVM.recentRoutines),
                 ),
