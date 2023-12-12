@@ -66,11 +66,12 @@ pod install --repo-update
     
 ## Screenshots
 
+<p float="left">
 <img src="screenshots/muve_login.png" alt="Login page" height="500"/>
 <img src="screenshots/muve_home.png" alt="Home page" height="500"/>
 <img src="screenshots/muve_routine.png" alt="Routine page" height="500"/>
 <img src="screenshots/muve_explore.png" alt="Explore page" height="500"/>
 <img src="screenshots/muve_compose.png" alt="Compose page" height="500"/>
 <img src="screenshots/muve_share.png" alt="Share page" height="500"/>
-
+</p>
 
