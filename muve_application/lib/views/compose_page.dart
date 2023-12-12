@@ -10,14 +10,12 @@ class ComposePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userVM = context.read<UserViewModel>();
+    final userVM = context.watch<UserViewModel>();
     final currentUser = userVM.user;
-    // final userId = userVM.id;
     final composeVM = context.watch<ComposeViewModel>();
     if (composeVM.newRoutine == null){
       composeVM.createRoutine(currentUser);
     }
-    // Routine? newRoutine = composeVM.newRoutine;
 
     return SafeArea(
       child: Padding(
