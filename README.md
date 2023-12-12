@@ -63,3 +63,8 @@ pod install --repo-update
     Email: `abel@muve.com`
 
     Password: `pw` (for all three personas)
+    
+## Screenshots
+
+![Compose page](screenshots/muve_compose.png)
+
